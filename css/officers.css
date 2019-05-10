@@ -1,0 +1,14 @@
+.officer {
+	display: table-row;
+}
+
+.officer p {
+	margin: 40px;
+}
+
+.officer img {
+	float: left;
+	margin: 20px;
+	height: 140px;
+	width: 140px;
+}
