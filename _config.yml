@@ -19,9 +19,11 @@ github_username:  jekyll
 
 include: [_pages]
 
+# Navigation Bar Contents
 navigation:
     - name: About
       url: /about
+
     - name: Cypher
       url: http://cypher.cs.wm.edu/
 
