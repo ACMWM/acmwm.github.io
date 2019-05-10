@@ -23,6 +23,9 @@ navigation:
     - name: About
       url: /about
 
+    - name: Membership
+      url: /membership
+
     - name: Cypher
       url: http://cypher.cs.wm.edu/
 
