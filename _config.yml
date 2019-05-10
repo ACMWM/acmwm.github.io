@@ -29,6 +29,9 @@ navigation:
     - name: Officers
       url: /officers
 
+    - name: Events
+      url: /events
+
     - name: TIP
       url: /tip
 
