@@ -26,6 +26,21 @@ navigation:
     - name: Membership
       url: /membership
 
+    - name: Officers
+      url: /officers
+
+    - name: TIP
+      url: /tip
+
+    - name: Hardware Lab
+      url: /hwlab
+
+    - name: ICPC
+      url: /icpc
+
+    - name: ACM-W
+      url: /acm-w
+
     - name: Cypher
       url: http://cypher.cs.wm.edu/
 
