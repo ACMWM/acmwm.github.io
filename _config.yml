@@ -102,7 +102,8 @@ officers:
     - job: Graduate Student Liason
       name: Richie Bonett
       pic: richie.jpg
-      desc:
+      desc: >
+          Richie is a MS/PhD student advised by <a href="http://www.cs.wm.edu/~denys/">Dr. Denys Poshyvanyk</a>. His primary research interests lie in Software Engineering, particularly in the development and evolution of mobile applications. You can read more about his work and technical interests on <a href="http://richardbonett.com/">his website</a>.
 
     - job: Faculty Advisor
       name: Jim Deverick
