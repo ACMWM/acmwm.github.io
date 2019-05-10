@@ -44,3 +44,61 @@ navigation:
 # Build settings
 markdown: kramdown
 
+officers:
+    - job: Chair
+      name: Meg Anderson
+      pic: meg.jpg
+      desc: >
+          Meg is a junior studying Computer Science and Biology here at the college. When she's not hanging out with ACM, you can find her in the bowels of McGlothlin Street helping intro computer science students as a consultant, or at the German house trying not to forgot how to _Deutsch sprechen_ after her summer internship in Germany. Makes a killer crème brûlée.
+
+    - job: Vice Chair
+      name: Alex Fantine
+      pic: alex.png
+      desc: >
+          Alex is a sophomore planning on majoring in Computer Science and possibly minoring in theatre. Aside from planning weekly meetings, you can usually catch him acting in some production at W&M or trying to think of a cool idea for a coding project. He also really likes Transformers, and is looking for someone to geek out about the Lost Light with!
+
+    - job: Secretary
+      name: Wils McCreight
+      pic: wils.png
+      desc: >
+          Wils McCreight is a senior majoring in Computer Science and minoring in Data Science at W&M. He loves all things music, and when he’s not coding apps for IOS you can catch him singing a cappella on the Wren Portico! His other interests include machine learning, dogs and caffeine.
+
+    - job: Treasurer
+      name: Sophia Armitano
+      pic: sophia.png
+      desc:
+
+    - job: PR Chair
+      name: AJ Marra
+      pic: aj.jpg
+      desc: >
+          AJ is a junior majoring in Computer Science and minoring in English. Aside from all things computers and programming, AJ enjoys reading, writing, playing soccer, and swimming. She is also a sister of Alpha Chi Omega and subsists off of coffee and sugar.
+
+    - job: Webmaster
+      name: Jacob Adams
+      pic:
+      desc:
+
+    - job: Cypher Chair
+      name: Ben Ryan
+      pic: ben.png
+      desc:
+
+    - job: TIP Chair
+      name: Liz Weech
+      pic: liz.png
+
+    - job: Hackathon Chair
+      name: Adam An
+      pic: adam.png
+      desc:
+
+    - job: Graduate Student Liason
+      name: Richie Bonett
+      pic: richie.png
+      desc:
+
+    - job: Faculty Advisor
+      name: Jim Deverick
+      pic: jim.jpg
+      desc:

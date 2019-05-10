@@ -4,20 +4,11 @@ permalink: /officers/
 title: Officers
 ---
 
-#### Meg Anderson, Chair
-
-#### Alex Fantine, Vice Chair
-
-#### Wils McCreight, Secretary
-
-#### Sophia Armitano, Treasurer
-
-#### AJ Mara, PR Chair
-
-#### Jacob Adams, Webmaster
-
-#### Ben Ryan, Cypher Chair
-
-#### Liz Weech, TIP Chair
-
-#### Adam An, Hackathon Chair
+<!-- Use _config.yml to change this page -->
+{% for person in site.officers %}
+<div class="officer">
+	<h4>{{ person.name }}, {{ person.job }}</h4>
+	<img src="/images/officers/{{ person.pic }}" />
+	<p>{{ person.desc }}</p>
+</div>
+{% endfor %}
