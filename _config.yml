@@ -42,8 +42,8 @@ navigation:
     - name: Hardware Lab
       url: /hwlab
 
-    - name: ACM-W
-      url: /acm-w
+    - name: SWC
+      url: /swc
 
     - name: ICPC
       url: /icpc
