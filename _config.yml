@@ -19,6 +19,12 @@ github_username:  jekyll
 
 include: [_pages]
 
+navigation:
+    - name: About
+      url: /about
+    - name: Cypher
+      url: http://cypher.cs.wm.edu/
+
 # Build settings
 markdown: kramdown
 
