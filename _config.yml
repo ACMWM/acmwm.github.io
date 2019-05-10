@@ -20,9 +20,6 @@ include: [_pages]
 
 # Navigation Bar Contents
 navigation:
-    - name: About
-      url: /about
-
     - name: Membership
       url: /membership
 
