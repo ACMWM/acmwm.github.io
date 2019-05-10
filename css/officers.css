@@ -3,7 +3,7 @@
 }
 
 .officer p {
-	margin: 40px;
+	margin: 20px;
 }
 
 .officer img {
@@ -11,4 +11,8 @@
 	margin: 20px;
 	height: 140px;
 	width: 140px;
+}
+
+.officer div {
+	height: 100px;
 }

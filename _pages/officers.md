@@ -11,5 +11,6 @@ css: officers
 	<h4>{{ person.name }}, {{ person.job }}</h4>
 	<img src="/images/officers/{{ person.pic }}" />
 	<p>{{ person.desc }}</p>
+	<div></div>
 </div>
 {% endfor %}
