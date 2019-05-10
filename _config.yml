@@ -52,60 +52,60 @@ officers:
     - job: Chair
       name: Meg Anderson
       pic: meg.jpg
-      desc: >
+      bio: >
           Meg is a junior studying Computer Science and Biology here at the college. When she's not hanging out with ACM, you can find her in the bowels of McGlothlin Street helping intro computer science students as a consultant, or at the German house trying not to forgot how to <em>Deutsch sprechen</em> after her summer internship in Germany. Makes a killer crème brûlée.
 
     - job: Vice Chair
       name: Alex Fantine
       pic: alex.png
-      desc: >
+      bio: >
           Alex is a sophomore planning on majoring in Computer Science and possibly minoring in theatre. Aside from planning weekly meetings, you can usually catch him acting in some production at W&M or trying to think of a cool idea for a coding project. He also really likes Transformers, and is looking for someone to geek out about the Lost Light with!
 
     - job: Secretary
       name: Wils McCreight
       pic: wils.png
-      desc: >
+      bio: >
           Wils McCreight is a senior majoring in Computer Science and minoring in Data Science at W&M. He loves all things music, and when he’s not coding apps for IOS you can catch him singing a cappella on the Wren Portico! His other interests include machine learning, dogs and caffeine.
 
     - job: Treasurer
       name: Sophia Armitano
       pic:
-      desc:
+      bio:
 
     - job: PR Chair
       name: AJ Marra
       pic: aj.jpg
-      desc: >
+      bio: >
           AJ is a junior majoring in Computer Science and minoring in English. Aside from all things computers and programming, AJ enjoys reading, writing, playing soccer, and swimming. She is also a sister of Alpha Chi Omega and subsists off of coffee and sugar.
 
     - job: Webmaster
       name: Jacob Adams
       pic:
-      desc:
+      bio:
 
     - job: Cypher Chair
       name: Ben Ryan
       pic:
-      desc:
+      bio:
 
     - job: TIP Chair
       name: Liz Weech
       pic: liz.png
-      desc: >
+      bio: >
           Liz is a junior studying Computer Science and Physics. She is the firmware lead for TribeSat, W&M's satellite project, and gets really excited about anything space related. Milk is her beverage of choice, and she reached her peak when she met Buzz Aldrin at a conference in 2014.
 
     - job: Hackathon Chair
       name: Adam An
       pic: adam.png
-      desc:
+      bio:
 
     - job: Graduate Student Liason
       name: Richie Bonett
       pic: richie.jpg
-      desc: >
+      bio: >
           Richie is a MS/PhD student advised by <a href="http://www.cs.wm.edu/~denys/">Dr. Denys Poshyvanyk</a>. His primary research interests lie in Software Engineering, particularly in the development and evolution of mobile applications. You can read more about his work and technical interests on <a href="http://richardbonett.com/">his website</a>.
 
     - job: Faculty Advisor
       name: Jim Deverick
       pic: jim.jpg
-      desc:
+      bio:

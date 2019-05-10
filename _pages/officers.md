@@ -10,7 +10,7 @@ css: officers
 <div class="officer">
 	<h4>{{ person.job }}: {{ person.name }}</h4>
 	<img src="/images/officers/{{ person.pic }}" />
-	<p>{{ person.desc }}</p>
+	<p>{{ person.bio }}</p>
 	<div></div>
 </div>
 {% endfor %}
