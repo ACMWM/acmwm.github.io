@@ -39,7 +39,7 @@
 
     .page-link {
         color: $white-color;
-        line-height: $base-line-height;
+        vertical-align: -25%;
 
         // Gaps between nav items, but not on the last one
         &:not(:last-child) {
