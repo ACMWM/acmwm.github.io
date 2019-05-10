@@ -32,20 +32,20 @@ navigation:
     - name: Events
       url: /events
 
+    - name: Cypher
+      url: http://cypher.cs.wm.edu/
+
     - name: TIP
       url: /tip
 
     - name: Hardware Lab
       url: /hwlab
 
-    - name: ICPC
-      url: /icpc
-
     - name: ACM-W
       url: /acm-w
 
-    - name: Cypher
-      url: http://cypher.cs.wm.edu/
+    - name: ICPC
+      url: /icpc
 
 officers:
     - job: Chair
