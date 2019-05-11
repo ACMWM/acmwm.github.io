@@ -5,6 +5,8 @@ title: Events
 ---
 ### Come Hang Out With Us!
 
+![dance]({{ "/images/justdance.gif" | prepend: site.baseurl }})
+
 We meet every Thursday in ISC 2280 from 5:30 PM to 6:30 PM
 
 We also host a computer science faculty and student banquet each semester.
