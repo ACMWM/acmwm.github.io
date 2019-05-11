@@ -2,7 +2,7 @@
 layout: page
 title: Cypher
 menu: Cypher
-permalink: /cypher/
+permalink: /hackathon/
 css: cypher
 ---
 
