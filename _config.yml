@@ -34,7 +34,7 @@ navigation:
       url: /events
 
     - name: Cypher
-      url: http://cypher.cs.wm.edu/
+      url: /cypher
 
     - name: TIP
       url: /tip
