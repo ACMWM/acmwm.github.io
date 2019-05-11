@@ -22,32 +22,6 @@ include: [_pages]
 # Build settings
 markdown: kramdown
 
-# Navigation Bar Contents
-navigation:
-    - name: Membership
-      url: /membership
-
-    - name: Officers
-      url: /officers
-
-    - name: Events
-      url: /events
-
-    - name: Cypher
-      url: /cypher
-
-    - name: TIP
-      url: /tip
-
-    - name: Hardware Lab
-      url: /hwlab
-
-    - name: SWC
-      url: /swc
-
-    - name: ICPC
-      url: /icpc
-
 year: 2019-2020
 officers:
     - job: Chair

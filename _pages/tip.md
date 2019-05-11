@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Technical Interview Prep
+menu: TIP
 permalink: /tip
 ---
 

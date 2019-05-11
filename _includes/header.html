@@ -12,8 +12,10 @@
       </a>
 
       <div class="trigger">
-        {% for my_page in site.navigation %}
-         <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.name }}</a>
+        {% for my_page in site.pages %}
+          {% if my_page.menu %}
+          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.menu }}</a>
+          {% endif %}
         {% endfor %}
       </div>
     </nav>

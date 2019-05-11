@@ -2,6 +2,7 @@
 layout: page
 permalink: /events/
 title: Events
+menu: Events
 ---
 ### Come Hang Out With Us!
 

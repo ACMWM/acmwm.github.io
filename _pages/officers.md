@@ -2,6 +2,7 @@
 layout: page
 permalink: /officers/
 title: Officers
+menu: Officers
 css: officers
 ---
 

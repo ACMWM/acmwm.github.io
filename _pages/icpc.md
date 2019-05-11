@@ -1,6 +1,7 @@
 ---
 layout: page
 title: International Collegiate Programming Contest
+menu: ICPC
 permalink: /icpc/
 ---
 

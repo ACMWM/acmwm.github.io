@@ -2,6 +2,7 @@
 layout: page
 permalink: /membership/
 title: Membership
+menu: Membership
 css: membership
 ---
 <div class="members" markdown="1">

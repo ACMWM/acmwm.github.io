@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Cypher
+menu: Cypher
 permalink: /cypher/
 css: cypher
 ---
