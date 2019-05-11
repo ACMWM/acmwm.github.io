@@ -1,4 +1,10 @@
-.members ul {
-	list-style-type: none;
-	column-count: 3;
+.members
+	> ul {
+		list-style-type: none;
+		> li {
+			display: inline;
+	}
+	-webkit-column-width: 200px; /* Chrome, Safari, Opera */
+	-moz-column-width: 200px; /* Firefox */
+	column-width: 200px;
 }
