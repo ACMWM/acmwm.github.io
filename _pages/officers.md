@@ -5,6 +5,8 @@ title: Officers
 css: officers
 ---
 
+<h2>{{ site.year }}</h2>
+
 <!-- Use _config.yml to change this page -->
 {% for person in site.officers %}
 <div class="officer">
