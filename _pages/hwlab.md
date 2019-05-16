@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Hardware Lab
-menu: HW Lab
+menu: Hardware
 permalink: /hwlab/
 ---
 
