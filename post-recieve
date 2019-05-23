@@ -1,8 +1,10 @@
 #!/bin/sh
-REPO=$HOME/acm
+REPO="$HOME/acm"
 WWW=/var/www/acm
-TMPCLONE=/tmp/acmbuild
+TMPCLONE=$(mktemp -d)
 
 git clone $REPO $TMPCLONE
 
 jekyll build -s $TMPCLONE -d $WWW
+
+rm -rf $TMPCLONE
