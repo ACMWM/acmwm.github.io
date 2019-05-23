@@ -2,7 +2,7 @@
 layout: page
 title: Society of Women in Computing
 menu: SWC
-permalink: /swc
+permalink: /swc/
 ---
 The Society of Women in Computing (SWC) is a recently established William & Mary
 student chapter of the national Association for Computing Machinery's Committee

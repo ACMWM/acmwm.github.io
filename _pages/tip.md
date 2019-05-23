@@ -2,7 +2,7 @@
 layout: page
 title: Technical Interview Prep
 menu: TIP
-permalink: /tip
+permalink: /tip/
 ---
 
 Stressing about an upcoming interview?
