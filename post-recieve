@@ -1,2 +1,8 @@
 #!/bin/sh
-jekyll build
+REPO=$HOME/acm
+WWW=/var/www/acm
+TMPCLONE=/tmp/acmbuild
+
+git clone $REPO $TMPCLONE
+
+jekyll build -s $TMPCLONE -d $WWW
