@@ -56,7 +56,8 @@ officers:
     - job: Webmaster
       name: Jacob Adams
       pic:
-      bio:
+      bio: >
+          Jacob is a junior majoring in Computer Science and minoring in Linguistics. He speaks Python, C, Javascript, Bash, SQL, and English. Outside of Computer Science, he’s the Herald of the <a href="https://tribelink.wm.edu/organization/hema">Griffin Fechtschule</a>. He built this website, with a little help from <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jekyll/minima">Minima</a>. He enjoys all things open source, runs <a href="https://www.debian.org/">Debian GNU/Linux</a> on his laptop, and is an occasional <a href="https://contributors.debian.org/contributor/tookmund-guest@alioth/">Debian contributor</a>. He also has <a href="https://tookmund.com/">a website</a> and <a href="https://github.com/tookmund">a GitHub</a>.
 
     - job: Cypher Chair
       name: Ben Ryan
