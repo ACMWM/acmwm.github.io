@@ -1,4 +1,4 @@
-#cypherlogo {
+#logo {
 	height: 260px;
 	width: 260px;
 	padding: 10px;
@@ -7,7 +7,7 @@
 	margin-right: auto;
 }
 
-#hacklink {
+#link {
 	text-align: center;
 	font-size: 20px;
 	display: block;
