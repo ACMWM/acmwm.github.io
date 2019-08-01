@@ -1,5 +1,5 @@
 #!/bin/sh
-DEPLOY="public_html/acm"
+DEPLOY="acmsite"
 
 # Preferably separate commits but this ensures changes are pushed
 git commit -a
