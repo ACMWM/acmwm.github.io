@@ -14,4 +14,6 @@ We also host a computer science faculty and student banquet each semester.
 
 Below you can find our Google Calendar showing all of the official ACM events.
 
-<iframe id="calendar" src="https://www.google.com/calendar/embed?src=email.wm.edu_573qd4gnloffnc1p5fsjs7ri38%40group.calendar.google.com&amp;ctz=America/New_York" style="border: 0" scrolling="yes" width="100%" height="600" frameborder="0"></iframe>
+[Add this calendar to your computer (iCal file)](https://calendar.google.com/calendar/ical/email.wm.edu_s4at0sbfkpjtsbl1st4587ubp8%40group.calendar.google.com/public/basic.ics)
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=ZW1haWwud20uZWR1X3M0YXQwc2Jma3BqdHNibDFzdDQ1ODd1YnA4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237CB342&amp;mode=AGENDA" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
