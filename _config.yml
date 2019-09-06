@@ -74,7 +74,8 @@ officers:
     - job: Hackathon Chair
       name: Adam An
       pic: adam.png
-      bio:
+      bio: >
+          Adam organizes hackathon trips and does linguistics, motion graphics, and webdev. Find him at <a href="http://theycallmezeal.me">http://theycallmezeal.me</a>.
 
     - job: Graduate Student Liason
       name: Richie Bonett
