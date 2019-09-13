@@ -12,6 +12,8 @@ We meet every Thursday in ISC 2280 from 5:30 PM to 6:30 PM
 
 We also host a computer science faculty and student banquet each semester.
 
+Want to be part of planning events? Join `#events` in our Slack!
+
 Below you can find our Google Calendar showing all of the official ACM events.
 
 [Add this calendar to your computer (iCal file)](https://calendar.google.com/calendar/ical/email.wm.edu_s4at0sbfkpjtsbl1st4587ubp8%40group.calendar.google.com/public/basic.ics)
