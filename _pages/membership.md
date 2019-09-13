@@ -54,15 +54,14 @@ css: membership
 
 </div>
 
-### Membership Requirements
-TBD: Currently under review
+### Dues
+Dues are $20 a year.
 
 ### Benefits
 * Weekly interview prep (Open to all)
 * Purchasing club shirts
 * Inclusion on the published roster of ACM Members
 * Attendance to the annual faculty banquet
-* Induction in the ACM
 * Covered fees for the ICPC
 * Option to run for executive board position
 
