@@ -45,8 +45,9 @@ officers:
 
     - job: Treasurer
       name: Sophia Armitano
-      pic:
-      bio:
+      pic: sophia.jpg
+      bio: >
+          Sophia is a junior double majoring in Computer Science and a self-designed major in Computational and Applied Native Studies. Her first language was Spanish but is afraid of losing it while in Virginia (or while learning new coding languages). She loves baking, going to the farmers market, and spending time outdoors. One of her biggest goals in life is to own a farm where she can grow enough produce and livestock to live off of.
 
     - job: PR Chair
       name: AJ Marra
