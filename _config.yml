@@ -16,6 +16,7 @@ url: "http://acm.cs.wm.edu/" # the base hostname & protocol for your site
 github_username:  ACMWM
 slack: wmacm
 facebook: ACMWM
+instagram: acmwm
 
 include: [_pages]
 exclude: [LICENSE, post-receive, deploy.sh]
