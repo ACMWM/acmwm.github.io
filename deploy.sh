@@ -7,4 +7,4 @@ git pull
 git push
 
 jekyll build
-rsync -rcvz --delete _site/ "bg3.cs.wm.edu:$DEPLOY/"
+rsync -rcvz --delete --exclude='.git*' --exclude='.zfs' _site/ "bg3.cs.wm.edu:$DEPLOY/"
