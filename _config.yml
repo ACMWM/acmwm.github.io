@@ -24,43 +24,43 @@ exclude: [LICENSE, post-receive, deploy.sh]
 # Build settings
 markdown: kramdown
 
-year: 2019-2020
+year: 2020-2021
 officers:
     - job: Chair
-      name: Meg Anderson
-      pic: meg.jpg
+      name: Alex Fantine
+      pic: alex.png 
       bio: >
-          Meg is a senior studying Computer Science and Biology here at the college. When she's not hanging out with ACM, you can find her in the bowels of McGlothlin Street helping intro computer science students as a consultant, or at the German house trying not to forgot how to <em>Deutsch sprechen</em> after her summer internship in Germany. Makes a killer crème brûlée.
+          alex desc
 
     - job: Vice Chair
-      name: Alex Fantine
-      pic: alex.png
+      name: Jacob Adams
+      pic: 
       bio: >
-          Alex is a junior planning on majoring in Computer Science and possibly minoring in theatre. Aside from planning weekly meetings, you can usually catch him acting in some production at W&M or trying to think of a cool idea for a coding project. He also really likes Transformers, and is looking for someone to geek out about the Lost Light with!
+          jacob desc
 
     - job: Secretary
-      name: Wils McCreight
-      pic: wils.jpg
+      name: Emily Wydra
+      pic: 
       bio: >
-          Wils is a senior with a double major in Computer Science and Data science. He loves dogs and music, and he drinks a moderate amount of coffee. He is also a big fan of computers! He spends his time developing IOS apps and occasionally baking some killer scones. As Secretary he coordinates with his fellow officers, the William & Mary Computer Science faculty and the national ACM organization to set records straight and to keep communication constant and smooth.
+          emily desc
 
     - job: Treasurer
       name: Sophia Armitano
-      pic: sophia.jpg
+      pic: 
       bio: >
-          Sophia is a junior double majoring in Computer Science and a self-designed major in Computational and Applied Native Studies. Her first language was Spanish but is afraid of losing it while in Virginia (or while learning new coding languages). She loves baking, going to the farmers market, and spending time outdoors. One of her biggest goals in life is to own a farm where she can grow enough produce and livestock to live off of.
+          Sophia is a senior pursuing a self-designated major that intersects Computer Science, Data Science, GIS, and Native Studies. Her first language was Spanish, but is afraid of losing it while in Virginia, She loves baking, going to the farmers market, and spending time outdoors. She is also a proud Hermana of Hermandad de Sigma Iota Alpha, Incorporada, and is serving as the President this year.
 
     - job: PR Chair
-      name: AJ Marra
-      pic: aj.jpg
+      name: Jade Chen
+      pic: 
       bio: >
-          AJ is a senior majoring in Computer Science and minoring in English. Aside from all things computers and programming, AJ enjoys reading, writing, playing soccer, and swimming. She is also a sister of Alpha Chi Omega and subsists off of coffee and sugar.
+          jade desc
 
     - job: Webmaster
-      name: Jacob Adams
+      name: Kerry Wang
       pic:
       bio: >
-          Jacob is a junior majoring in Computer Science and minoring in Linguistics. He speaks Python, C, Java, Javascript, Bash, SQL, and English. Outside of Computer Science, he’s the Herald of the <a href="https://tribelink.wm.edu/organization/hema">Griffin Fechtschule</a>. He built this website, with a little help from <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jekyll/minima">Minima</a>. He enjoys all things open source, runs <a href="https://www.debian.org/">Debian GNU/Linux</a> on his laptop, and is an occasional <a href="https://contributors.debian.org/contributor/tookmund-guest@alioth/">Debian contributor</a>. He also has <a href="https://tookmund.com/">a website</a> and <a href="https://github.com/tookmund">a GitHub</a>.
+          kerry desc
 
     - job: Cypher Chair
       name: Ben Ryan
@@ -68,16 +68,16 @@ officers:
       bio:
 
     - job: TIP Chair
-      name: Liz Weech
-      pic: liz.png
+      name: Pablo Solano
+      pic: 
       bio: >
-          Liz is a senior studying Computer Science and Physics. She is the firmware lead for TribeSat, W&M's satellite project, and gets really excited about anything space related. Milk is her beverage of choice, and she reached her peak when she met Buzz Aldrin at a conference in 2014.
+          pablo desc
 
     - job: Hackathon Chair
-      name: Adam An
-      pic: adam.png
+      name: Christine Wang
+      pic: 
       bio: >
-          Adam organizes hackathon trips and does linguistics, motion graphics, and webdev. Find him at <a href="http://theycallmezeal.me">http://theycallmezeal.me</a>.
+          christine desc
 
     - job: Graduate Student Liason
       name: Richie Bonett
