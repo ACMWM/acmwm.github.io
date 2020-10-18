@@ -8,12 +8,7 @@ css: external
 
 <img id="logo" src="{{ site.baseurl }}/images/cypher.png" />
 
-We run a yearly hackathon in Swem Library, where students come from all over
-the country to spend a weekend hacking on fun projects with their friends!
+Unfortunately, due to the ongoing pandemic Cypher VI is being delayed. We will likely host a virtual event in Spring 2021, and an in-person event during the 2021-2022 academic year.
 
-You can find out more information and sign up for the next one at:
-
-<a href="http://cypher.cs.wm.edu/" id="link">http://cypher.cs.wm.edu/</a>
-
-If you want to be part of planning the hackathon join `#cypher` on our Slack.
+If you want to be part of planning the hackathon, join <a href="https://slack.com/app_redirect?channel=C0L4L3VTQ" target="_blank" rel="noopener noreferrer">`#cypher_vi`</a> on our Slack.
 

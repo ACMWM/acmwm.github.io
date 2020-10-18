@@ -55,7 +55,7 @@ css: membership
 </div>
 
 ### Dues
-Dues are $20 a year.
+Due to the current situation, dues are optional this year.
 
 ### Benefits
 * Weekly interview prep (Open to all)
