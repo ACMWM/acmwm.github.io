@@ -39,11 +39,10 @@ officers:
       bio: >
               Jacob is a senior majoring in Computer Science and Linguistics. He speaks Python, C, Java, Javascript, Bash, SQL, and English. This year he's working on an honors project to add NUMA-awareness to <a href="https://www.openzfs.org/wiki/Main_Page">OpenZFS</a>. He built this website, with a little help from <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jekyll/minima">Minima</a>. He enjoys all things open source, runs <a href="https://www.debian.org/">Debian GNU/Linux</a> on his laptop, and is an occasional <a href="https://contributors.debian.org/contributor/tookmund-guest@alioth/">Debian contributor</a>. He also has <a href="https://tookmund.com/">a website</a> and <a href="https://github.com/tookmund">a GitHub</a>.
 
-    # - job: Secretary
-    #   name: Mandy Michel
-    #   pic: emily.jpg 
-    #   bio: >
-    #       Emily (she/her) is a senior studying Computer Science and Philosophy here at W&M. She loves planning the weekly newsletter and communicating information to all you wonderful people! When not consulting or chilling with the ACM you can bet she’ll be making some sick beats on Adobe Audition or doing fun projects on her Raspberry Pi. She also enjoys Parks and Recreation, looking at rock crawlers, and the occasional existential crisis.
+    - job: Secretary
+      name: Mandy Michel
+      pic: mandy.jpg
+      bio: 
 
     - job: Treasurer
       name: Gabriella Shelton
