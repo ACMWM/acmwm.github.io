@@ -7,4 +7,4 @@ git pull
 git push
 
 jekyll build
-rsync -rcvz --delete --exclude='.git*' --exclude='.zfs' _site/ "zwang34@bg3.cs.wm.edu:$DEPLOY/"
+rsync -rcvz --delete --exclude='.git*' --exclude='.zfs' _site/ "joegen@bg3.cs.wm.edu:$DEPLOY/"

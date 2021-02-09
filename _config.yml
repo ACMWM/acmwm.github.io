@@ -27,22 +27,22 @@ markdown: kramdown
 year: 2020-2021
 officers:
     - job: Chair
-      name: Alex Fantine
-      pic: alex.jpg 
+      name: Pablo Solano
+      pic: pablo.png
       bio: >
               Alex is a senior Computer Science major (with a linguistics minor) planning on graduating in Fall 2020. He has previously served as the Cypher Chair (2018-2019) and the Vice Chair (2019-2020) of ACM@WM. His CS interests are machine learning, with an emphasis on natural language related tasks, and pursuing more ethical CS practices. Outside of CS and ACM, Alex loves theatre, acting, writing, playing video games and practicing his guitar. He also loves to meet new people, so if you have any questions about him or ACM or just want to say hi, you can email him at <a href="mailto:ajfantine@email.wm.edu">ajfantine@email.wm.edu</a>.
 
     - job: Vice Chair
-      name: Jacob Adams
-      pic: jacob.jpg 
+      name: Kerry Wang
+      pic: kerry.jpg
       bio: >
               Jacob is a senior majoring in Computer Science and Linguistics. He speaks Python, C, Java, Javascript, Bash, SQL, and English. This year he's working on an honors project to add NUMA-awareness to <a href="https://www.openzfs.org/wiki/Main_Page">OpenZFS</a>. He built this website, with a little help from <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jekyll/minima">Minima</a>. He enjoys all things open source, runs <a href="https://www.debian.org/">Debian GNU/Linux</a> on his laptop, and is an occasional <a href="https://contributors.debian.org/contributor/tookmund-guest@alioth/">Debian contributor</a>. He also has <a href="https://tookmund.com/">a website</a> and <a href="https://github.com/tookmund">a GitHub</a>.
 
-    - job: Secretary
-      name: Emily Wydra
-      pic: emily.jpg 
-      bio: >
-          Emily (she/her) is a senior studying Computer Science and Philosophy here at W&M. She loves planning the weekly newsletter and communicating information to all you wonderful people! When not consulting or chilling with the ACM you can bet she’ll be making some sick beats on Adobe Audition or doing fun projects on her Raspberry Pi. She also enjoys Parks and Recreation, looking at rock crawlers, and the occasional existential crisis.
+    # - job: Secretary
+    #   name: Mandy Michel
+    #   pic: emily.jpg 
+    #   bio: >
+    #       Emily (she/her) is a senior studying Computer Science and Philosophy here at W&M. She loves planning the weekly newsletter and communicating information to all you wonderful people! When not consulting or chilling with the ACM you can bet she’ll be making some sick beats on Adobe Audition or doing fun projects on her Raspberry Pi. She also enjoys Parks and Recreation, looking at rock crawlers, and the occasional existential crisis.
 
     - job: Treasurer
       name: Sophia Armitano
@@ -56,29 +56,29 @@ officers:
       bio: >
           Jade is a senior majoring in Computer Science and minoring in Finance. Outside of CS, she's the VP of the Shotokan Karate club, and enjoys reading, longboarding, and some random artsy hobbies that include customizing clothing, fashion design, and nail art.
 
-    - job: Webmaster
-      name: Kerry Wang
-      pic: kerry.jpg
-      bio: >
-          Kerry is a junior majoring in Computer Science and Physics. He's interested in software and web development, and is excited to be serving his first term as ACM@WM webmaster. Outside of CS, he likes to work on his own projects, play video games, and going to sleep at strange hours.
+    # - job: Webmaster
+    #   name: Joseph Lee
+    #   pic: kerry.jpg
+    #   bio: >
+    #       Kerry is a junior majoring in Computer Science and Physics. He's interested in software and web development, and is excited to be serving his first term as ACM@WM webmaster. Outside of CS, he likes to work on his own projects, play video games, and going to sleep at strange hours.
 
-    - job: Cypher Chair
-      name: Ben Ryan
-      pic: ben.jpg
-      bio: >
-          Ben is a senior studying computer science and Japanese studies. As an ACM officer, he is in charge of Cypher, William & Mary's annual hackathon. Outside of Cypher and ACM, Ben is a member of the William & Mary Symphony Orchestra as Principal Horn. His interests include biking, cooking/baking, video/board games, learning languages, music (performing and listening), and showing his friends weird Japanese movies from the 70s and 80s.
+    # - job: Cypher Chair
+    #   name: Victor Tran
+    #   pic: ben.jpg
+    #   bio: >
+    #       Ben is a senior studying computer science and Japanese studies. As an ACM officer, he is in charge of Cypher, William & Mary's annual hackathon. Outside of Cypher and ACM, Ben is a member of the William & Mary Symphony Orchestra as Principal Horn. His interests include biking, cooking/baking, video/board games, learning languages, music (performing and listening), and showing his friends weird Japanese movies from the 70s and 80s.
 
-    - job: TIP Chair
-      name: Pablo Solano
-      pic: pablo.png 
-      bio: >
-          Pablo is a junior Computer Science major and considering pursuing a minor in either mathematics or data science. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his first term as an ACM@WM executive. His CS interests include software development (especially video game development) and cyber security. Apart from his involvement in ACM, Pablo is the Program Coordinator of Operations at the Entrepreneurship Center, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
+    # - job: TIP Chair
+    #   name: Ronan Donovan
+    #   pic: pablo.png 
+    #   bio: >
+    #       Pablo is a junior Computer Science major and considering pursuing a minor in either mathematics or data science. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his first term as an ACM@WM executive. His CS interests include software development (especially video game development) and cyber security. Apart from his involvement in ACM, Pablo is the Program Coordinator of Operations at the Entrepreneurship Center, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
 
-    - job: Hackathon Chair
-      name: Christine Wang
-      pic: christine.jpg 
-      bio: >
-          Christine is a junior studying Computer Science and Applied Math. She is particularly interested in examining the intersection between technology and civic service/social good. Outside of CS, you can find her binging shows, soaking in the sun, and taking naps throughout all times of the day. She also has an unnatural curiosity for analyzing peers’ birth charts and personality tests - use that as a conversation starter if you ever see her!
+    # - job: Hackathon Chair
+    #   name: Christine Wang
+    #   pic: christine.jpg 
+    #   bio: >
+    #       Christine is a junior studying Computer Science and Applied Math. She is particularly interested in examining the intersection between technology and civic service/social good. Outside of CS, you can find her binging shows, soaking in the sun, and taking naps throughout all times of the day. She also has an unnatural curiosity for analyzing peers’ birth charts and personality tests - use that as a conversation starter if you ever see her!
 
     - job: Faculty Advisor
       name: Jim Deverick
