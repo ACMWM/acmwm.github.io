@@ -44,7 +44,7 @@ officers:
     name: Mandy Michel
     pic: mandy.jpg
     bio: >
-              TBD
+              
 
   - job: Treasurer
     name: Gabriella Shelton
@@ -56,7 +56,7 @@ officers:
     name: Steven Jia
     pic:
     bio: >
-              TBD
+              
 
   - job: Webmaster
     name: Joseph Lee
@@ -69,19 +69,19 @@ officers:
     name: Victor Tran
     pic: victor.jpg
     bio: >
-            TBD
+            
 
   - job: TIP Chair
     name: Ronan Donovan
     pic: 
     bio: >
-            TBD
+            
 
   - job: Hackathon Chair
     name: Robert West
     pic: 
     bio: >
-              TBD 
+              
 
   - job: Faculty Advisor
     name: Jim Deverick
