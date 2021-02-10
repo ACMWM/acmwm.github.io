@@ -42,7 +42,8 @@ officers:
     - job: Secretary
       name: Mandy Michel
       pic: mandy.jpg
-      bio: 
+      bio: >
+              TBD
 
     - job: Treasurer
       name: Gabriella Shelton
@@ -58,8 +59,9 @@ officers:
 
     - job: Webmaster
       name: Joseph Lee
-      pic: 
-      bio: 
+      pic: kerry.jpg
+      bio: >
+              Hello!
 
     - job: Cypher Chair
       name: Victor Tran
