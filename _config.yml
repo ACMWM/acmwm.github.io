@@ -9,11 +9,11 @@
 title: ACM@WM
 email: exec@wm.acm.org
 description: > # this means to ignore newlines until "baseurl:"
-    The William & Mary Chapter of the Association for Computing Machinery
+  The William & Mary Chapter of the Association for Computing Machinery
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://acm.cs.wm.edu/" # the base hostname & protocol for your site
 
-github_username:  ACMWM
+github_username: ACMWM
 slack: wmacm
 facebook: ACMWM
 instagram: acmwm
@@ -26,61 +26,61 @@ markdown: kramdown
 
 year: 2020-2021
 officers:
-    - job: Chair
-      name: Pablo Solano
-      pic: pablo.png
-      bio: >
-                Pablo is a junior Computer Science major and considering pursuing a minor in either mathematics or data science. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his first term as an ACM@WM executive. His CS interests include software development (especially video game development) and cyber security. Apart from his involvement in ACM, Pablo is the Program Coordinator of Operations at the Entrepreneurship Center, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
+  - job: Chair
+    name: Pablo Solano
+    pic: pablo.png
+    bio: >
+      Pablo is a junior Computer Science major and considering pursuing a minor in either mathematics or data science. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his first term as an ACM@WM executive. His CS interests include software development (especially video game development) and cyber security. Apart from his involvement in ACM, Pablo is the Program Coordinator of Operations at the Entrepreneurship Center, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
 
+  - job: Vice Chair
+    name: Kerry Wang
+    pic: kerry.jpg
+    bio: >
+      Jacob is a senior majoring in Computer Science and Linguistics. He speaks Python, C, Java, Javascript, Bash, SQL, and English. This year he's working on an honors project to add NUMA-awareness to <a href="https://www.openzfs.org/wiki/Main_Page">OpenZFS</a>. He built this website, with a little help from <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jekyll/minima">Minima</a>. He enjoys all things open source, runs <a href="https://www.debian.org/">Debian GNU/Linux</a> on his laptop, and is an occasional <a href="https://contributors.debian.org/contributor/tookmund-guest@alioth/">Debian contributor</a>. He also has <a href="https://tookmund.com/">a website</a> and <a href="https://github.com/tookmund">a GitHub</a>.
 
-    - job: Vice Chair
-      name: Kerry Wang
-      pic: kerry.jpg
-      bio: >
-              Jacob is a senior majoring in Computer Science and Linguistics. He speaks Python, C, Java, Javascript, Bash, SQL, and English. This year he's working on an honors project to add NUMA-awareness to <a href="https://www.openzfs.org/wiki/Main_Page">OpenZFS</a>. He built this website, with a little help from <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jekyll/minima">Minima</a>. He enjoys all things open source, runs <a href="https://www.debian.org/">Debian GNU/Linux</a> on his laptop, and is an occasional <a href="https://contributors.debian.org/contributor/tookmund-guest@alioth/">Debian contributor</a>. He also has <a href="https://tookmund.com/">a website</a> and <a href="https://github.com/tookmund">a GitHub</a>.
+  - job: Secretary
+    name: Mandy Michel
+    pic: mandy.jpg
+    bio: >
+      TBD
 
-    - job: Secretary
-      name: Mandy Michel
-      pic: mandy.jpg
-      bio: >
-              TBD
+  - job: Treasurer
+    name: Gabriella Shelton
+    pic: gabriella.jpg
+    bio: >
+      Sophia is a senior pursuing a self-designated major that intersects Computer Science, Data Science, GIS, and Native Studies. Her first language was Spanish, but is afraid of losing it while in Virginia. She loves baking, going to the farmers market, and spending time outdoors. She is also a proud Hermana of Hermandad de Sigma Iota Alpha, Incorporada, and is serving as the President this year.
 
-    - job: Treasurer
-      name: Gabriella Shelton
-      pic: gabriella.jpg
-      bio: >
-          Sophia is a senior pursuing a self-designated major that intersects Computer Science, Data Science, GIS, and Native Studies. Her first language was Spanish, but is afraid of losing it while in Virginia. She loves baking, going to the farmers market, and spending time outdoors. She is also a proud Hermana of Hermandad de Sigma Iota Alpha, Incorporada, and is serving as the President this year.
+  - job: PR Chair
+    name: Steven Jia
+    pic:
+    bio: >
+      Jade is a senior majoring in Computer Science and minoring in Finance. Outside of CS, she's the VP of the Shotokan Karate club, and enjoys reading, longboarding, and some random artsy hobbies that include customizing clothing, fashion design, and nail art.
 
-    - job: PR Chair
-      name: Steven Jia
-      pic: 
-      bio: >
-          Jade is a senior majoring in Computer Science and minoring in Finance. Outside of CS, she's the VP of the Shotokan Karate club, and enjoys reading, longboarding, and some random artsy hobbies that include customizing clothing, fashion design, and nail art.
+  - job: Webmaster
+    name: Joseph Lee
+    pic: joseph.jpg
+    bio: >
+      Joseph is a freshman with an intended double major in Computer Science and Applied Math. He loves to study artificial intelligence and machnien learning galore. He also loves to play on his piano ane violin. Currently, even though it is outside of his ability, he is attempting to learn Rachmanioff's Prelude in G Minor on the piano.
+      Generally, he is introverted, but when placed in the right environment, he can be quite lively.
 
-    - job: Webmaster
-      name: Joseph Lee
-      pic: kerry.jpg
-      bio: >
-              Hello!
+  - job: Cypher Chair
+    name: Victor Tran
+    pic: victor.jpg
+    bio: >
+      TBD
+  # - job: TIP Chair
+  #   name: Ronan Donovan
+  #   pic: pablo.png
+  #   bio: >
+  #       Pablo is a junior Computer Science major and considering pursuing a minor in either mathematics or data science. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his first term as an ACM@WM executive. His CS interests include software development (especially video game development) and cyber security. Apart from his involvement in ACM, Pablo is the Program Coordinator of Operations at the Entrepreneurship Center, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
 
-    - job: Cypher Chair
-      name: Victor Tran
-      pic: victor.jpg
-      bio: >
-            TBD
-    # - job: TIP Chair
-    #   name: Ronan Donovan
-    #   pic: pablo.png 
-    #   bio: >
-    #       Pablo is a junior Computer Science major and considering pursuing a minor in either mathematics or data science. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his first term as an ACM@WM executive. His CS interests include software development (especially video game development) and cyber security. Apart from his involvement in ACM, Pablo is the Program Coordinator of Operations at the Entrepreneurship Center, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
+  # - job: Hackathon Chair
+  #   name: Christine Wang
+  #   pic: christine.jpg
+  #   bio: >
+  #       Christine is a junior studying Computer Science and Applied Math. She is particularly interested in examining the intersection between technology and civic service/social good. Outside of CS, you can find her binging shows, soaking in the sun, and taking naps throughout all times of the day. She also has an unnatural curiosity for analyzing peers’ birth charts and personality tests - use that as a conversation starter if you ever see her!
 
-    # - job: Hackathon Chair
-    #   name: Christine Wang
-    #   pic: christine.jpg 
-    #   bio: >
-    #       Christine is a junior studying Computer Science and Applied Math. She is particularly interested in examining the intersection between technology and civic service/social good. Outside of CS, you can find her binging shows, soaking in the sun, and taking naps throughout all times of the day. She also has an unnatural curiosity for analyzing peers’ birth charts and personality tests - use that as a conversation starter if you ever see her!
-
-    - job: Faculty Advisor
-      name: Jim Deverick
-      pic: jim.jpg
-      bio:
+  - job: Faculty Advisor
+    name: Jim Deverick
+    pic: jim.jpg
+    bio:
