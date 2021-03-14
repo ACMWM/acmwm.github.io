@@ -22,13 +22,11 @@ css: hall_of_fame
 * Conrad Gehrki
 * Cory Wright
 * Daniel McCrystal
-* Emily Wydra
 * Gianna Maniaci
 * Grace Lee
 * Jack Bowden
 * Jacob Adams
 * Jacob Wilson
-* Jade Chen
 * James Weeden
 * Jayla Jones
 * Josh Urban
@@ -56,6 +54,8 @@ css: hall_of_fame
 
 ### Current Members
 * Pablo Solano
+* Emily Wydra
+* Jade Chen
 * More to come ...
 
 ### Dues
