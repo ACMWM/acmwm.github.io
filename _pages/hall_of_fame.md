@@ -39,7 +39,6 @@ css: hall_of_fame
 * Mia Wilson
 * Nicolas LaGemma
 * Oliver Zhang
-* Pablo Solano
 * Rui Hou
 * Salma Elsayed-Ali
 * Sam Henshaw
@@ -53,6 +52,10 @@ css: hall_of_fame
 * Zack H’Doubler
 
 </div>
+
+### Current Members
+* Pablo Solano
+* More to come ...
 
 ### Dues
 Due to the current situation, dues are optional this year.
