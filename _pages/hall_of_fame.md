@@ -5,6 +5,7 @@ title: Hall of Fame
 menu: Hall of Fame
 css: hall_of_fame
 ---
+### Previous Members
 <div class="prev_members" markdown="1">
 
 * Adam An
