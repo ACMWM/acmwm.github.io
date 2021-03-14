@@ -25,7 +25,6 @@ css: hall_of_fame
 * Gianna Maniaci
 * Grace Lee
 * Jack Bowden
-* Jacob Adams
 * Jacob Wilson
 * James Weeden
 * Jayla Jones
@@ -56,6 +55,7 @@ css: hall_of_fame
 * Pablo Solano
 * Emily Wydra
 * Jade Chen
+* Jacob Adams
 * More to come ...
 
 ### Dues
