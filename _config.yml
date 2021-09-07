@@ -25,6 +25,7 @@ exclude: [LICENSE, post-receive, deploy.sh]
 markdown: kramdown
 
 year: 2021
+officers:
   - job: Chair
     name: Pablo Solano
     pic: pablo.jpg
