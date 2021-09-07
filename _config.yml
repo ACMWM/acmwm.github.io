@@ -24,13 +24,12 @@ exclude: [LICENSE, post-receive, deploy.sh]
 # Build settings
 markdown: kramdown
 
-year: 2020-2021
-officers:
+year: 2021
   - job: Chair
     name: Pablo Solano
     pic: pablo.jpg
     bio: >
-              Pablo is a junior Computer Science major and Data Science minor. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his second term as an ACM@WM executive. His CS interests include video game development and cyber security. 
+              Pablo is a senior Computer Science major and Data Science minor. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his second term as an ACM@WM executive. His CS interests include video game development and cyber security. 
               Apart from his involvement in ACM, Pablo is the Fellow for technology at the Entrepreneurship Center, is developing a game for the Global Fund to End Modern Slavery, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. 
               During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
 
@@ -38,27 +37,27 @@ officers:
     name: Kerry Wang
     pic: kerry.jpg
     bio: >
-              Kerry is a junior majoring in Computer Science and Physics. He's interested in software and web development and is excited to be serving his second term on the ACM@WM executive board. Outside of CS, Kerry enjoys playing piano and video games, and spending time with friends.
+              Kerry is a senior majoring in Computer Science and Physics. He's interested in software and web development and is excited to be serving his second term on the ACM@WM executive board. Outside of CS, Kerry enjoys playing piano and video games, and spending time with friends.
 
 
   - job: Secretary
     name: Mandy Michel
     pic: mandy.jpg
     bio: >
-              Mandy is a freshman intending to double major in Computer Science and Math. She likes exploring all sorts of CS concepts and is always open to learning something new. When not learning new things or refining her LaTeX templates, Mandy loves watching (and arguing about) Star Wars, playing the Witcher 3, and crocheting. She also has a propensity for fun facts. Here's one for you now: Frankenstein's monster is a vegetarian!
+              Mandy is a sophomore intending to double major in Computer Science and Math. She likes exploring all sorts of CS concepts and is always open to learning something new. When not learning new things or refining her LaTeX templates, Mandy loves watching (and arguing about) Star Wars, playing the Witcher 3, and crocheting. She also has a propensity for fun facts. Here's one for you now: Frankenstein's monster is a vegetarian!
               
 
   - job: Treasurer
     name: Gabriella Shelton
     pic: gabriella.jpg
     bio: >
-              Gabriella is our treasurer.  She is currently a freshman and planning on majoring in computer science.
+              Gabriella is our treasurer.  She is currently a sophomore and planning on majoring in computer science.
   
   - job: PR Chair
     name: Steven Jia
     pic: steven_jia.jpg
     bio: >
-              Hi, I’m Steven Jia the PR Chair for the 2021 Spring semester. When I’m not coding, I like to play video games and going to the gym.
+              Hi, I’m Steven Jia the PR Chair for the 2021 Fall semester. When I’m not coding, I like to play video games and going to the gym.
 
 
               
@@ -67,28 +66,28 @@ officers:
     name: Joseph Lee
     pic: joseph.jpg
     bio: >
-            Joseph is a freshman with an intended double major in Computer Science and Applied Math. He loves to study artificial intelligence, machine learning, and software development. He also loves to play on his piano ane violin. Currently, even though it is outside of his technical skills, he is attempting to learn Rachmanioff's Prelude in G Minor on the piano.
+            Joseph is a sophomore with an intended double major in Computer Science and Applied Math. He loves to study artificial intelligence, machine learning, and software development. He also loves to play on his piano ane violin. Currently, even though it is outside of his technical skills, he is attempting to learn Rachmanioff's Prelude in G Minor on the piano.
             Generally, he is introverted, but when placed in the right environment, he can be quite lively. As seen on the profile pic on the left, he also loves to ponder and ask many deep, philosophical, and intriguing questions. Feel free to reach him at <a href="mailto:jslee08@email.wm.edu">jslee08@email.wm.edu</a> He is happy to help.
 
   - job: Cypher Chair
     name: Victor Tran
     pic: victor.jpg
     bio: >
-              Victor is the lead organizer for the next two Cyphers, William & Mary’s annual hackathon. He is a sophomore double majoring in Computer Science & Linguistics with a focus on Web Development and Natural Language Processing. When Victor isn’t spamming tech companies for Cypher sponsorships or writing advertisements, he’s taking advantage of the stay-at-home situation by attending several online hackathons. He is also interested in cardistry and building model kits.
+              Victor is the lead organizer for the next two Cyphers, William & Mary’s annual hackathon. He is a junior double majoring in Computer Science & Linguistics with a focus on Web Development and Natural Language Processing. When Victor isn’t spamming tech companies for Cypher sponsorships or writing advertisements, he’s taking advantage of the stay-at-home situation by attending several online hackathons. He is also interested in cardistry and building model kits.
             
 
   - job: TIP Chair
     name: Ronan Donovan
     pic: ronan.png
     bio: >
-              Ronan is a sophomore studying Computer Science and Data Science. He’s always prepared to talk through a tough programming question. If you need someone to LeetCode or HackerRank alongside you, send him an email at <a href="mailto:rcdonovan@email.wm.edu">rcdonovan@email.wm.edu</a>. He can also be found walking around campus with his dog, an English cream retriever.
+              Ronan is a junior studying Computer Science and Data Science. He’s always prepared to talk through a tough programming question. If you need someone to LeetCode or HackerRank alongside you, send him an email at <a href="mailto:rcdonovan@email.wm.edu">rcdonovan@email.wm.edu</a>. He can also be found walking around campus with his dog, an English cream retriever.
             
 
   - job: Hackathon Chair
     name: Robert West
     pic: robert.png
     bio: >
-              Robert is a sophomore studying Computer Science and Psychology. He's passionate about using technology to improve education and increase civic engagement. When he's not focused on his CS work, he's typically found hanging out outdoors, especially on the trails around Lake Matoaka.
+              Robert is a junior studying Computer Science and Psychology. He's passionate about using technology to improve education and increase civic engagement. When he's not focused on his CS work, he's typically found hanging out outdoors, especially on the trails around Lake Matoaka.
               
 
   - job: Faculty Advisor
