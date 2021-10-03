@@ -51,11 +51,11 @@ css: hall_of_fame
 * Wils McCreight
 * Yaw Ofori-Addae
 * Zack H’Doubler
+* Gabriella Shelton 
 
 </div>
 
 ### Current Members
-* Gabriella Shelton 
 * Joseph Lee
 * Kerry Wang
 * Mandy Michel
