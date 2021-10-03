@@ -4,11 +4,12 @@ permalink: /events/
 title: Events
 menu: Events
 ---
+
 ### Come Hang Out With Us!
 
 ![dance]({{ "/images/justdance.gif" | prepend: site.baseurl }})
 
-We meet every Thursday over Zoom from 5:30 PM to 6:30 PM. Check out our weekly newsletter for the link!
+We meet every Thursday in the Integrated Science Center Room 2280 from 6:30 PM to 7:30 PM. Check out our weekly newsletter for the link!
 
 We also host a computer science faculty and student banquet each semester.
 
