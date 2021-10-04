@@ -48,11 +48,11 @@ officers:
               Mandy is a sophomore intending to double major in Computer Science and Math. She likes exploring all sorts of CS concepts and is always open to learning something new. When not learning new things or refining her LaTeX templates, Mandy loves watching (and arguing about) Star Wars, playing the Witcher 3, and crocheting. She also has a propensity for fun facts. Here's one for you now: Frankenstein's monster is a vegetarian!
               
 
-  - job: Treasurer
-    name: Gabriella Shelton
-    pic: gabriella.jpg
-    bio: >
-              Gabriella is our treasurer.  She is currently a sophomore and planning on majoring in computer science.
+  # - job: Treasurer
+  #   name: Gabriella Shelton
+  #   pic: gabriella.jpg
+  #   bio: >
+  #             Gabriella is our treasurer.  She is currently a sophomore and planning on majoring in computer science.
   
   - job: PR Chair
     name: Steven Jia
