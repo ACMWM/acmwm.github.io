@@ -15,4 +15,4 @@ We also host a computer science faculty and student banquet each semester.
 
 Want to be part of planning events? Join <a href="https://slack.com/app_redirect?channel=C4A900UBT" target="_blank" rel="noopener noreferrer">`#event_planning`</a> in our Slack!
 
-<iframe src="https://calendar.google.com/calendar/u/1?cid=Y191MmppNWk5OW9hbzhsNm50czFqcHJlZDdlc0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://calendar.google.com/calendar/embed?src=c_u2ji5i99oao8l6nts1jpred7es%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
