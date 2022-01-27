@@ -4,6 +4,14 @@ The official website of the William & Mary Chapter of the Association for Comput
 
 This site is built with [Jekyll](https://jekyllrb.com/docs/) and the [Minima Theme](https://github.com/jekyll/minima)
 
+## How to install Jekyll for Windows
+
+1. [Install Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)
+
+Note: WSL Ubuntu comes installed already with `Git`, `rsync`, and `ssh` so no need to worry about installing those. 
+
+2. [Follow these instructions](https://www.vgemba.net/blog/Setup-Jekyll-WSL/) to install `jekyll`. You may ignore the "We can also list all installed Gems..." step. 
+
 ## How to deploy
 Clone this repo, make sure you have `ssh` and `rsync` installed, then just run `./deploy.sh` 
 from the root folder of this repository.
