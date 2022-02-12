@@ -12,3 +12,4 @@ css: external
 
 If you want to be part of planning the hackathon for Spring 2022, join <a href="https://wmacm.slack.com/archives/C022HGWJSUW" target="_blank" rel="noopener noreferrer">`#cyphervii-planning`</a> on our Slack.
 
+Want to find out more about planning? Join our <a href="https://app.groupme.com/join_group/85274413/DP51Mlg5">GroupMe</a>!
