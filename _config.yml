@@ -38,7 +38,6 @@ officers:
     bio: >
         Kelley Wang is a junior double majoring in CS and Art and Art History with a concentration in studio art. She has an interest in UI/UX design and is currently doing research for W&M’s DH Lab. While she is not coding, she enjoys gardening and playing games with friends. 
 
-
   - job: Secretary + Historian
     name: Joseph Lee
     pic: joseph.jpg
@@ -46,14 +45,12 @@ officers:
             Hey everyone! I'm happy to serve as your secretary for the 2022-23 school year. I love classical piano music and am currently conducting research on paving the way towards explainable, transparent artificial intelligence. If you ever want a conversation with me on anything related to A.I., piano music, or literally anything else, I'm down! I love getting to know people that are way different from me too!
             My email is jslee08@wm.edu
               
-
   - job: Treasurer
     name: Ben Li
     pic: benLi.jpg
     bio: >
       Hello! My name is Ben; I'm a sophomore currently majoring in Computer Science, and I'm your treasurer for the 2022 school year. I've always had a strong interest in technology since I was a child, so I'm constantly trying to learn about random new tech, like smartphones or other devices. Outside of tech, my other pastimes include video games, editing videos, and writing scripts I will never record.
 
-  
   - job: PR Chair
     name: Nadine Maysaud
     pic: nadine.jpg
@@ -64,7 +61,7 @@ officers:
     name: Manav Kapoor
     pic: manav.jpg
     bio: >
-              Hey guys, I'm happy to serve as your webmaster for 2022 school year. I am currently a sophmore studying computer science. I love music and a bunch of other things. If you have any questions about the website, or just in general feel free to email me at mkapoor@wm.edu . 
+              Hey guys, I'm happy to serve as your webmaster for 2022 school year. I am currently a sophmore studying computer science. I love music and a bunch of other things. If you have any questions about the website, or just in general, feel free to email me at mkapoor@wm.edu . 
 
   - job: Cypher Chair
     name: Victor Tran
@@ -72,21 +69,18 @@ officers:
     bio: >
               Victor is the lead organizer for the next two Cyphers, William & Mary’s annual hackathon. He is a senior double majoring in Computer Science & Linguistics with a focus on Web Development and Natural Language Processing. When Victor isn’t spamming tech companies for Cypher sponsorships or writing advertisements, he’s taking advantage of the stay-at-home situation by attending several online hackathons. He is also interested in cardistry and building model kits.
             
-
   - job: TIP Chair
     name: Ronan Donovan
     pic: ronan.png
     bio: >
               Ronan is a senior studying Computer Science and Data Science. He’s always prepared to talk through a tough programming question. If you need someone to LeetCode or HackerRank alongside you, send him an email at <a href="mailto:rcdonovan@email.wm.edu">rcdonovan@email.wm.edu</a>. He can also be found walking around campus with his dog, an English cream retriever.
             
-
   - job: Hackathon Chair
     name: Robert West
     pic: robert.png
     bio: >
               Robert is a senior studying Computer Science and Psychology. He's passionate about using technology to improve education and increase civic engagement. When he's not focused on his CS work, he's typically found hanging out outdoors, especially on the trails around Lake Matoaka.
               
-
   - job: Faculty Advisor
     name: Jim Deverick
     pic: jim.jpg
