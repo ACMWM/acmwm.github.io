@@ -27,32 +27,31 @@ markdown: kramdown
 year: 2021
 officers:
   - job: Chair
-    name: Pablo Solano
-    pic: pablo.jpg
-    bio: >
-              Pablo is a senior Computer Science major and Data Science minor. Pablo fell in love with ACM his last two years at the College, and he's excited to be serving his second term as an ACM@WM executive. His CS interests include video game development and cyber security. 
-              Apart from his involvement in ACM, Pablo is the Fellow for technology at the Entrepreneurship Center, is developing a game for the Global Fund to End Modern Slavery, and hopes to sing at Hickory Neck Episcopal Church once live mass resumes. 
-              During his free time, Pablo likes to spend time with his friends, work on his own coding projects, and play video games. If you have any questions about ACM (or anything else), you can reach him at <a href="mailto:pasolano@email.wm.edu">pasolano@email.wm.edu</a>.
-
-  - job: Vice Chair
-    name: Kerry Wang
-    pic: kerry.jpg
-    bio: >
-              Kerry is a senior majoring in Computer Science and Physics. He's interested in software and web development and is excited to be serving his second term on the ACM@WM executive board. Outside of CS, Kerry enjoys playing piano and video games, and spending time with friends.
-
-
-  - job: Secretary
     name: Mandy Michel
     pic: mandy.jpg
     bio: >
-              Mandy is a sophomore intending to double major in Computer Science and Math. She likes exploring all sorts of CS concepts and is always open to learning something new. When not learning new things or refining her LaTeX templates, Mandy loves watching (and arguing about) Star Wars, playing the Witcher 3, and crocheting. She also has a propensity for fun facts. Here's one for you now: Frankenstein's monster is a vegetarian!
-              
+              Mandy is a junior intending to double major in Computer Science and Math. She likes exploring all sorts of CS concepts and is always open to learning something new. When not learning new things or refining her LaTeX templates, Mandy loves watching (and arguing about) Star Wars, playing the Witcher 3, and crocheting. She also has a propensity for fun facts. Here's one for you now: Frankenstein's monster is a vegetarian!
 
-  - job: Treasurer
+  - job: Vice Chair
     name: Kelley Wang
     pic: kelley.jpg
     bio: >
-      Kelley Wang is a junior double majoring in CS and Art and Art History with a concentration in studio art. She has an interest in UI/UX design and is currently doing research for W&M’s DH Lab. While she is not coding, she enjoys gardening and playing games with friends. 
+        Kelley Wang is a junior double majoring in CS and Art and Art History with a concentration in studio art. She has an interest in UI/UX design and is currently doing research for W&M’s DH Lab. While she is not coding, she enjoys gardening and playing games with friends. 
+
+
+  - job: Secretary + Historian
+    name: Joseph Lee
+    pic: joseph.jpg
+    bio: >
+            Joseph is a sophomore with an intended double major in Computer Science and Applied Math. He loves to study artificial intelligence, machine learning, and software development. He also loves to play on his piano ane violin. Currently, even though it is outside of his technical skills, he is attempting to learn Rachmanioff's Prelude in G Minor on the piano.
+            Generally, he is introverted, but when placed in the right environment, he can be quite lively. As seen on the profile pic on the left, he also loves to ponder and ask many deep, philosophical, and intriguing questions. Feel free to reach him at <a href="mailto:jslee08@wm.edu">jslee08@wm.edu</a> He is happy to help.
+              
+
+  - job: Treasurer
+    name: TBD
+    pic: kelley.jpg
+    bio: >
+      TBD
   
   - job: PR Chair
     name: Steven Jia
@@ -60,12 +59,11 @@ officers:
     bio: >
               Hi, I’m Steven Jia the PR Chair for the 2021 Fall semester. When I’m not coding, I like to play video games and going to the gym.
 
-  - job: Webmaster + Historian
-    name: Joseph Lee
+  - job: Webmaster
+    name: Manav Kapoor
     pic: joseph.jpg
     bio: >
-            Joseph is a sophomore with an intended double major in Computer Science and Applied Math. He loves to study artificial intelligence, machine learning, and software development. He also loves to play on his piano ane violin. Currently, even though it is outside of his technical skills, he is attempting to learn Rachmanioff's Prelude in G Minor on the piano.
-            Generally, he is introverted, but when placed in the right environment, he can be quite lively. As seen on the profile pic on the left, he also loves to ponder and ask many deep, philosophical, and intriguing questions. Feel free to reach him at <a href="mailto:jslee08@wm.edu">jslee08@wm.edu</a> He is happy to help.
+      Hello, world!
 
   - job: Cypher Chair
     name: Victor Tran
