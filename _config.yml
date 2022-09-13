@@ -24,7 +24,7 @@ exclude: [LICENSE, post-receive, deploy.sh]
 # Build settings
 markdown: kramdown
 
-year: 2021
+year: 2022
 officers:
   - job: Chair
     name: Mandy Michel
