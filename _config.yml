@@ -43,27 +43,27 @@ officers:
     name: Joseph Lee
     pic: joseph.jpg
     bio: >
-            Joseph is a sophomore with an intended double major in Computer Science and Applied Math. He loves to study artificial intelligence, machine learning, and software development. He also loves to play on his piano ane violin. Currently, even though it is outside of his technical skills, he is attempting to learn Rachmanioff's Prelude in G Minor on the piano.
-            Generally, he is introverted, but when placed in the right environment, he can be quite lively. As seen on the profile pic on the left, he also loves to ponder and ask many deep, philosophical, and intriguing questions. Feel free to reach him at <a href="mailto:jslee08@wm.edu">jslee08@wm.edu</a> He is happy to help.
+            Hey everyone! I'm happy to serve as your secretary for the 2022-23 school year. I love classical piano music and am currently conducting research on paving the way towards explainable, transparent artificial intelligence. If you ever want a conversation with me on anything related to A.I., piano music, or literally anything else, I'm down! I love getting to know people that are way different from me too!
+            My email is jslee08@wm.edu
               
 
   - job: Treasurer
-    name: TBD
-    pic: kelley.jpg
+    name: Ben Li
+    pic: benLi.jpg
     bio: >
       TBD
   
   - job: PR Chair
-    name: Steven Jia
-    pic: steven_jia.jpg
+    name: Nadine Maysaud
+    pic: nadine.jpg
     bio: >
-              Hi, I’m Steven Jia the PR Chair for the 2021 Fall semester. When I’m not coding, I like to play video games and going to the gym.
+              load 
 
   - job: Webmaster
     name: Manav Kapoor
     pic: manav.jpg
     bio: >
-      Hello, world!
+              Hey guys, I'm happy to serve as your webmaster for 2022 school year. I am currently a sophmore studying computer science. I love music and a bunch of other things. If you have any questions about the website, or just in general feel free to email me at mkapoor@wm.edu . 
 
   - job: Cypher Chair
     name: Victor Tran
@@ -76,14 +76,14 @@ officers:
     name: Ronan Donovan
     pic: ronan.png
     bio: >
-              Ronan is a junior studying Computer Science and Data Science. He’s always prepared to talk through a tough programming question. If you need someone to LeetCode or HackerRank alongside you, send him an email at <a href="mailto:rcdonovan@email.wm.edu">rcdonovan@email.wm.edu</a>. He can also be found walking around campus with his dog, an English cream retriever.
+              Ronan is a senior studying Computer Science and Data Science. He’s always prepared to talk through a tough programming question. If you need someone to LeetCode or HackerRank alongside you, send him an email at <a href="mailto:rcdonovan@email.wm.edu">rcdonovan@email.wm.edu</a>. He can also be found walking around campus with his dog, an English cream retriever.
             
 
   - job: Hackathon Chair
     name: Robert West
     pic: robert.png
     bio: >
-              Robert is a junior studying Computer Science and Psychology. He's passionate about using technology to improve education and increase civic engagement. When he's not focused on his CS work, he's typically found hanging out outdoors, especially on the trails around Lake Matoaka.
+              Robert is a senior studying Computer Science and Psychology. He's passionate about using technology to improve education and increase civic engagement. When he's not focused on his CS work, he's typically found hanging out outdoors, especially on the trails around Lake Matoaka.
               
 
   - job: Faculty Advisor
