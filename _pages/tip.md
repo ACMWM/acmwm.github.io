@@ -14,6 +14,5 @@ in a difficult technical interview.
 We also do mock interviews to ensure you can answer these questions in an
 environment as close to the real thing as we can manage.
 
-We meet Wednesdays at 6 PM over Zoom.
 
-Join <a href="https://slack.com/app_redirect?channel=C7D4FSBHC" target="_blank" rel="noopener noreferrer">`#tip`</a> in our Slack to learn more.
+Join our Discord [Here](https://discord.gg/PgAYRuzx9Q) to learn more :D

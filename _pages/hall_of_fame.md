@@ -40,6 +40,7 @@ css: hall_of_fame
 * Mia Wilson
 * Nicolas LaGemma
 * Oliver Zhang
+* Pablo Solano
 * Rui Hou
 * Salma Elsayed-Ali
 * Sam Henshaw
@@ -47,6 +48,7 @@ css: hall_of_fame
 * Saarthak Sethi
 * Scott Saas
 * Sophia Armitano
+* Steven Jia
 * Wills Song
 * Wils McCreight
 * Yaw Ofori-Addae
@@ -59,10 +61,10 @@ css: hall_of_fame
 * Joseph Lee
 * Kerry Wang
 * Mandy Michel
-* Pablo Solano
+* Manav Kapoor
 * Robert West
 * Ronan Donovan
-* Steven Jia
+* Ben Li
 * Victor Tran
 
 * More to come ...
