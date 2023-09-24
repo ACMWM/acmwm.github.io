@@ -18,3 +18,16 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+
+    
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+
+    - name: Adding Known Hosts
+      run: ssh-keyscan -H ${{ vars.CS_DEPT_HOST }} >> ~/.ssh/known_hosts
+
+    - name: Deploy with rsync
+      run: rsync -rcvz --delete --exclude='.git*' --exclude='.zfs' _site/ "${{ vars.SSH_USERNAME }}@${{ vars.CS_DEPT_HOST }}:${{ vars.DEPLOY_DIRECTORY }}/"
