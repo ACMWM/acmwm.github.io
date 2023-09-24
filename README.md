@@ -13,8 +13,17 @@ Note: WSL Ubuntu comes installed already with `Git`, `rsync`, and `ssh` so no ne
 2. [Follow these instructions](https://www.vgemba.net/blog/Setup-Jekyll-WSL/) to install `jekyll`. You may ignore the "We can also list all installed Gems..." step. 
 
 ## How to deploy
-Clone this repo, make sure you have `ssh` and `rsync` installed, then just run `./deploy.sh` 
-from the root folder of this repository.
+
+There are GitHub Actions workflows configured to deploy our website to GitHub pages and the CS department servers so our members can access it at `acm.cs.wm.edu`. New webmasters will have to upload an SSH private key to the repository so that the workflow will work using their account. Our implementation is based around [this blog post](https://zellwk.com/blog/github-actions-deploy/) if you want more information.
+
+1. [SSH into the department machine](https://support.cs.wm.edu/index.php/tips-and-tricks/how-to-ssh-into-a-cs-machine) and navigate to the `~/.ssh` directory.
+1. Run `groups`. If you don't see `acm` listed, submit a support ticket.
+1. Create an SSH public key using `ssh-keygen -t rsa -b 4096 -C "YOUR_USERNAME@acm-github-action"`, replacing the username with your CS department username. Save the key as `acm-github-action` when prompted and do not add a passphrase.
+1. Add the public key to your authorized keys by running `cat acm-github-action.pub >> ~/.ssh/authorized_keys`. This will allow the action to log in as you and upload the files to the `/home/acm` directory **ONLY** if it can access the private key.
+1. Add the private key to GitHub. Type `cat acm-github-action` to view the private key and copy the entire contents to the clipboard. [Then, navigate to the secrets page for our repo](https://github.com/ACMWM/acmwm.github.io/settings/secrets/actions). Edit the `SSH_PRIVATE_KEY` secret and copy your private key as the value. Then, select the variables tab at the top next to secrets. Add your CS account username as the `SSH_USERNAME` variable.
+1. The deploy script is now ready and the site will be published to `acm.cs.wm.edu` when the master branch is updated.
+
+The reason we use an SSH key is to avoid needing to connect to the department machine, enter your password, and copy the files manually. SSH keys are also revocable-- you can remove the `username@acm-github-action` public key line from `~/.ssh/authorized_keys` at any time and the action will no longer be able to log in as you and copy the files.
 
 ## Layout
 
