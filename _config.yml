@@ -64,20 +64,18 @@ officers:
 
   - job: Cypher Chair
     name: 
-    pic: 
+    pic: tbapic.png
     bio: 
             
   - job: TIP Chair
     name: Ronan Donovan
-    pic: ronan.png
-    bio: >
-              Ronan is a senior studying Computer Science and Data Science. He’s always prepared to talk through a tough programming question. If you need someone to LeetCode or HackerRank alongside you, send him an email at <a href="mailto:rcdonovan@email.wm.edu">rcdonovan@email.wm.edu</a>. He can also be found walking around campus with his dog, an English cream retriever.
+    pic: tbapic.png
+    bio: 
             
   - job: Hackathon Chair
-    name: Robert West
-    pic: robert.png
-    bio: >
-              Robert is a senior studying Computer Science and Psychology. He's passionate about using technology to improve education and increase civic engagement. When he's not focused on his CS work, he's typically found hanging out outdoors, especially on the trails around Lake Matoaka.
+    name: Sam Murad
+    pic: tbapic.png
+    bio:
               
   - job: Faculty Advisor
     name: Jim Deverick
