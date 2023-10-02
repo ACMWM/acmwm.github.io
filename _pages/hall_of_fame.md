@@ -34,13 +34,17 @@ css: hall_of_fame
 * Josh Urban
 * Kate Miller
 * Kayla Shirley
+* Kerry Wang
 * Kristine Tseng
 * Liz Weech
 * Margaret Anderson
 * Mia Wilson
 * Nicolas LaGemma
+* Joseph Lee
 * Oliver Zhang
 * Pablo Solano
+* Robert West
+* Ronan Donovan
 * Rui Hou
 * Salma Elsayed-Ali
 * Sam Henshaw
@@ -49,6 +53,7 @@ css: hall_of_fame
 * Scott Saas
 * Sophia Armitano
 * Steven Jia
+* Victor Tran
 * Wills Song
 * Wils McCreight
 * Yaw Ofori-Addae
@@ -58,14 +63,13 @@ css: hall_of_fame
 </div>
 
 ### Current Members
-* Joseph Lee
-* Kerry Wang
 * Mandy Michel
+* Jackson Kubin
 * Manav Kapoor
-* Robert West
-* Ronan Donovan
 * Ben Li
-* Victor Tran
+* Nadine Maysaud
+* Kelley Wang
+* Sam Murad
 
 * More to come ...
 
