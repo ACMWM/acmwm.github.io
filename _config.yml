@@ -74,8 +74,9 @@ officers:
             
   - job: Hackathon Chair
     name: Sam Murad
-    pic: tbapic.jpg
-    bio:
+    pic: sam.jpg
+    bio: >
+             Sam is a sophomore who plans on double majoring in Economics and Finance. He has had many years of computer science background, taking courses such as data structures, programming for data science, AP Computer Science A, and more. For fun, Sam enjoys many things, such as hanging out with friends, playing PC and Nintendo switch games, and playing soccer and spikeball.
               
   - job: Faculty Advisor
     name: Jim Deverick
