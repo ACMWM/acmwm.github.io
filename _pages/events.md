@@ -15,4 +15,4 @@ We also host a computer science faculty and student banquet each semester.
 
 Want stay in touch? Join our Discord [Here](https://discord.gg/PgAYRuzx9Q)
 
-<iframe src="https://calendar.google.com/calendar/embed?src=c_u2ji5i99oao8l6nts1jpred7es%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://calendar.google.com/calendar/embed?src=c_fa95f466d27c16f7a939a164e068a6b2ec207348f647a905e43e3c7760c3ffd2%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
