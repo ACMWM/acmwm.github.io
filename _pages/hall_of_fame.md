@@ -17,7 +17,7 @@ css: hall_of_fame
 * Ben Ryan
 * Charles (Alex) Harris
 * Chase Jones
-* Christine Wong
+* Christine Wang
 * Christopher Short
 * Conrad Gehrki
 * Cory Wright
