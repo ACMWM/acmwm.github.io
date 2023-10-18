@@ -7,7 +7,7 @@ menu: Events
 
 ### Come Hang Out With Us!
 
-![dance]({{ "/images/justdance.gif" | prepend: site.baseurl }})
+![dance]({{ "/images/shacks2023.jpeg" | prepend: site.baseurl }})
 
 We meet every Thursday in Washington 301 from 6:30 PM to 7:30 PM. Check out our weekly newsletter for more info!
 
