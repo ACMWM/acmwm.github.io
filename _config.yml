@@ -68,9 +68,10 @@ officers:
     bio: 
             
   - job: TIP Chair
-    name:
-    pic: tbapic.jpg
-    bio: 
+    name: TJ Brodowski
+    pic: tj.jpg
+    bio: >
+             Hey everyone, I'm excited to be the new TIP chair this year as I help better prepare y'all for interviews and let you know about internship/job opportunities. I'm currently a Junior majoring in Computer Science and minoring in History. I really like traveling and camping. I'm also the president of the Clay Target Club so come check us out. If you have any questions, feel free to email me at tmbrodowski@wm.edu
             
   - job: Hackathon Chair
     name: Sam Murad
