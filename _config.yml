@@ -14,7 +14,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://acm.cs.wm.edu/" # the base hostname & protocol for your site
 
 github_username: ACMWM
-slack: wmacm
+discord_join_link: https://discord.gg/qRGh738sXB
 facebook: ACMWM
 instagram: acmwm
 
