@@ -27,11 +27,10 @@ markdown: kramdown
 year: 2023
 officers:
   - job: Chair
-    name: Mandy Michel
-    pic: mandy.jpg
+    name: Jackson Kubin
+    pic: jackson.jpg
     bio: >
-              Mandy is a senior double majoring in Computer Science and Linguistics. She likes exploring all sorts of CS concepts, but has particular interests in NLP and Cybersecurity. When not learning new things or refining her LaTeX templates, Mandy loves watching (and arguing about) Star Wars, playing the Legend of Zelda games, and embroidery. She also has a propensity for fun facts. Here's one for you now: Frankenstein's monster is a vegetarian!
-
+              Jackson is a junior majoring in Computer Science with a minor in Linguistics. When he’s not coding, he’s probably thinking about how whatever he’s actually doing would be faster and easier if he coded it instead (not counting the time taken to actually code it, of course). He’s in two singing groups on campus, the Wrens and the Bots. He also loves to bake, and is always looking to try a new recipe.
   - job: Vice Chair
     name: Jackson Kubin
     pic: jackson.jpg
