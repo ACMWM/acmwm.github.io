@@ -55,3 +55,15 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+button {
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    color: white;
+    background-color: $blue-color;
+}
+
+button:hover {
+    background-color: $grey-color;
+}
