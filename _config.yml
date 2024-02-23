@@ -24,7 +24,7 @@ exclude: [LICENSE, post-receive, deploy.sh]
 # Build settings
 markdown: kramdown
 
-year: 2023
+year: 2024
 officers:
   - job: Chair
     name: Jackson Kubin
@@ -32,28 +32,29 @@ officers:
     bio: >
               Jackson is a junior majoring in Computer Science with a minor in Linguistics. When he’s not coding, he’s probably thinking about how whatever he’s actually doing would be faster and easier if he coded it instead (not counting the time taken to actually code it, of course). He’s in two singing groups on campus, the Wrens and the Bots. He also loves to bake, and is always looking to try a new recipe.
   - job: Vice Chair
-    name: Jackson Kubin
-    pic: jackson.jpg
+    name: Carlo Mehegan
+    pic: carlo.jpg
     bio: >
-        Jackson is a junior majoring in Computer Science with a minor in Linguistics. When he’s not coding, he’s probably thinking about how whatever he’s actually doing would be faster and easier if he coded it instead (not counting the time taken to actually code it, of course). He’s in two singing groups on campus, the Wrens and the Bots. He also loves to bake, and is always looking to try a new recipe.
+        Hi guys‼️ I’m Carlo and I’m a junior majoring in CS and data science. I love video games, and my current favs are Hyrule Warriors, Pikmin Bloom, DREAMWILD, and Mindustry. I also love time tracking everything I do and I almost always have a timer running. I am a hardcore Obsidian user and love personal knowledge management. As Vice Chair for 2024 I’m excited to expand the chapter and host fun meetings and events.
 
   - job: Secretary + Historian
-    name: Manav Kapoor
-    pic: manav.jpg
-    bio: >
-            Hey guys, I'm happy to serve as your secretary and historian for 2023 school year. I am currently a junior studying computer science. I love music and a bunch of other things. If you have any questions about the mailing list, or just in general, feel free to email me at mkapoor@wm.edu 
+    name: David Cho
+    pic: david.jpg
+    bio: > 
+          Hi there! I’m David, and I’ll be serving as your secretary this year. I am a junior majoring in Data Science and Applied Mathematics. I’ve always had a huge interest in technology, old and new, and how they’ve worked, software or hardware wise.  
+           
               
   - job: Treasurer
     name: Ben Li
     pic: benLi.jpg
     bio: >
-              Hello! My name is Ben; I'm a junior currently majoring in Computer Science, and I'm your treasurer for the 2023 school year. I've always had a strong interest in technology since I was a child, so I'm constantly trying to learn about random new tech, like smartphones or other devices. Outside of tech, my other pastimes include video games, editing videos, and writing scripts I will never record.
+              Ben Li is a junior majoring in Computer Science. Outside of ACM and CS, he's an involved member in the W&M Esports program as a varsity player for the Splatoon team as well as an Esports Pioneer working on casting and editing. When he's procrastinating on his homework (not recommended), he enjoys playing video games and writing up scripts and ideas for content he will never record. For budget inquiries or anime recommendations, feel free to reach out at bli17@wm.edu or on Discord @titaniumstarrui
 
   - job: PR Chair
-    name: Nadine Maysaud
-    pic: nadine2.jpg
+    name: Manav Kapoor
+    pic: manav.jpg
     bio: >
-              Nadine is a senior, and runs our instagram page @ACMWM !
+             Hey guys, I'm happy to serve as your PR Chair for 2024 school year. I am currently a junior studying computer science. I love music and a bunch of other things. If you have any questions feel free to email me at mkapoor@wm.edu 
 
   - job: Webmaster
     name: Kelley Wang
@@ -66,6 +67,11 @@ officers:
     pic: tbapic.jpg
     bio: 
             
+  - job: Cypher Chair
+    name: Krishna Swaminathan
+    pic: tbapic.jpg
+    bio:
+
   - job: TIP Chair
     name: TJ Brodowski
     pic: tj.jpg
@@ -73,10 +79,10 @@ officers:
              Hey everyone, I'm excited to be the new TIP chair this year as I help better prepare y'all for interviews and let you know about internship/job opportunities. I'm currently a Junior majoring in Computer Science and minoring in History. I really like traveling and camping. I'm also the president of the Clay Target Club so come check us out. If you have any questions, feel free to email me at tmbrodowski@wm.edu
             
   - job: Hackathon Chair
-    name: Sam Murad
-    pic: sam.jpg
+    name: Felix Iov
+    pic: felix.jpg
     bio: >
-             Sam is a sophomore who plans on double majoring in Economics and Finance. He has had many years of computer science background, taking courses such as data structures, programming for data science, AP Computer Science A, and more. For fun, Sam enjoys many things, such as hanging out with friends, playing PC and Nintendo switch games, and playing soccer and spikeball.
+             Felix Iov is a sophomore majoring in computer science, with interests in physics and math. He is always eager to learn about all the niche quirks that come with software and hardware. For fun, he enjoys biking, playing games, and listening to music.
               
   - job: Faculty Advisor
     name: Jim Deverick
