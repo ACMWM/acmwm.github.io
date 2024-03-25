@@ -13,7 +13,7 @@ We also host a computer science faculty and student banquet each semester. This 
 
 ![dance]({{ "/images/shacks2023.jpeg" | prepend: site.baseurl }})
 
-We meet every Thursday in Washington 301 from 6:30 PM to 7:30 PM. Check out our weekly newsletter for more info!
+We meet every Thursday in ISC 2280 from 7:00 PM to 8:00 PM. Check out our weekly newsletter for more info!
 
 Want stay in touch? Join our Discord [Here](https://discord.gg/PgAYRuzx9Q)
 
