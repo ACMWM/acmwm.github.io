@@ -27,7 +27,10 @@ jobs:
         known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
     - name: Create ssh config
-      run: echo "${{ vars.KNOWN_HOSTS }}" >> ~/.ssh/known_hosts"
+      run: |
+        touch ~/.ssh/config
+        echo 'Host *.wm.edu' >> ~/.ssh/config
+        echo '  StrictHostKeyChecking=no' >> ~/.ssh/config
 
     - name: Deploy with rsync
       run: rsync -rcvz --delete --exclude='.git*' --exclude='.zfs' -e 'ssh -A -J ${{ vars.WM_USERNAME }}@bastion.wm.edu' _site/ "${{ vars.SSH_USERNAME }}@${{ vars.CS_DEPT_HOST }}:${{ vars.DEPLOY_DIRECTORY }}/"
