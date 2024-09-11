@@ -27,7 +27,7 @@ jobs:
         known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
     - name: Adding Known Hosts
-      run: ssh-keyscan -c -H ${{ vars.CS_DEPT_HOST }} >> ~/.ssh/known_hosts
+      run: ssh-keyscan -v -H ${{ vars.CS_DEPT_HOST }} >> ~/.ssh/known_hosts
 
     - name: Deploy with rsync
       run: rsync -rcvz --delete --exclude='.git*' --exclude='.zfs' -e 'ssh -A -J ${{ vars.SSH_USERNAME }}@bastion.wm.edu ${{ vars.SSH_USERNAME }}@${{ vars.CS_DEPT_HOST }}' _site/ "dest:${{ vars.DEPLOY_DIRECTORY }}/"
