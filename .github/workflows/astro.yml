@@ -1,4 +1,10 @@
 name: "Astro Deploy"
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
 description: "A composite action that prepares your Astro site to be deployed to GitHub Pages"
 branding:
   icon: "arrow-up-right"
