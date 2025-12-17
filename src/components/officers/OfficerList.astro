@@ -1,0 +1,45 @@
+---
+import OfficerCard from './OfficerCard.astro';
+
+// Props: array of officers
+interface Officer {
+    //officers: Array<{
+        name: string;
+        position: string;
+        imgSrc: string;
+        imgAlt: string;
+        bio: string;
+    //}>;
+}
+
+// Access props
+interface Props {
+    officers: Officer[]
+}
+
+const { officers } = Astro.props;
+---
+
+<!-- 
+<ul class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+    {
+      officers.map((officer) => {
+        return (
+          <li>
+            <OfficerCard officer={officer} />
+          </li>
+        )
+      })
+    }
+  </ul>
+-->
+  
+<ul class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+  {
+    officers.map((officer) => (
+        <li>
+          <OfficerCard officer={officer} />
+        </li>
+    ))
+  }
+</ul>

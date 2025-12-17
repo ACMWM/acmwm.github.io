@@ -1,0 +1,67 @@
+---
+import { Card } from '@eliancodes/brutal-ui';
+import { Image } from 'astro:assets';
+
+/*
+// Props for a single officer card
+interface Props {
+  name: string;
+  position: string;
+  imgSrc: ImageMetadata;
+  imgAlt: string;
+  bio: string;
+  
+}
+
+//const { title, imgAlt, imgSrc, description } = Astro.props;
+const { name, position, imgAlt, imgSrc, bio } = Astro.props;
+---
+
+<Card color='white'>
+  <h3 class='poppins text-lg md:text-xl'>{position}</h3>
+  <div class='rounded-lg border-3 border-black my-4 h-56'>
+    <Image
+      src={imgSrc}
+      alt={imgAlt}
+      width={800}
+      height={400}
+      class='rounded h-full w-full object-cover'
+    />
+  </div>
+  <h3 class='poppins text-lg md:text-xl'>{name}</h3>
+  <p class='poppins'>{bio}</p>
+  <slot />
+</Card>
+*/
+
+
+// Props for a single officer card
+interface Props {
+    officer: {
+        name: string;
+        position: string;
+        imgSrc: string;
+        imgAlt: string;
+        bio: string;
+    };
+}
+
+//const { title, imgAlt, imgSrc, description } = Astro.props;
+const { officer } = Astro.props;
+---
+
+<Card color='white'>
+  <h3 class='poppins text-lg md:text-xl'>{officer.position}</h3>
+  <div class='rounded-lg border-3 border-black my-4 h-56'>
+    <Image
+      src={officer.imgSrc}
+      alt={officer.imgAlt}
+      width={800}
+      height={400}
+      class='rounded h-full w-full object-cover'
+    />
+  </div>
+  <h3 class='poppins text-lg md:text-xl'>{officer.name}</h3>
+  <p class='poppins'>{officer.bio}</p>
+  <slot />
+</Card>

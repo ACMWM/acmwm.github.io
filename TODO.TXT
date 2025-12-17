@@ -1,0 +1,1 @@
+1. fix the alignment of the pictures -- the top and bottom of some faces are cut off. It's often kind of cool-looking (I think), and makes an interesting artistic statement. Nevertheless, I don't think it's the look we should go for here.
