@@ -1,90 +1,209 @@
-# Sample workflow for building and deploying an Astro site to GitHub Pages
-#
-# To get started with Astro see: https://docs.astro.build/en/getting-started/
-#
-name: Deploy Astro site to Pages
+name: "Astro Deploy"
+description: "A composite action that prepares your Astro site to be deployed to GitHub Pages"
+branding:
+  icon: "arrow-up-right"
+  color: "purple"
+inputs:
+  node-version:
+    description: "The node version to use"
+    required: false
+    default: "22"
+  package-manager:
+    description: "You may specify your preferred package manager (one of `npm | yarn | pnpm | bun | deno` and an optional `@<version>` tag). Otherwise, the package manager will be automatically detected."
+    required: false
+    default: ""
+  path:
+    description: "Path of the directory containing your site"
+    required: false
+    default: "."
+  build-cmd:
+    description: "The command used to build your site"
+    required: false
+    default:
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["master"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-env:
-  BUILD_PATH: "." # default value when not using subfolders
-  # BUILD_PATH: subfolder
-
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
+runs:
+  using: composite
+  steps:
+    - name: Check lockfiles
+      shell: "bash"
+      working-directory: ${{ inputs.path }}
+      env:
+        INPUT_PM: ${{ inputs.package-manager }}
+      run: |
+        len=`echo $INPUT_PM | wc -c`
+        if [ $len -gt 1 ]; then
+          PACKAGE_MANAGER=$(echo "$INPUT_PM" | grep -o '^[^@]*')
+          VERSION=$(echo "$INPUT_PM" | { grep -o '@.*' || true; } | sed 's/^@//')
+          # Set default VERSION if not provided
+          if [ -z "$VERSION" ]; then
+              if [ "$PACKAGE_MANAGER" = "deno" ]; then
+                  # The denoland/setup-deno action equivalent of "latest"
+                  VERSION="vx.x.x"
+              else
+                  VERSION="latest"
+              fi
           fi
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: ${{ steps.detect-package-manager.outputs.lockfile }}
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Build with Astro
-        run: |
-          ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_PATH }}/dist
+          echo "PACKAGE_MANAGER=$PACKAGE_MANAGER" >> $GITHUB_ENV
+        elif [ $(find "." -maxdepth 1 -name "pnpm-lock.yaml") ]; then
+            echo "PACKAGE_MANAGER=pnpm" >> $GITHUB_ENV
+            echo "LOCKFILE=pnpm-lock.yaml" >> $GITHUB_ENV
+            # If packageManager field is not present, use latest version.
+            if ! jq -e '.packageManager' package.json > /dev/null 2>&1; then
+                VERSION="latest"
+                # Annotate this action run to let users know we’re using the default.
+                echo "::warning title=Could not detect PNPM version::No \`packageManager\` field found in \`package.json\`. Using latest PNPM version instead. We recommend specifying \`pnpm@VERSION\` explicitly using the \`packageManager\` field in your \`package.json\`."
+            fi
+        elif [ $(find "." -maxdepth 1 -name "yarn.lock") ]; then
+            echo "PACKAGE_MANAGER=yarn" >> $GITHUB_ENV
+            echo "LOCKFILE=yarn.lock" >> $GITHUB_ENV
+        elif [ $(find "." -maxdepth 1 -name "package-lock.json") ]; then
+            VERSION="latest"
+            echo "PACKAGE_MANAGER=npm" >> $GITHUB_ENV
+            echo "LOCKFILE=package-lock.json" >> $GITHUB_ENV
+        elif [ $(find "." -maxdepth 1 -name "bun.lock") ]; then
+            VERSION="latest"
+            echo "PACKAGE_MANAGER=bun" >> $GITHUB_ENV
+            echo "LOCKFILE=bun.lock" >> $GITHUB_ENV
+        elif [ $(find "." -maxdepth 1 -name "bun.lockb") ]; then
+            VERSION="latest"
+            echo "PACKAGE_MANAGER=bun" >> $GITHUB_ENV
+            echo "LOCKFILE=bun.lockb" >> $GITHUB_ENV
+        elif [ -f "deno.json" ] || [ -f "deno.jsonc" ] || [ -f "deno.lock" ]; then
+            VERSION="vx.x.x"
+            echo "PACKAGE_MANAGER=deno" >> $GITHUB_ENV
+            echo "LOCKFILE=deno.lock" >> $GITHUB_ENV
+        else
+            echo "No lockfile found.
+        Please specify your preferred \"package-manager\" in the action configuration."
+            exit 1
+        fi
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+    - name: Setup PNPM
+      if: ${{ env.PACKAGE_MANAGER == 'pnpm' }}
+      uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
+      with:
+        version: ${{ env.VERSION }}
+        package_json_file: "${{ inputs.path }}/package.json"
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    - name: Setup Bun
+      if: ${{ env.PACKAGE_MANAGER == 'bun' }}
+      uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76 # v2.0.2
+      with:
+        bun-version: ${{ env.VERSION }}
+
+    - name: Setup Deno
+      if: ${{ env.PACKAGE_MANAGER == 'deno' }}
+      uses: denoland/setup-deno@e95548e56dfa95d4e1a28d6f422fafe75c4c26fb # v2.0.3
+      with:
+        deno-version: ${{ env.VERSION }}
+
+    - name: Setup Node
+      uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+      if: ${{ env.PACKAGE_MANAGER != 'bun' && env.PACKAGE_MANAGER != 'deno' }}
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: ${{ env.PACKAGE_MANAGER }}
+        cache-dependency-path: "${{ inputs.path }}/${{ env.LOCKFILE }}"
+
+    - name: Setup Node (Bun)
+      uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+      if: ${{ env.PACKAGE_MANAGER == 'bun' }}
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install
+      shell: bash
+      working-directory: ${{ inputs.path }}
+      run: |
+        if [ "$PACKAGE_MANAGER" = "deno" ]; then
+          # For Deno projects with deno.json, cache dependencies
+          if [ -f "deno.json" ] || [ -f "deno.jsonc" ]; then
+            echo "Caching Deno dependencies..."
+            deno cache --lock=deno.lock --lock-write **/*.ts **/*.tsx 2>/dev/null || true
+          fi
+          # For hybrid projects with package.json, install npm dependencies
+          if [ -f "package.json" ]; then
+            echo "Installing npm dependencies with Deno..."
+            deno install --allow-scripts
+          fi
+        else
+          # Standard package manager install
+          $PACKAGE_MANAGER install
+        fi
+
+    - name: Build (npm/yarn/pnpm/bun)
+      if: ${{ env.PACKAGE_MANAGER != 'deno' }}
+      shell: bash
+      working-directory: ${{ inputs.path }}
+      run: ${{ inputs.build-cmd || '$PACKAGE_MANAGER run build' }}
+
+    - name: Build (Deno)
+      if: ${{ env.PACKAGE_MANAGER == 'deno' }}
+      shell: bash
+      working-directory: ${{ inputs.path }}
+      run: ${{ inputs.build-cmd || 'deno task build' }}
+
+    # Copied from: https://github.com/actions/upload-pages-artifact/blob/7b1f4a764d45c48632c6b24a0339c27f5614fb0b/action.yml
+    # Due to https://github.com/actions/upload-pages-artifact/issues/129
+    # We have removed
+    #   --exclude=".[^/]*" \
+    # From each tar command, to allow for hidden files, such as the `.well-known` directory
+    # We can get rid of this if / once Github supports a hidden files flag
+
+    - name: Archive artifact
+      shell: sh
+      if: runner.os == 'Linux'
+      run: |
+        echo ::group::Archive artifact
+        tar \
+          --dereference --hard-dereference \
+          --directory "$INPUT_PATH" \
+          -cvf "$RUNNER_TEMP/artifact.tar" \
+          --exclude=.git \
+          --exclude=.github \
+          .
+        echo ::endgroup::
+      env:
+        INPUT_PATH: ${{ inputs.path }}/dist/
+
+    - name: Archive artifact
+      shell: sh
+      if: runner.os == 'macOS'
+      run: |
+        echo ::group::Archive artifact
+        gtar \
+          --dereference --hard-dereference \
+          --directory "$INPUT_PATH" \
+          -cvf "$RUNNER_TEMP/artifact.tar" \
+          --exclude=.git \
+          --exclude=.github \
+          .
+        echo ::endgroup::
+      env:
+        INPUT_PATH: ${{ inputs.path }}/dist/
+
+    - name: Archive artifact
+      shell: bash
+      if: runner.os == 'Windows'
+      run: |
+        echo ::group::Archive artifact
+        tar \
+          --dereference --hard-dereference \
+          --directory "$INPUT_PATH" \
+          -cvf "$RUNNER_TEMP\artifact.tar" \
+          --exclude=.git \
+          --exclude=.github \
+          --force-local \
+          "."
+        echo ::endgroup::
+      env:
+        INPUT_PATH: ${{ inputs.path }}/dist/
+
+    - name: Upload artifact
+      id: upload-artifact
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      with:
+        name: github-pages
+        path: ${{ runner.temp }}/artifact.tar
+        retention-days: 1
+        if-no-files-found: error
