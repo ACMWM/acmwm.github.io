@@ -8,8 +8,22 @@ import { Card } from '@eliancodes/brutal-ui';
 import { getEvents } from "../scripts/notion";
 
 const events = await getEvents(false);
-console.log('hi');
-console.log(events);
+
+// pick spotlight:
+// - soonest featured
+// - else soonest upcoming
+const spotlightCandidates = events.filter((e) => e.featured);
+const spotlight = (spotlightCandidates.length ? spotlightCandidates : events)[0] ?? null;
+
+const fmt = new Intl.DateTimeFormat("en-US", {
+  weekday: "short",
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+});
+const spotlightDate = spotlight?.date ? fmt.format(spotlight.date) : "";
 
 const builtWith = [
   { name: 'Astro', url: 'https://astro.build/' },
@@ -68,19 +82,36 @@ const builtWith = [
       <div class='col-span-4'>
         <div class="mb-5">
         <Card color="#ff5900ff">
-          <p class="text-xl md:text-2xl lg:text-3xl dm-serif mb-5">ACM Event Spotlight goes here:</p>
-          <ul>
-            {events.map(event => (
-              <li>
-                <h3>{event.title}</h3>
-                <p>{event.start}</p>
-                <p>{event.location}</p>
-                <p>{event.blurb}</p>
-                <p>{event.hostingClubs.join(", ")}</p>
-              </li>
-            ))}
-          </ul>
-        <!--<Button target={'_blank'} href=""><p class="text-xl dm-serif p-2">Check back soon for an RSVP</p></Button>--><!--use this as a link; commented because there's nothing to do  -->
+          <div class="spotlight">
+            <h2>ACM Event Spotlight</h2>
+
+            {spotlight ? (
+              <div class="spotlight__card">
+                <h3 class="spotlight__title">{spotlight.name}</h3>
+
+                {spotlightDate && <div class="spotlight__meta">{spotlightDate}</div>}
+
+                <div class="spotlight__meta">
+                  {spotlight.location && <span>{spotlight.location}</span>}
+                  {spotlight.type && <span> • {spotlight.type}</span>}
+                </div>
+
+                {spotlight.blurb && <p class="spotlight__blurb">{spotlight.blurb}</p>}
+
+                {(spotlight.hostingClubs?.length ?? 0) > 0 && (
+                  <div class="spotlight__clubs">
+                    {spotlight.hostingClubs.map((c) => (
+                      <span class="spotlight__chip">{c}</span>
+                    ))}
+                  </div>
+                )}
+
+              </div>
+            ) : (
+              <p>No upcoming events right now.</p>
+            )}
+          </div>
+
         </Card>
         </div>
         <Card color="#00CC77">

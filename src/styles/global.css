@@ -119,3 +119,11 @@ html {
 {
   background-color: aliceblue;
 }
+
+/* -------- spotlight (homepage) -------- */
+.spotlight__card { display: grid; gap: 10px; }
+.spotlight__title { margin: 0; }
+.spotlight__meta { font-size: 0.95em; }
+.spotlight__blurb { margin: 0; }
+.spotlight__clubs { display: flex; gap: 8px; flex-wrap: wrap; }
+.spotlight__chip { padding: 2px 8px; border: 1px solid currentColor; border-radius: 999px; }
