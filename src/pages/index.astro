@@ -5,6 +5,11 @@ import MobileSocials from '@components/home/MobileSocials.astro';
 import { Pill } from '@eliancodes/brutal-ui';
 import { Button } from '@eliancodes/brutal-ui';
 import { Card } from '@eliancodes/brutal-ui';
+import { getEvents } from "../scripts/notion";
+
+const events = await getEvents(false);
+console.log('hi');
+console.log(events);
 
 const builtWith = [
   { name: 'Astro', url: 'https://astro.build/' },
@@ -63,10 +68,19 @@ const builtWith = [
       <div class='col-span-4'>
         <div class="mb-5">
         <Card color="#ff5900ff">
-          <p class="text-xl md:text-2xl lg:text-3xl dm-serif mb-5">ACM Event Spotlight:</p>
-          <h2 class="text-2xl md:text-4xl lg:text-6xl mb-4 dm-serif underline text-center">Winter Break</h2>
-          <p class="text-3xl text-center dm-serif mb-4">There are no upcoming ACM events at this time. See you next semester!</em></p>
-          <!--<Button target={'_blank'} href=""><p class="text-xl dm-serif p-2">Check back soon for an RSVP</p></Button>--><!--use this as a link; commented because there's nothing to do  -->
+          <p class="text-xl md:text-2xl lg:text-3xl dm-serif mb-5">ACM Event Spotlight goes here:</p>
+          <ul>
+            {events.map(event => (
+              <li>
+                <h3>{event.title}</h3>
+                <p>{event.start}</p>
+                <p>{event.location}</p>
+                <p>{event.blurb}</p>
+                <p>{event.hostingClubs.join(", ")}</p>
+              </li>
+            ))}
+          </ul>
+        <!--<Button target={'_blank'} href=""><p class="text-xl dm-serif p-2">Check back soon for an RSVP</p></Button>--><!--use this as a link; commented because there's nothing to do  -->
         </Card>
         </div>
         <Card color="#00CC77">

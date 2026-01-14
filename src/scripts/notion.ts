@@ -50,18 +50,10 @@ export async function getEvents(filterHomepage: boolean): Promise<ItineraryEvent
       database_id: import.meta.env.NOTION_DATABASE_ID,
       filter: {
         and: [
-          // keep this if you still want "Private" to hide events
-          { property: "Private", checkbox: { equals: false } },
-
-          // new: only show published events
           { property: "Status", select: { equals: "Published" } },
-
-          // new: only upcoming events
           { property: "Date", date: { on_or_after: nowIso } },
-
-          // optional: if you want a homepage-only mode
           ...(filterHomepage
-            ? [{ property: "Show on Homepage", checkbox: { equals: true } }]
+            ? [{ property: "Featured", checkbox: { equals: true } }]
             : []),
         ],
       },
@@ -96,7 +88,8 @@ export async function getEvents(filterHomepage: boolean): Promise<ItineraryEvent
       });
 
     return events;
-  } catch {
+  } catch (e) {
+    console.error("notion query failed:", e);
     // don't return null; keep the site from breaking
     return [];
   }
