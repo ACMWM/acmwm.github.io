@@ -1,67 +1,103 @@
 import { Client } from "@notionhq/client";
 
 export type ItineraryEvent = {
-  date: Date;
+  id: string;
+  date: Date | null;
   name: string;
   location: string;
+  blurb: string;
   website: string;
   type: string;
+  hostingClubs: string[];
+  status: string | null;
+  showOnHomepage: boolean;
 };
 
-export async function getEvents(filterHomepage: boolean): Promise<ItineraryEvent[]> {
-  let signalError = false; /* flag variable to judge whether we abort the mission and return early */
+function plainTextFromTitle(prop: any): string {
+  const arr = prop?.title;
+  if (!Array.isArray(arr) || arr.length === 0) return "";
+  return arr.map((t: any) => t.plain_text).join("");
+}
 
+function plainTextFromRichText(prop: any): string {
+  const arr = prop?.rich_text;
+  if (!Array.isArray(arr) || arr.length === 0) return "";
+  return arr.map((t: any) => t.plain_text).join("");
+}
+
+function multiSelectNames(prop: any): string[] {
+  const arr = prop?.multi_select;
+  if (!Array.isArray(arr)) return [];
+  return arr.map((x: any) => x.name).filter(Boolean);
+}
+
+function selectName(prop: any): string | null {
+  return prop?.select?.name ?? null;
+}
+
+function safeUrl(url: string | null | undefined): string {
+  if (!url) return "";
+  return url.startsWith("http://") || url.startsWith("https://") ? url : `https://${url}`;
+}
+
+export async function getEvents(filterHomepage: boolean): Promise<ItineraryEvent[]> {
   const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
-  console.log(JSON.stringify(notion));
-  let pages = null;
-  /* I hate this so very much */  
-    pages = await notion.databases.query({
+
+  try {
+    const nowIso = new Date().toISOString();
+
+    const pages = await notion.databases.query({
       database_id: import.meta.env.NOTION_DATABASE_ID,
       filter: {
         and: [
-          {
-            property: "Private",
-            checkbox: {
-              equals: false,
-            }
-          }
+          // keep this if you still want "Private" to hide events
+          { property: "Private", checkbox: { equals: false } },
+
+          // new: only show published events
+          { property: "Status", select: { equals: "Published" } },
+
+          // new: only upcoming events
+          { property: "Date", date: { on_or_after: nowIso } },
+
+          // optional: if you want a homepage-only mode
+          ...(filterHomepage
+            ? [{ property: "Show on Homepage", checkbox: { equals: true } }]
+            : []),
         ],
       },
-    })
-    .catch(err => {
-      /* Catch errors here so that the entire site doesn't lock up with a "fetch failed" error page */
-      signalError = true; /* 'return' won't help us here (promises) -- set a flag */ 
+      sorts: [{ property: "Date", direction: "ascending" }],
+      page_size: 50,
     });
 
-  if (signalError) return null;
-  if (pages) {
-  const events = pages.results
-  .map((page: any) => {
-    return {
-      id: page,
-      date: page.properties.Date.date ? new Date(page.properties.Date.date.start) : new Date("1970-01-01"),
-      //date: page.properties.Date.date ? dateObj.toDateString() + ' at ' + dateObj.getHours() + ':00' : "Date and time TBA",
-      name: page.properties.Name.title[0] ? page.properties.Name.title[0].text.content : "TBA", /* VSCode complains that page.properties doesn't exist, but empirically it seems to work right */
-      /* this is a URL, not a page on our server; make sure links handle that correctly */
-      location: page.properties.Location.rich_text[0] ? page.properties.Location.rich_text[0].plain_text : "Location TBA",
-      blurb: page.properties.Blurb.rich_text[0] ? page.properties.Blurb.rich_text[0] : "Details TBA",
-      website: page.properties.Website.url ? ((page.properties.Website.url.slice(0,3) == 'http') ? page.properties.Website.url : ('http://' + page.properties.Website.url)) : "", 
-      type: page.properties.Type.name ? page.properties.Type.name : "Event",
-    };
-  })
-  .sort((a: any, b: any) => {
-    try {
-    if (a != undefined && b!= undefined) {
-      return a.date.getTime() - b.date.getTime()
-    }
-    }
-    catch {
-      return -1; /* Events with date/time TBA will always be placed at the END of the list. Return +1 to put them at the start */ 
-    }
-  });
+    const events: ItineraryEvent[] = pages.results
+      .map((page: any) => {
+        const p = page.properties ?? {};
 
-  //.splice(0, 5);
-  
-  return events;
-}
+        const startIso: string | null = p?.Date?.date?.start ?? null;
+
+        return {
+          id: page.id,
+          date: startIso ? new Date(startIso) : null,
+          name: plainTextFromTitle(p?.Name),
+          location: plainTextFromRichText(p?.Location) || "Location TBA",
+          blurb: plainTextFromRichText(p?.Blurb) || "Details TBA",
+          website: safeUrl(p?.Website?.url ?? null),
+          type: selectName(p?.Type) ?? "Event",
+          hostingClubs: multiSelectNames(p?.["Hosting Clubs"]),
+          status: selectName(p?.Status),
+          showOnHomepage: Boolean(p?.["Show on Homepage"]?.checkbox),
+        };
+      })
+      .sort((a, b) => {
+        if (!a.date && !b.date) return 0;
+        if (!a.date) return 1;
+        if (!b.date) return -1;
+        return a.date.getTime() - b.date.getTime();
+      });
+
+    return events;
+  } catch {
+    // don't return null; keep the site from breaking
+    return [];
+  }
 }
