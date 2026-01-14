@@ -40,6 +40,19 @@ function safeUrl(url: string | null | undefined): string {
   return url.startsWith("http://") || url.startsWith("https://") ? url : `https://${url}`;
 }
 
+function parseNotionDateStart(startIso: string | null): Date | null {
+  if (!startIso) return null;
+
+  // notion date-only format: "YYYY-MM-DD"
+  if (/^\d{4}-\d{2}-\d{2}$/.test(startIso)) {
+    const [y, m, d] = startIso.split("-").map(Number);
+    return new Date(y, m - 1, d); // local midnight (no UTC shift)
+  }
+
+  // notion datetime format: "YYYY-MM-DDTHH:mm:ss..."
+  return new Date(startIso);
+}
+
 export async function getEvents(filterHomepage: boolean): Promise<ItineraryEvent[]> {
   const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
 
@@ -69,7 +82,7 @@ export async function getEvents(filterHomepage: boolean): Promise<ItineraryEvent
 
         return {
           id: page.id,
-          date: startIso ? new Date(startIso) : null,
+          date: parseNotionDateStart(startIso),
           name: plainTextFromTitle(p?.Name),
           location: plainTextFromRichText(p?.Location) || "Location TBA",
           blurb: plainTextFromRichText(p?.Blurb) || "Details TBA",
