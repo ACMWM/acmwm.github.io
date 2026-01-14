@@ -1,0 +1,90 @@
+---
+import Layout from '@layouts/Default.astro';
+import LocalizedDate from '@components/generic/LocalizedDate.astro';
+import { Button, Card } from '@eliancodes/brutal-ui';
+import { getEvents } from "src/scripts/notion";
+
+const events = await getEvents(false);
+---
+
+<Layout
+  title="Events"
+  description="Upcoming events for ACM @ W&M"
+  pageTitle="Events"
+>
+  <main style="background-color: #6A9DC0; padding: 1.5rem;">
+    <div class="flex flex-row justify-center items-center content-center mb-6">
+      <Button target="_blank" href="https://groupme.com/join_group/103293306/psGCCdFG">
+        <p class="text-2xl">Join our GroupMe for updates from W&M ACM!</p>
+      </Button>
+    </div>
+
+    {events.length === 0 ? (
+      <Card color="#773333">
+        <div class="p-4">
+          <p class="text-xl dm-serif text-white">
+            No upcoming events right now. Check back soon.
+          </p>
+        </div>
+      </Card>
+    ) : (
+      events.map((e) => (
+        <Card color="#773333">
+          <div class="p-4">
+            {/* top row: name / date / location */}
+            <div class="flex flex-row flex-wrap justify-center items-center gap-2">
+              <div class="flex bg-blue-300 border-2 border-black rounded-md px-3 py-2">
+                <p class="text-xl dm-serif">{e.name}</p>
+              </div>
+
+              <div class="flex bg-blue-300 border-2 border-black rounded-md px-3 py-2">
+                <p class="text-xl dm-serif">
+                  {e.date ? <LocalizedDate date={e.date} /> : "Date TBA"}
+                </p>
+              </div>
+
+              <div class="flex bg-blue-300 border-2 border-black rounded-md px-3 py-2">
+                <p class="text-xl dm-serif">{e.location || "Location TBA"}</p>
+              </div>
+            </div>
+
+            {/* second row: type + hosting clubs */}
+            <div class="flex flex-row flex-wrap justify-center items-center gap-2 mt-3">
+              {e.type ? (
+                <div class="flex bg-blue-300 border-2 border-black rounded-md px-3 py-1">
+                  <p class="text-lg dm-serif">{e.type}</p>
+                </div>
+              ) : null}
+
+              {(e.hostingClubs?.length ?? 0) > 0 ? (
+                e.hostingClubs.map((club) => (
+                  <div class="flex bg-blue-300 border-2 border-black rounded-md px-3 py-1">
+                    <p class="text-lg dm-serif">{club}</p>
+                  </div>
+                ))
+              ) : null}
+            </div>
+
+            {/* blurb */}
+            {e.blurb ? (
+              <div class="mt-3 flex justify-center">
+                <div class="bg-blue-300 border-2 border-black rounded-md px-4 py-3 max-w-3xl w-full">
+                  <p class="text-lg dm-serif">{e.blurb}</p>
+                </div>
+              </div>
+            ) : null}
+
+            {/* website link */}
+            {e.website ? (
+              <div class="mt-3 flex justify-center">
+                <Button target="_blank" href={e.website}>
+                  <p class="text-lg">event link</p>
+                </Button>
+              </div>
+            ) : null}
+          </div>
+        </Card>
+      ))
+    )}
+  </main>
+</Layout>
