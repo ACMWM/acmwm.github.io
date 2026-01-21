@@ -2,9 +2,11 @@
 import Layout from '@layouts/Default.astro';
 import LocalizedDate from '@components/generic/LocalizedDate.astro';
 import { Button, Card } from '@eliancodes/brutal-ui';
-import { getEvents } from "src/scripts/notion";
+import { getEventsFromSheets } from "src/scripts/googleSheets";
+const events = await getEventsFromSheets(false);
 
-const events = await getEvents(false);
+console.log(events.length);
+
 ---
 
 <Layout
@@ -39,12 +41,12 @@ const events = await getEvents(false);
 
               <div class="flex bg-blue-300 border-2 border-black rounded-md px-3 py-2">
                 <p class="text-xl dm-serif">
-                  {e.date ? <LocalizedDate date={e.date} /> : "Date TBA"}
+                  {e.date ? <LocalizedDate date={e.date} /> : "Date TBD"}
                 </p>
               </div>
 
               <div class="flex bg-blue-300 border-2 border-black rounded-md px-3 py-2">
-                <p class="text-xl dm-serif">{e.location || "Location TBA"}</p>
+                <p class="text-xl dm-serif">{e.location || "Location TBD"}</p>
               </div>
             </div>
 

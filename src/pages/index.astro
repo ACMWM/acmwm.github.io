@@ -5,9 +5,9 @@ import MobileSocials from '@components/home/MobileSocials.astro';
 import { Pill } from '@eliancodes/brutal-ui';
 import { Button } from '@eliancodes/brutal-ui';
 import { Card } from '@eliancodes/brutal-ui';
-import { getEvents } from "../scripts/notion";
 
-const events = await getEvents(false);
+import { getEventsFromSheets } from "../scripts/googleSheets";
+const events = await getEventsFromSheets(false);
 
 // pick spotlight:
 // - soonest featured

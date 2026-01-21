@@ -1,129 +1,28 @@
---- 
+---
 import Layout from '@layouts/Default.astro';
 import OfficerList from '@components/officers/OfficerList.astro';
+import { getActiveOfficerProfilesFromSheets } from "../../scripts/googleSheets";
+const raw = await getActiveOfficerProfilesFromSheets();
 
-/* NB that you must use the path /src/assets; /assets/ alone doesn't work. */
-const officers = [
-    {
-        name: 'Krishna Swaminathan',
-        position: 'Chair',
-        imgSrc: '/assets/astro.jpg',
-        imgAlt: 'Krishna Swaminathan, Chair',
-        bio: '',
-    },
-    
-    {
-        name: 'Bennett Matuszewski',
-        position: 'Vice Chair',
-        imgSrc: '/src/assets/bennett.png',
-        imgAlt: 'Bennett Matuszewski, Vice Chair',
-        bio: "Hi, my name is Bennett and I am a sophomore studying computer science and business analytics. " +
-             "In my free time I enjoy playing and developing video games, watching premier league, and playing " +
-             "ultimate frisbee. I'm excited to be your ACM vice chair this year and hope I can put on some fun workshops!",
-
-    },
-
-    {
-        name: 'Libby McClough',
-        position: '&hacks Chair',
-        imgSrc: '/src/assets/libby.jpeg',
-        imgAlt: 'Libby McClough, &hacks Chair',
-        bio: 'Hi everyone! I’m Libby, and I’m honored to serve as one of your &hacks chairs for this year! I’m a junior ' +
-        'majoring in biology and math, with an interest in CS! I love attending hackathons, but love organizing ours even ' +
-        'more! I’m excited for another wonderful year of ACM 🩷🩷'
-    },
-
-    {
-        name: 'Wilson Lin',
-        position: '&hacks Chair',
-        imgSrc: '/src/assets/mouthofwilson.jpg',
-        imgAlt: 'Wilson Lin, &hacks Chair',
-        bio: 'Wilson Lin is a junior majoring in computer science and economics; he hails from the town of Burke, VA. ' +
-        'His chief work-related interests are in software engineering with a dental bent (you\'ll have to ask him about it). ' +
-        'provided that it has nothing to do with raytracing. Outside of this, he enjoys following football and soccer. ' +
-        'He is excited to be planning &hacks this year!',
-
-    },
-
-    {
-        name: 'Bisi Bashorun,',
-        position: 'Secretary',
-        imgSrc: '/assets/astro.jpg',
-        imgAlt: 'Bisi Bashorun, Secretary',
-        bio: '',
-    },
-
-    {
-        name: 'Lorenzo Short',
-        position: 'Treasurer',
-        imgSrc: '/assets/astro.jpg',
-        imgAlt: 'Lorenzo Short, Treasurer',
-        bio: '',
-    },
-
-    {
-        name: 'Sam Schenk',
-        position: 'Career Chair',
-        imgSrc: '/src/assets/sam.jpg',
-        imgAlt: 'Sam Schenk, Career Chair',
-        bio: 'Hi, my name is Sam Schenk. I’m a computer science major and I’m the career chair of ACM. ' +
-        'Around campus I’m involved in the Alpha Kappa Psi business fraternity, Mason investment club, and Google Developer ' +
-        'Student Club. Outside of academics, I enjoy lifting, investing, woodworking, and hiking.',
-    },
-
-    {
-        name: 'Felix Iov',
-        position: 'Special Events Chair',
-        imgSrc: '/src/assets/felix.webp',
-        imgAlt: 'Felix Iov, Special Events Chair',
-        bio: 'Felix Iov is a Junior majoring in computer science, with interests in physics and math. He is always ' +
-        'eager to learn about all the niche quirks that come with software and hardware. For fun, he enjoys biking, ' +
-        'playing games, and listening to music.'
-
-    },
-
-    {
-        name: 'Ally Morris',
-        position: 'Social Chair',
-        imgSrc: '/src/assets/ally.png',
-        imgAlt: 'Ally Morris, Social Chair',
-        bio: 'Hi! I\'m Ally, and I\'m excited to be your PR/Social Chair! I\'m currently a sophomore majoring in Computer ' +
-        'Science and History. In my free time, I enjoy thrifting, hiking, and playing the piano. Can\'t wait ' +
-        'for another fun year of ACM!',
-
-    },
-
-    {
-        name: 'Robert Ryder',
-        position: 'Webmaster',
-        imgSrc: '/assets/astro.jpg',
-        imgAlt: 'Robert Ryder, Webmaster',
-        bio: '',
-    },
-
-    {
-        name: 'Jim Deverick',
-        position: 'Faculty Advisor',
-        imgSrc: '/src/assets/jim.webp',
-        imgAlt: 'Jim Deverick',
-        bio: 'James “Jim” Deverick is a teaching professor of Computer Science, specializing in computer ' +
-        'systems. He is the beloved faculty advisor of ACM, and he has a tradition of staying overnight in ' +
-        'Swem during &hacks.',
-    },
-    
-
-];
+const officers = raw.map((x) => ({
+  name: x.name,
+  position: x.role,
+  bio: x.bio,
+  imgSrc: x.photoUrl || "/assets/astro.jpg",
+  imgAlt: `${x.name}${x.role ? `, ${x.role}` : ""}`,
+}));
 ---
 
+
 <Layout
-  title='Officers'
-  description='Officer Positions and Biographies | W&M ACM'
-  pageTitle='Officers of W&M ACM'
+  title="Officers"
+  description="Officer Positions and Biographies | W&M ACM"
+  pageTitle="Officers of W&M ACM"
 >
   <main style="background-color: #6A9DC0; padding: 1.5rem;">
     <OfficerList officers={officers} />
+    <div class="flex flex-row justify-center items-center content-center mb-6">
+        <p class="text-2xl">Join our GroupMe for updates from W&M ACM!</p>
+    </div>
   </main>
 </Layout>
-
-
----
