@@ -1,19 +1,13 @@
 ---
 import Layout from '@layouts/Default.astro';
-import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
-import MobileSocials from '@components/home/MobileSocials.astro';
-import { Pill } from '@eliancodes/brutal-ui';
-import { Button } from '@eliancodes/brutal-ui';
-import { Card } from '@eliancodes/brutal-ui';
-
 import { getEventsFromSheets } from "../scripts/googleSheets";
+import '../styles/home.css';
+
 const events = await getEventsFromSheets(false);
 
-// pick spotlight:
-// - soonest featured
-// - else soonest upcoming
+// Logic updated to pull top 3 candidates to match the '3 card' layout in the image
 const spotlightCandidates = events.filter((e) => e.featured);
-const spotlight = (spotlightCandidates.length ? spotlightCandidates : events)[0] ?? null;
+const featuredEvents = (spotlightCandidates.length ? spotlightCandidates : events).slice(0, 3);
 
 const fmt = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
@@ -23,124 +17,105 @@ const fmt = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
   minute: "2-digit",
 });
-const spotlightDate = spotlight?.date ? fmt.format(spotlight.date) : "";
 
-const builtWith = [
-  { name: 'Astro', url: 'https://astro.build/' },
-  { name: 'UnoCSS', url: 'https://uno.antfu.me/' },
+const socialIcons = [
   {
-    name: 'Content Collections',
-    url: 'https://docs.astro.build/en/guides/content-collections/',
+    name: 'GitHub',
+    url: 'https://code.wm.edu/rdryder/acm-workshops',
+    icon: 'i-uil-github',
   },
-  { name: 'RSS', url: 'https://docs.astro.build/en/guides/rss/' },
   {
-    name: 'Sitemap',
-    url: 'https://docs.astro.build/en/guides/integrations-guide/sitemap/',
+    name: 'Instagram',
+    url: 'https://www.instagram.com/acmwm/',
+    icon: 'i-uil-instagram',
   },
-  { name: 'Vercel', url: 'https://vercel.com' },
-  { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+  { name: 'RSS', url: '/feed.xml', icon: 'i-uil-rss' },
 ];
 ---
 
 <Layout
   title='Home'
   pageTitle='W&M ACM Student Chapter'
-  description='The W&M ACM chapter Website. We Back Baby!!!'
+  description='The W&M ACM chapter Website.'
 >
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-  <main style="background-color: #6A9DC0 !important; padding: 1.5rem">
-    <MobileSocials />
-    <section id='about' class='grid md:grid-cols-8 gap-8 mt-4'>
-      <h2 class='hidden'>About Brutal</h2>
-      <div class='col-span-4'>
-        <Card color="#00CC77">
-          <!-- update to go harder on meeting time/place -->
-          <div class='flex flex-col justify-between items-start gap-4'>
-            <p class="text-xl md:text-2xl lg:text-4xl dm-serif" style="text-align: center">W&M's Student Chapter of the Association for Computing Machinery</p>
-            <hr />
-            <!-- I don't think this is actually centered what the fuck -->
-            <p class="text-2xl md:text-4xl lg:text-6xl dm-serif" style="text-align: center; text-decoration: underline; font-style: italic">7PM Thursdays, in ISC 2280</p>
-            <hr />
-            <p class="mt-4 outfit text-xl dm-serif" style="text-align: center">That's when and where we meet, every week. Come see us for our next exciting workshop!</p>
-            <!--<p class='mt-4 outfit text-2xl md:text-5xl lg:text-7xl'>
-              William & Mary <a
-              class='text-white'
-              target='_blank'
-              href='https://astro.build/'>ACM</a  
-              >
-              Student Chapter
-            </p>
-            <p class='mt-2 outfit text-xl md:text-3xl lg:text-5xl'>
-              Welcome! We are the William & Mary Chapter of the Association for Computing Machinery.
-            </p>-->
-            <Button target={'_self'} href='/blog/'>
-              Check out what's new with W&M ACM &rarr;
-            </Button>
-          </div>
-        </Card>
+  <main class="home-container">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">W&M ACM</h1>
+        <p class="hero-subtitle">Association for Computing Machinery Student Chapter</p>
+        
+        <div class="hero-buttons">
+          <a href="#socials" class="btn btn-primary">Join us</a>
+          <button class="btn btn-blank" disabled>&nbsp;</button>
+          <a href="/about" class="btn btn-secondary">Learn more</a>
+        </div>
       </div>
-      <div class='col-span-4'>
-        <div class="mb-5">
-        <Card color="#ff5900ff">
-          <div class="spotlight">
-            <h2>ACM Event Spotlight</h2>
+    </section>
 
-            {spotlight ? (
-              <div class="spotlight__card">
-                <h3 class="spotlight__title">{spotlight.name}</h3>
-
-                {spotlightDate && <div class="spotlight__meta">{spotlightDate}</div>}
-
-                <div class="spotlight__meta">
-                  {spotlight.location && <span>{spotlight.location}</span>}
-                  {spotlight.type && <span> • {spotlight.type}</span>}
-                </div>
-
-                {spotlight.blurb && <p class="spotlight__blurb">{spotlight.blurb}</p>}
-
-                {(spotlight.hostingClubs?.length ?? 0) > 0 && (
-                  <div class="spotlight__clubs">
-                    {spotlight.hostingClubs.map((c) => (
-                      <span class="spotlight__chip">{c}</span>
+    <section class="events-section">
+      <h2 class="section-title">Featured Events</h2>
+      
+      <div class="events-grid">
+        {featuredEvents.length > 0 ? (
+          featuredEvents.map((event) => (
+            <div class="event-card">
+              <div class="card-header">
+                <h3 class="event-title">{event.name}</h3>
+                <span class="event-type">{event.type || 'Event'}</span>
+              </div>
+              
+              <div class="card-body">
+                {event.date && (
+                  <div class="event-meta">
+                    <span class="icon-time">📅</span>
+                    {fmt.format(event.date)}
+                  </div>
+                )}
+                {event.location && (
+                  <div class="event-meta">
+                    <span class="icon-pin">📍</span>
+                    {event.location}
+                  </div>
+                )}
+                
+                {event.blurb && <p class="event-blurb">{event.blurb}</p>}
+                
+                {(event.hostingClubs?.length ?? 0) > 0 && (
+                  <div class="club-tags">
+                    {event.hostingClubs.map((c) => (
+                      <span class="club-tag">{c}</span>
                     ))}
                   </div>
                 )}
-
               </div>
-            ) : (
-              <p>No upcoming events right now.</p>
-            )}
-          </div>
-
-        </Card>
-        </div>
-        <Card color="#00CC77">
-          <h2 class='text-2xl md:text-4xl lg:text-6xl mb-4 dm-serif'>
-            What is W&M ACM?
-          </h2>
-          <p class='poppins dm-serif'>
-            We’re a community of students interested in computing and tech! 
-            Join us for our weekly meetings, our yearly hackathon, &hacks, and other fun events.
-          </p>
-          <!-- I feel like it would be cool to have a 3D model of our logo or something. Never  quite got to it, but here's some basics with an avocado -->
-          <!--<model-viewer
-          // className="model-viewer"
-          src="/src/assets/Avocado.glb"
-          alt="A rock"
-          exposure="0.5"
-          camera-controls
-          ar
-          ar-modes="webxr"
-          ref="something"
-        ></model-viewer>-->
-        </Card>
+            </div>
+          ))
+        ) : (
+          <p class="no-events">No upcoming events right now.</p>
+        )}
       </div>
-      <!-- spacer -->
-      <div class='col-span-1'></div>
-      <div class='col-span-6'>
+
+      <div class="events-footer">
+        <a href="/events" class="see-all-link">See all events &rarr;</a>
       </div>
     </section>
-    <!-- <RecentBlogPosts />-->
+
+    <section id="socials" class="socials-section">
+      <h3>Connect with us</h3>
+      <div class="social-icons-container">
+        {socialIcons.map((item) => (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon-link"
+            title={`See W&M ACM on ${item.name}`}
+          >
+            <div class:list={[item.icon, 'social-icon']} />
+            <span class="sr-only">{item.name}</span>
+          </a>
+        ))}
+      </div>
+    </section>
   </main>
-  
 </Layout>

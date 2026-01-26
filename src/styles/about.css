@@ -1,0 +1,61 @@
+.mission-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .mission-section { grid-template-columns: 1fr; }
+}
+
+.mission-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.mission-card {
+  background-color: var(--wmn-blue-bg);
+  color: white;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 10px 10px 0px var(--wmn-green);
+}
+
+.mission-card h3 {
+  margin-top: 0;
+  font-size: 2rem;
+  color: var(--wmn-green);
+}
+
+.mission-card p {
+  font-size: 1.3rem;
+  font-style: italic;
+  font-family: 'DM Serif Display', serif;
+}
+
+.pillars-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .pillars-section { grid-template-columns: 1fr; }
+}
+
+.pillar-card {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.pillar-icon { font-size: 3rem; margin-bottom: 1rem; }
+.pillar-card h3 { color: var(--wmn-blue-bg); font-size: 1.5rem; margin-bottom: 0.5rem; }
+.officer-link-container { text-align: center; margin-top: 2rem; }
+.text-dark { color: var(--wmn-blue-bg) !important; border-color: var(--wmn-blue-bg) !important; }

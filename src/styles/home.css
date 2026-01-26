@@ -1,0 +1,567 @@
+/* used for homepage, events, and about pages */
+
+:root {
+  /* Colors sampled directly from acmlogo.png */
+  --wmn-blue-bg: #8FAED9;   /* Periwinkle Blue from Logo Background */
+  --wmn-green: #70D4AC;     /* Mint Green from Logo chevron */
+  --wmn-white: #FFFFFF;
+  
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --radius-lg: 12px;
+  --radius-pill: 50px;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Serif Display', serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+}
+
+/* --- Global Page Wrappers --- */
+
+
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 3rem;
+  color: var(--wmn-blue-bg);
+  margin: 0;
+}
+
+.page-subtitle {
+  font-family: system-ui, sans-serif;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+
+
+/* --- Home Page Layout --- */
+
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+  background-color: var(--wmn-blue-bg); /* Updated to lighter logo blue */
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+  /* Removed bottom radius to match sketch more closely if it was full bleed, 
+     but keeping slight radius for "card" feel if desired. 
+     User said "match sketch" which looked rectangular. */
+  border-radius: 0; 
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 400; /* Serif fonts often look better regular weight at display sizes */
+  letter-spacing: 0.05em;
+}
+
+.hero-subtitle {
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
+  opacity: 0.95;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Button Styling */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* 1. Join Us (Primary - Green) */
+.btn-primary {
+  background-color: var(--wmn-green);
+  color: white;
+  border: 2px solid var(--wmn-green);
+}
+
+/* 2. Blank (Placeholder) */
+.btn-blank {
+  background-color: transparent;
+  border: 2px solid rgba(255,255,255, 0.3);
+  color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+.btn-blank:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* 3. Learn More (Outline/Secondary) */
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: white;
+  color: var(--wmn-blue-bg);
+}
+
+/* --- Events Section --- */
+.events-section {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-main);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Card Styling */
+.event-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.event-title {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.event-type {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--wmn-blue-bg); /* Use logo blue for accents */
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.card-body {
+  font-family: system-ui, sans-serif;
+  color: var(--text-muted);
+  flex-grow: 1;
+}
+
+.event-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.event-blurb {
+  margin-top: 1rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.club-tags {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.club-tag {
+  background-color: #f0f4f8;
+  color: var(--wmn-blue-bg);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.events-footer {
+  display: flex;
+  justify-content: flex-end; /* Aligns link to the right */
+  margin-top: 2rem;
+  padding-right: 0.5rem;
+}
+
+.see-all-link {
+  font-family: system-ui, sans-serif;
+  color: var(--wmn-blue-bg);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.see-all-link:hover {
+  text-decoration: underline;
+  color: var(--wmn-green);
+}
+
+/* --- Socials / Footer --- */
+.socials-section {
+  background-color: var(--wmn-blue-bg); /* Matching hero */
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.socials-section h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+.social-icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-icon-link {
+  color: white;
+  transition: transform 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon-link:hover {
+  transform: scale(1.2);
+  color: var(--wmn-green);
+}
+
+/* Sizing for the icon div */
+.social-icon {
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem; /* Ensure icon fonts scale */
+}
+
+.no-events {
+  text-align: center;
+  width: 100%;
+  color: var(--text-muted);
+  font-family: system-ui;
+  grid-column: 1 / -1;
+}
+
+
+
+
+/* --- Events Page Layout --- */
+
+
+.events-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr; /* Sidebar fixed width, feed takes rest */
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .events-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sidebar Widgets */
+.events-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.calendar-widget, .update-widget {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.events-sidebar h3 {
+  margin-top: 0;
+  color: var(--wmn-blue-bg);
+}
+
+.full-width {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Feed Cards */
+.feed-card {
+  display: flex;
+  background: white;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.feed-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.feed-date {
+  background-color: var(--wmn-blue-bg);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.fd-month {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.fd-day {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.feed-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.feed-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+.feed-tag {
+  background: var(--wmn-green);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.feed-meta-row {
+  font-family: system-ui, sans-serif;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.feed-blurb {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.feed-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.club-pill {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: #f0f0f0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+.link-arrow {
+  color: var(--wmn-blue-bg);
+  text-decoration: none;
+  font-weight: bold;
+  font-family: system-ui;
+}
+.link-arrow:hover { text-decoration: underline; }
+
+
+
+/* --- About Page Styles --- */
+
+
+.mission-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .mission-section { grid-template-columns: 1fr; }
+}
+
+.mission-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.mission-card {
+  background-color: var(--wmn-blue-bg);
+  color: white;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  position: relative;
+  box-shadow: 10px 10px 0px var(--wmn-green); /* Offset shadow style */
+}
+
+.mission-card h3 {
+  margin-top: 0;
+  font-size: 2rem;
+  color: var(--wmn-green);
+}
+
+.mission-card p {
+  font-size: 1.3rem;
+  font-style: italic;
+  font-family: 'DM Serif Display', serif;
+}
+
+/* Pillars Section */
+.pillars-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .pillars-section { grid-template-columns: 1fr; }
+}
+
+.pillar-card {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.pillar-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.pillar-card h3 {
+  color: var(--wmn-blue-bg);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.officer-link-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.text-dark {
+  color: var(--wmn-blue-bg) !important;
+  border-color: var(--wmn-blue-bg) !important;
+}
+.text-dark:hover {
+  background-color: var(--wmn-blue-bg) !important;
+  color: white !important;
+}
