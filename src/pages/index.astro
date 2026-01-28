@@ -3,17 +3,46 @@ import Layout from '@layouts/Default.astro';
 import { getEventsFromSheets } from "../scripts/googleSheets";
 import '../styles/home.css';
 
+// 1. Fetch all events
 const events = await getEventsFromSheets(false);
 
-// Logic updated to pull top 3 candidates to match the '3 card' layout in the image
-const spotlightCandidates = events.filter((e) => e.featured);
-const featuredEvents = (spotlightCandidates.length ? spotlightCandidates : events).slice(0, 3);
+// 2. Current Date for filtering
+const now = new Date();
+// Reset 'now' to start of today to ensure inclusivity for events happening today
+now.setHours(0, 0, 0, 0); 
 
+// 3. Logic for "Next Workshop" (Card 2)
+// Filter for workshops
+const allWorkshops = events.filter((e) => e.type && e.type.toLowerCase().includes('workshop'));
+
+// Sort by date ascending
+const sortedWorkshops = allWorkshops.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+// Next Workshop: First one where date >= now
+const nextWorkshop = sortedWorkshops.find((e) => new Date(e.date) >= now);
+
+// Previous Workshops: Ones where date < now, sorted descending (newest first), take top 5
+const prevWorkshops = sortedWorkshops
+  .filter((e) => new Date(e.date) < now)
+  .reverse() // because sortedWorkshops is ascending, reverse gives us newest first
+  .slice(0, 5);
+
+// 4. Logic for "Upcoming" (Card 3)
+// Events that are NOT workshops, happening >= now
+const upcomingMisc = events
+  .filter((e) => (!e.type || !e.type.toLowerCase().includes('workshop')) && new Date(e.date) >= now)
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  .slice(0, 5);
+
+// Date formatter
 const fmt = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+});
+const fmtFull = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   month: "short",
   day: "numeric",
-  year: "numeric",
   hour: "numeric",
   minute: "2-digit",
 });
@@ -45,9 +74,9 @@ const socialIcons = [
         <p class="hero-subtitle">Association for Computing Machinery Student Chapter</p>
         
         <div class="hero-buttons">
-          <a href="#socials" class="btn btn-primary">Join us</a>
+          <a href="#socials" class="btn btn-outline">Join us</a>
           <button class="btn btn-blank" disabled>&nbsp;</button>
-          <a href="/about" class="btn btn-secondary">Learn more</a>
+          <a href="/about" class="btn btn-outline">Learn more</a>
         </div>
       </div>
     </section>
@@ -55,53 +84,84 @@ const socialIcons = [
     <section class="events-section">
       <h2 class="section-title">Featured Events</h2>
       
-      <div class="events-grid">
-        {featuredEvents.length > 0 ? (
-          featuredEvents.map((event) => (
-            <div class="event-card">
-              <div class="card-header">
-                <h3 class="event-title">{event.name}</h3>
-                <span class="event-type">{event.type || 'Event'}</span>
-              </div>
-              
-              <div class="card-body">
-                {event.date && (
-                  <div class="event-meta">
-                    <span class="icon-time">📅</span>
-                    {fmt.format(event.date)}
-                  </div>
-                )}
-                {event.location && (
-                  <div class="event-meta">
-                    <span class="icon-pin">📍</span>
-                    {event.location}
-                  </div>
-                )}
-                
-                {event.blurb && <p class="event-blurb">{event.blurb}</p>}
-                
-                {(event.hostingClubs?.length ?? 0) > 0 && (
-                  <div class="club-tags">
-                    {event.hostingClubs.map((c) => (
-                      <span class="club-tag">{c}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))
-        ) : (
-          <p class="no-events">No upcoming events right now.</p>
-        )}
-      </div>
+      <div class="events-grid featured-grid">
+        
+        <div class="featured-card">
+          <div class="featured-content">
+            <h3 class="featured-title">&hacks</h3>
+            <p class="featured-desc">
+              Join us for William & Mary's annual hackathon! Build amazing projects, 
+              meet industry sponsors, and compete for prizes in a 24-hour coding marathon.
+            </p>
+          </div>
+          <a href="https://andhacks.cs.wm.edu/" target="_blank" class="featured-link">Visit &hacks &rarr;</a>
+        </div>
 
-      <div class="events-footer">
-        <a href="/events" class="see-all-link">See all events &rarr;</a>
+        <div class="featured-card flip-container" id="workshop-card">
+          <div class="flip-inner">
+            
+            <div class="flip-front">
+              <div class="featured-content">
+                <h3 class="featured-title">Next Workshop</h3>
+                {nextWorkshop ? (
+                  <>
+                    <p class="featured-highlight">{nextWorkshop.name}</p>
+                    <p class="featured-meta">{nextWorkshop.date ? fmtFull.format(nextWorkshop.date) : ''}</p>
+                    <p class="featured-desc">{nextWorkshop.blurb || 'Join us for our next hands-on technical workshop.'}</p>
+                  </>
+                ) : (
+                  <p class="featured-desc">No upcoming workshops scheduled yet. Check back soon!</p>
+                )}
+              </div>
+              <button class="featured-link flip-trigger">Previous Workshops &rarr;</button>
+            </div>
+
+            <div class="flip-back">
+              <div class="featured-content">
+                <h3 class="featured-title">Previous Workshops</h3>
+                {prevWorkshops.length > 0 ? (
+                  <ul class="event-list">
+                    {prevWorkshops.map(e => (
+                      <li>
+                        <span class="list-date">{fmt.format(e.date)}</span>
+                        <span class="list-name">{e.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p class="featured-desc">No past workshops found.</p>
+                )}
+              </div>
+              <button class="featured-link flip-trigger">Show next workshop &rarr;</button>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="featured-card">
+          <div class="featured-content">
+            <h3 class="featured-title">Upcoming</h3>
+            {upcomingMisc.length > 0 ? (
+              <ul class="event-list">
+                {upcomingMisc.map(e => (
+                  <li>
+                    <span class="list-date">{fmt.format(e.date)}</span>
+                    <span class="list-name">{e.name}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="featured-desc">No other upcoming events right now.</p>
+            )}
+          </div>
+          <a href="/events" class="featured-link">See Calendar &rarr;</a>
+        </div>
+
       </div>
     </section>
 
     <section id="socials" class="socials-section">
-      <h3>Connect with us</h3>
+      <h3>Socials:</h3>
       <div class="social-icons-container">
         {socialIcons.map((item) => (
           <a
@@ -119,3 +179,16 @@ const socialIcons = [
     </section>
   </main>
 </Layout>
+
+<script>
+  // Script to handle the flip logic
+  const flipTriggers = document.querySelectorAll('.flip-trigger');
+  flipTriggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // Find the closest .flip-container parent
+      const card = e.target.closest('.flip-container');
+      const inner = card.querySelector('.flip-inner');
+      inner.classList.toggle('flipped');
+    });
+  });
+</script>
