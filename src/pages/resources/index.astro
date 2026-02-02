@@ -1,17 +1,200 @@
 ---
-import Layout from '@layouts/Default.astro';
-import { Pill } from '@eliancodes/brutal-ui';
-import { Button } from '@eliancodes/brutal-ui';
-import { Card } from '@eliancodes/brutal-ui';
+import Layout from "@layouts/Default.astro";
+import "../../styles/resources.css";
 ---
-<Layout
-  title='Resources for CS at W&M'
-  pageTitle='Resources for CS at W&M'
-  description='The W&M ACM chapter Website. We Back Baby!!!'
-></Layout>
 
-<main style="background-color: #6A9DC0 !important; padding: 1.5rem;">
-    <div id="tech-clubs-list">
-        <h2>Tech-focused clubs at W&M</h2>
+<Layout
+  title="Resources"
+  pageTitle="Resources"
+  description="Tech clubs, how-to guides, and FAQs for ACM at William & Mary."
+>
+  <main class="resources">
+    <header class="hero">
+      <h1>Resources</h1>
+      <p>Quick links for tech clubs, setup guides, and ACM basics.</p>
+    </header>
+
+    <!-- 1) tech clubs -->
+    <section class="section" aria-labelledby="clubs">
+      <div class="section-head">
+        <h2 id="clubs">Tech clubs at William &amp; Mary</h2>
+        <p>Explore nearby communities (and collaborators) across campus.</p>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="https://wmswc.github.io/" target="_blank" rel="noopener noreferrer">
+          <div class="card-top">
+            <h3>Society of Women in Computing</h3>
+            <span class="pill">networking</span>
+          </div>
+          <p>Community and mentorship supporting women and allies in computing.</p>
+        </a>
+
+        <a
+          class="card"
+          href="https://gdg.community.dev/gdg-on-campus-william-mary-williamsburg-united-states/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="card-top">
+            <h3>GDG on Campus (Developer Student Club)</h3>
+            <span class="pill">build</span>
+          </div>
+          <p>Build apps/sites/scripts and support campus groups and nonprofits.</p>
+        </a>
+
+        <a class="card" href="https://cybersecurity.wm.edu/tribe-cyber/" target="_blank" rel="noopener noreferrer">
+          <div class="card-top">
+            <h3>Tribe Cyber</h3>
+            <span class="pill">security</span>
+          </div>
+          <p>Cybersecurity learning, competition, and community at W&amp;M.</p>
+        </a>
+
+        <a class="card" href="https://aiclubwm.com/" target="_blank" rel="noopener noreferrer">
+          <div class="card-top">
+            <h3>AI Club</h3>
+            <span class="pill">ai</span>
+          </div>
+          <p>Learn AI fundamentals, build projects, and explore research opportunities.</p>
+        </a>
         
-    </div>
+        <a class="card" href="https://tribelink.wm.edu/organization/robotics" target="_blank" rel="noopener noreferrer">
+          <div class="card-top">
+            <h3>Robotics Club</h3>
+            <span class="pill">build</span>
+          </div>
+          <p>Collaborative, project-based club for building robots and hands-on engineering.</p>
+        </a>
+
+        <a
+          class="card"
+          href="https://www.wm.edu/student-life/clubs-organizations/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="card-top">
+            <h3>Find more clubs</h3>
+            <span class="pill">directory</span>
+          </div>
+          <p>Browse W&amp;M’s club directory if you’re looking for something specific.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2) how-to pages -->
+    <section class="section" aria-labelledby="howto">
+      <div class="section-head">
+        <h2 id="howto">How-to guides</h2>
+        <p>Common setup and access links for CS resources.</p>
+      </div>
+
+      <div class="list">
+        <a
+          class="row"
+          href="https://support.cs.wm.edu/index.php/faq-support-articles/ssh-keys/ssh-into-a-machine"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="row-main">
+            <h3>How to SSH into a CS machine</h3>
+            <p>Official CS Support guide for connecting to department machines.</p>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://www.cs.wm.edu/~tadavis/remoteaccess.html" target="_blank" rel="noopener noreferrer">
+          <div class="row-main">
+            <h3>Remote access for CS accounts</h3>
+            <p>Helpful notes on SSH and remote login examples.</p>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://accounts.cs.wm.edu" target="_blank" rel="noopener noreferrer">
+          <div class="row-main">
+            <h3>Create a CS account</h3>
+            <p>Request your CS department account (if you don’t have one yet).</p>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://support.cs.wm.edu/" target="_blank" rel="noopener noreferrer">
+          <div class="row-main">
+            <h3>CS Support tutorials</h3>
+            <p>Knowledgebase, machine specs, and guides from CS Support.</p>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="row" href="https://www.wm.edu/offices/it/services/researchcomputing/acctreq/" target="_blank" rel="noopener noreferrer">
+          <div class="row-main">
+            <h3>Request an HPC account</h3>
+            <p>For research computing (HPC/Sciclone) access via W&amp;M IT.</p>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 3) faq -->
+    <section class="section" aria-labelledby="faq">
+      <div class="section-head">
+        <h2 id="faq">ACM @ W&amp;M FAQ</h2>
+        <p>Answers to the most common questions.</p>
+      </div>
+
+      <div class="faq">
+        <details class="qa">
+          <summary>Do I need to be a CS major to join?</summary>
+          <div class="answer">
+            <p>No. Anyone can join. We welcome all majors and experience levels.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Where are meetings?</summary>
+          <div class="answer">
+            <p>Thursdays at <strong>7:00 PM</strong> in <strong>ISC 2280</strong>.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>When are office hours?</summary>
+          <div class="answer">
+            <p>
+              Monday–Friday in <strong>ISC 2394</strong>:
+              <br />
+              <strong>9–11 AM</strong>, <strong>3–5 PM</strong>, <strong>6–7 PM</strong>.
+            </p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>How do I get updates?</summary>
+          <div class="answer">
+            <p>
+              Use the <a href="/connect">Connect</a> page to join Discord/GroupMe and follow socials.
+            </p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>What kinds of events does ACM run?</summary>
+          <div class="answer">
+            <p>Workshops, speaker talks, project team meetups, and social events.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Can I suggest an event or give a workshop?</summary>
+          <div class="answer">
+            <p>
+              Yes. Message an officer on Discord or GroupMe.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -129,24 +129,26 @@ const officers = rawOfficers.map((x) => ({
 </Layout>
 
 <script>
-  // Simple Toggle Logic for the Expandable Section
-  const btn = document.getElementById('expand-btn');
-  const hiddenRows = document.getElementById('hidden-rows');
-  const container = document.getElementById('schedule-container');
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('expand-btn');
+    const hiddenRows = document.getElementById('hidden-rows');
+    const container = document.getElementById('schedule-container');
 
-  if(btn && hiddenRows) {
-    btn.addEventListener('click', () => {
-      const isExpanded = hiddenRows.style.maxHeight && hiddenRows.style.maxHeight !== '0px';
-      
-      if (isExpanded) {
-        hiddenRows.style.maxHeight = '0px';
-        container.classList.remove('expanded');
-        btn.innerHTML = '<span class="arrow-down">▼</span>'; 
-      } else {
-        hiddenRows.style.maxHeight = hiddenRows.scrollHeight + 'px';
-        container.classList.add('expanded');
-        btn.innerHTML = '<span class="arrow-up">▲</span>'; 
-      }
-    });
-  }
+    // Only run if elements exist on the current page
+    if (btn && hiddenRows && container) {
+      btn.addEventListener('click', () => {
+        const isExpanded = hiddenRows.style.maxHeight && hiddenRows.style.maxHeight !== '0px';
+        
+        if (isExpanded) {
+          hiddenRows.style.maxHeight = '0px';
+          container.classList.remove('expanded');
+          btn.innerHTML = '<span class="arrow-down">▼</span>'; 
+        } else {
+          hiddenRows.style.maxHeight = hiddenRows.scrollHeight + 'px';
+          container.classList.add('expanded');
+          btn.innerHTML = '<span class="arrow-up">▲</span>'; 
+        }
+      });
+    }
+  });
 </script>

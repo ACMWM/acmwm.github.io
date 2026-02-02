@@ -80,7 +80,7 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
 
 <div id="event-data" data-events={eventsJson} style="display:none;"></div>
 
-<script>
+<script data-astro-rerun>
   // IIFE: Immediately Invoked Function Expression
   // Executes as soon as the script tag is parsed, fixing the "blank on navigation" bug.
   (() => {

@@ -13,29 +13,45 @@ const { backToTop = false } = Astro.props;
         backToTop ? `backToTop` : null,
         'transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow',
       ]}
+      aria-label="back to top"
+      type="button"
     >
       <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        viewBox='0 0 24 24'
-        height='100%'
-        width='100%'
-        stroke-width='1.5'
-        stroke='currentColor'
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        height="100%"
+        width="100%"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
       >
-        <path
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          d='m4.5 15.75 7.5-7.5 7.5 7.5'
-        />
+        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
       </svg>
     </button>
   )
 }
 
-<footer class='bg-black text-white p-6'>
-  <h2 class='hidden'>Footer</h2>
-  <p> (C) 2025 The William & Mary chapter of the Association for Computing Machinery</p>
+<footer class="bg-white text-black border-t border-black/10 px-6 py-8">
+  <h2 class="hidden">Footer</h2>
+
+  <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row gap-3 md:gap-6 items-start md:items-center justify-between">
+    <p class="text-sm text-black/70 m-0">
+      © {new Date().getFullYear()} The William &amp; Mary chapter of the Association for Computing Machinery
+    </p>
+
+    <div class="flex gap-4 text-sm">
+      <a class="underline underline-offset-4 text-black/80 hover:text-black" href="/connect">Connect</a>
+      <a
+        class="underline underline-offset-4 text-black/80 hover:text-black"
+        href="https://www.acm.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ACM National
+      </a>
+    </div>
+  </div>
 </footer>
 
 <style>

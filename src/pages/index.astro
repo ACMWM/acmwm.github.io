@@ -8,33 +8,24 @@ const events = await getEventsFromSheets(false);
 
 // 2. Current Date for filtering
 const now = new Date();
-// Reset 'now' to start of today to ensure inclusivity for events happening today
 now.setHours(0, 0, 0, 0); 
 
 // 3. Logic for "Next Workshop" (Card 2)
-// Filter for workshops
 const allWorkshops = events.filter((e) => e.type && e.type.toLowerCase().includes('workshop'));
-
-// Sort by date ascending
 const sortedWorkshops = allWorkshops.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-
-// Next Workshop: First one where date >= now
 const nextWorkshop = sortedWorkshops.find((e) => new Date(e.date) >= now);
-
-// Previous Workshops: Ones where date < now, sorted descending (newest first), take top 5
 const prevWorkshops = sortedWorkshops
   .filter((e) => new Date(e.date) < now)
-  .reverse() // because sortedWorkshops is ascending, reverse gives us newest first
+  .reverse()
   .slice(0, 5);
 
 // 4. Logic for "Upcoming" (Card 3)
-// Events that are NOT workshops, happening >= now
 const upcomingMisc = events
   .filter((e) => (!e.type || !e.type.toLowerCase().includes('workshop')) && new Date(e.date) >= now)
   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
   .slice(0, 5);
 
-// Date formatter
+// Date formatters
 const fmt = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
@@ -46,20 +37,6 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
   minute: "2-digit",
 });
-
-const socialIcons = [
-  {
-    name: 'GitHub',
-    url: 'https://code.wm.edu/rdryder/acm-workshops',
-    icon: 'i-uil-github',
-  },
-  {
-    name: 'Instagram',
-    url: 'https://www.instagram.com/acmwm/',
-    icon: 'i-uil-instagram',
-  },
-  { name: 'RSS', url: '/feed.xml', icon: 'i-uil-rss' },
-];
 ---
 
 <Layout
@@ -74,9 +51,9 @@ const socialIcons = [
         <p class="hero-subtitle">Association for Computing Machinery Student Chapter</p>
         
         <div class="hero-buttons">
-          <a href="#socials" class="btn btn-outline">Join us</a>
-          <button class="btn btn-blank" disabled>&nbsp;</button>
+          <a href="/connect" class="btn btn-outline">Join us</a>
           <a href="/about" class="btn btn-outline">Learn more</a>
+          <a href="/resources" class="btn btn-outline">Info guide</a>
         </div>
       </div>
     </section>
@@ -160,35 +137,28 @@ const socialIcons = [
       </div>
     </section>
 
-    <section id="socials" class="socials-section">
-      <h3>Socials:</h3>
-      <div class="social-icons-container">
-        {socialIcons.map((item) => (
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon-link"
-            title={`See W&M ACM on ${item.name}`}
-          >
-            <div class:list={[item.icon, 'social-icon']} />
-            <span class="sr-only">{item.name}</span>
-          </a>
-        ))}
-      </div>
-    </section>
   </main>
 </Layout>
 
 <script>
-  // Script to handle the flip logic
-  const flipTriggers = document.querySelectorAll('.flip-trigger');
-  flipTriggers.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Find the closest .flip-container parent
-      const card = e.target.closest('.flip-container');
-      const inner = card.querySelector('.flip-inner');
-      inner.classList.toggle('flipped');
+  // Runs on initial load AND after every navigation
+  document.addEventListener('astro:page-load', () => {
+    
+    const flipTriggers = document.querySelectorAll('.flip-trigger');
+    
+    flipTriggers.forEach(btn => {
+      // Remove old listeners to be safe (optional, but good practice)
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+
+      newBtn.addEventListener('click', (e) => {
+        const card = e.target.closest('.flip-container');
+        if (card) {
+          const inner = card.querySelector('.flip-inner');
+          if (inner) inner.classList.toggle('flipped');
+        }
+      });
     });
+
   });
 </script>
