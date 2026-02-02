@@ -3,6 +3,7 @@ import BaseNavigation from '@components/layout/BaseNavigation.astro';
 import BaseFooter from '@components/layout/BaseFooter.astro';
 import BaseHead from '../components/layout/BaseHead.astro';
 import '../styles/global.css';
+import '../styles/default.css';
 
 interface Props {
   title: string;
@@ -12,13 +13,46 @@ interface Props {
   ogImage?: URL;
 }
 
+const showLoader =
+  Astro.url.pathname === "/connect" || Astro.url.pathname.startsWith("/connect/");
+
 const { title, description, classList, pageTitle, ogImage } = Astro.props;
 ---
 
 <html lang='en' class='h-full'>
   <BaseHead ogImage={ogImage} title={title} description={description} />
 
-  <body class:list={[classList]}>
+  {showLoader && (
+    <script is:inline>
+      (() => {
+        const done = () => {
+          document.documentElement.classList.add("ready");
+          document.body?.removeAttribute("data-loader");
+          document.getElementById("page-loader")?.remove();
+        };
+
+        if (document.readyState === "interactive" || document.readyState === "complete") {
+          requestAnimationFrame(done);
+        } else {
+          window.addEventListener("DOMContentLoaded", () => requestAnimationFrame(done), { once: true });
+        }
+
+        document.addEventListener("astro:page-load", done);
+        document.addEventListener("astro:after-swap", done);
+
+        setTimeout(done, 1500);
+      })();
+    </script>
+  )}
+
+  <body class:list={[classList]} data-loader={showLoader ? "1" : undefined}>
+    {showLoader && (
+      <div id="page-loader" aria-hidden="true">
+        <div class="spinner"></div>
+        <div class="label">Loading…</div>
+      </div>
+    )}
+
     <BaseNavigation {pageTitle} />
     <slot />
     <BaseFooter />
