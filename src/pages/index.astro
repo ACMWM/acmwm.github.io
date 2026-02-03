@@ -1,146 +1,164 @@
 ---
 import Layout from '@layouts/Default.astro';
-import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
-import MobileSocials from '@components/home/MobileSocials.astro';
-import { Pill } from '@eliancodes/brutal-ui';
-import { Button } from '@eliancodes/brutal-ui';
-import { Card } from '@eliancodes/brutal-ui';
-import { getEvents } from "../scripts/notion";
+import { getEventsFromSheets } from "../scripts/googleSheets";
+import '../styles/home.css';
 
-const events = await getEvents(false);
+// 1. Fetch all events
+const events = await getEventsFromSheets(false);
 
-// pick spotlight:
-// - soonest featured
-// - else soonest upcoming
-const spotlightCandidates = events.filter((e) => e.featured);
-const spotlight = (spotlightCandidates.length ? spotlightCandidates : events)[0] ?? null;
+// 2. Current Date for filtering
+const now = new Date();
+now.setHours(0, 0, 0, 0); 
 
+// 3. Logic for "Next Workshop" (Card 2)
+const allWorkshops = events.filter((e) => e.type && e.type.toLowerCase().includes('workshop'));
+const sortedWorkshops = allWorkshops.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+const nextWorkshop = sortedWorkshops.find((e) => new Date(e.date) >= now);
+const prevWorkshops = sortedWorkshops
+  .filter((e) => new Date(e.date) < now)
+  .reverse()
+  .slice(0, 5);
+
+// 4. Logic for "Upcoming" (Card 3)
+const upcomingMisc = events
+  .filter((e) => (!e.type || !e.type.toLowerCase().includes('workshop')) && new Date(e.date) >= now)
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  .slice(0, 5);
+
+// Date formatters
 const fmt = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+});
+const fmtFull = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   month: "short",
   day: "numeric",
-  year: "numeric",
   hour: "numeric",
   minute: "2-digit",
 });
-const spotlightDate = spotlight?.date ? fmt.format(spotlight.date) : "";
-
-const builtWith = [
-  { name: 'Astro', url: 'https://astro.build/' },
-  { name: 'UnoCSS', url: 'https://uno.antfu.me/' },
-  {
-    name: 'Content Collections',
-    url: 'https://docs.astro.build/en/guides/content-collections/',
-  },
-  { name: 'RSS', url: 'https://docs.astro.build/en/guides/rss/' },
-  {
-    name: 'Sitemap',
-    url: 'https://docs.astro.build/en/guides/integrations-guide/sitemap/',
-  },
-  { name: 'Vercel', url: 'https://vercel.com' },
-  { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
-];
 ---
 
 <Layout
   title='Home'
   pageTitle='W&M ACM Student Chapter'
-  description='The W&M ACM chapter Website. We Back Baby!!!'
+  description='The W&M ACM chapter Website.'
 >
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-  <main style="background-color: #6A9DC0 !important; padding: 1.5rem">
-    <MobileSocials />
-    <section id='about' class='grid md:grid-cols-8 gap-8 mt-4'>
-      <h2 class='hidden'>About Brutal</h2>
-      <div class='col-span-4'>
-        <Card color="#00CC77">
-          <!-- update to go harder on meeting time/place -->
-          <div class='flex flex-col justify-between items-start gap-4'>
-            <p class="text-xl md:text-2xl lg:text-4xl dm-serif" style="text-align: center">W&M's Student Chapter of the Association for Computing Machinery</p>
-            <hr />
-            <!-- I don't think this is actually centered what the fuck -->
-            <p class="text-2xl md:text-4xl lg:text-6xl dm-serif" style="text-align: center; text-decoration: underline; font-style: italic">7PM Thursdays, in ISC 2280</p>
-            <hr />
-            <p class="mt-4 outfit text-xl dm-serif" style="text-align: center">That's when and where we meet, every week. Come see us for our next exciting workshop!</p>
-            <!--<p class='mt-4 outfit text-2xl md:text-5xl lg:text-7xl'>
-              William & Mary <a
-              class='text-white'
-              target='_blank'
-              href='https://astro.build/'>ACM</a  
-              >
-              Student Chapter
-            </p>
-            <p class='mt-2 outfit text-xl md:text-3xl lg:text-5xl'>
-              Welcome! We are the William & Mary Chapter of the Association for Computing Machinery.
-            </p>-->
-            <Button target={'_self'} href='/blog/'>
-              Check out what's new with W&M ACM &rarr;
-            </Button>
-          </div>
-        </Card>
-      </div>
-      <div class='col-span-4'>
-        <div class="mb-5">
-        <Card color="#ff5900ff">
-          <div class="spotlight">
-            <h2>ACM Event Spotlight</h2>
-
-            {spotlight ? (
-              <div class="spotlight__card">
-                <h3 class="spotlight__title">{spotlight.name}</h3>
-
-                {spotlightDate && <div class="spotlight__meta">{spotlightDate}</div>}
-
-                <div class="spotlight__meta">
-                  {spotlight.location && <span>{spotlight.location}</span>}
-                  {spotlight.type && <span> • {spotlight.type}</span>}
-                </div>
-
-                {spotlight.blurb && <p class="spotlight__blurb">{spotlight.blurb}</p>}
-
-                {(spotlight.hostingClubs?.length ?? 0) > 0 && (
-                  <div class="spotlight__clubs">
-                    {spotlight.hostingClubs.map((c) => (
-                      <span class="spotlight__chip">{c}</span>
-                    ))}
-                  </div>
-                )}
-
-              </div>
-            ) : (
-              <p>No upcoming events right now.</p>
-            )}
-          </div>
-
-        </Card>
+  <main class="home-container">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">W&M ACM</h1>
+        <p class="hero-subtitle">Association for Computing Machinery Student Chapter</p>
+        
+        <div class="hero-buttons">
+          <a href="/connect" class="btn btn-outline">Join us</a>
+          <a href="/about" class="btn btn-outline">Learn more</a>
+          <a href="/resources" class="btn btn-outline">Info guide</a>
         </div>
-        <Card color="#00CC77">
-          <h2 class='text-2xl md:text-4xl lg:text-6xl mb-4 dm-serif'>
-            What is W&M ACM?
-          </h2>
-          <p class='poppins dm-serif'>
-            We’re a community of students interested in computing and tech! 
-            Join us for our weekly meetings, our yearly hackathon, &hacks, and other fun events.
-          </p>
-          <!-- I feel like it would be cool to have a 3D model of our logo or something. Never  quite got to it, but here's some basics with an avocado -->
-          <!--<model-viewer
-          // className="model-viewer"
-          src="/src/assets/Avocado.glb"
-          alt="A rock"
-          exposure="0.5"
-          camera-controls
-          ar
-          ar-modes="webxr"
-          ref="something"
-        ></model-viewer>-->
-        </Card>
-      </div>
-      <!-- spacer -->
-      <div class='col-span-1'></div>
-      <div class='col-span-6'>
       </div>
     </section>
-    <!-- <RecentBlogPosts />-->
+
+    <section class="events-section">
+      <h2 class="section-title">Featured Events</h2>
+      
+      <div class="events-grid featured-grid">
+        
+        <div class="featured-card">
+          <div class="featured-content">
+            <h3 class="featured-title">&hacks</h3>
+            <p class="featured-desc">
+              Join us for William & Mary's annual hackathon! Build amazing projects, 
+              meet industry sponsors, and compete for prizes in a 24-hour coding marathon.
+            </p>
+          </div>
+          <a href="https://andhacks.cs.wm.edu/" target="_blank" class="featured-link">Visit &hacks &rarr;</a>
+        </div>
+
+        <div class="featured-card flip-container" id="workshop-card">
+          <div class="flip-inner">
+            
+            <div class="flip-front">
+              <div class="featured-content">
+                <h3 class="featured-title">Next Workshop</h3>
+                {nextWorkshop ? (
+                  <>
+                    <p class="featured-highlight">{nextWorkshop.name}</p>
+                    <p class="featured-meta">{nextWorkshop.date ? fmtFull.format(nextWorkshop.date) : ''}</p>
+                    <p class="featured-desc">{nextWorkshop.blurb || 'Join us for our next hands-on technical workshop.'}</p>
+                  </>
+                ) : (
+                  <p class="featured-desc">No upcoming workshops scheduled yet. Check back soon!</p>
+                )}
+              </div>
+              <button class="featured-link flip-trigger">Previous Workshops &rarr;</button>
+            </div>
+
+            <div class="flip-back">
+              <div class="featured-content">
+                <h3 class="featured-title">Previous Workshops</h3>
+                {prevWorkshops.length > 0 ? (
+                  <ul class="event-list">
+                    {prevWorkshops.map(e => (
+                      <li>
+                        <span class="list-date">{fmt.format(e.date)}</span>
+                        <span class="list-name">{e.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p class="featured-desc">No past workshops found.</p>
+                )}
+              </div>
+              <button class="featured-link flip-trigger">Show next workshop &rarr;</button>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="featured-card">
+          <div class="featured-content">
+            <h3 class="featured-title">Upcoming</h3>
+            {upcomingMisc.length > 0 ? (
+              <ul class="event-list">
+                {upcomingMisc.map(e => (
+                  <li>
+                    <span class="list-date">{fmt.format(e.date)}</span>
+                    <span class="list-name">{e.name}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="featured-desc">No other upcoming events right now.</p>
+            )}
+          </div>
+          <a href="/events" class="featured-link">See Calendar &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
   </main>
-  
 </Layout>
+
+<script>
+  // Runs on initial load AND after every navigation
+  document.addEventListener('astro:page-load', () => {
+    
+    const flipTriggers = document.querySelectorAll('.flip-trigger');
+    
+    flipTriggers.forEach(btn => {
+      // Remove old listeners to be safe (optional, but good practice)
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+
+      newBtn.addEventListener('click', (e) => {
+        const card = e.target.closest('.flip-container');
+        if (card) {
+          const inner = card.querySelector('.flip-inner');
+          if (inner) inner.classList.toggle('flipped');
+        }
+      });
+    });
+
+  });
+</script>
