@@ -1,0 +1,10 @@
+---
+const { title, subtitle } = Astro.props;
+---
+
+<header class="acm-page-header">
+  <div class="acm-page-header__inner">
+    <h1 class="acm-page-header__title">{title}</h1>
+    {subtitle ? <p class="acm-page-header__subtitle">{subtitle}</p> : null}
+  </div>
+</header>

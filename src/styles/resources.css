@@ -1,24 +1,12 @@
 .resources {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 18px 40px;
+  padding: 22px 18px 40px;
 }
 
+/* header is now PageHeader.astro */
 .hero {
-  padding: 22px 0 6px;
-}
-
-.hero h1 {
-  margin: 0;
-  font-size: 34px;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-}
-
-.hero p {
-  margin: 10px 0 0;
-  color: rgba(0, 0, 0, 0.65);
-  max-width: 70ch;
+  display: none;
 }
 
 .section {
@@ -52,14 +40,18 @@
   color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.10);
   border-radius: 16px;
-  background: #fff;
+  background: linear-gradient(
+    180deg,
+    rgba(168, 224, 192, 0.10) 0%,
+    rgba(255, 255, 255, 1) 70%
+  );
   padding: 14px;
   transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
 }
 
 .card:hover {
   transform: translateY(-1px);
-  border-color: rgba(0, 0, 0, 0.18);
+  border-color: rgba(128, 152, 192, 0.45);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
@@ -87,9 +79,9 @@
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  color: rgba(0, 0, 0, 0.70);
-  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(112, 200, 152, 0.35);
+  color: rgba(0, 0, 0, 0.75);
+  background: rgba(168, 224, 192, 0.22);
   white-space: nowrap;
 }
 
@@ -115,7 +107,7 @@
 
 .row:hover {
   transform: translateY(-1px);
-  border-color: rgba(0, 0, 0, 0.18);
+  border-color: rgba(128, 152, 192, 0.45);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
@@ -154,7 +146,7 @@
 .qa summary {
   cursor: pointer;
   list-style: none;
-  font-weight: 650;
+  font-weight: 800;
   padding: 8px 6px;
   letter-spacing: -0.01em;
 }
@@ -175,9 +167,13 @@
 }
 
 .answer a {
-  color: inherit;
+  color: var(--wmn-blue-bg);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.answer a:hover {
+  color: var(--wmn-green-dark);
 }
 
 @media (max-width: 720px) {

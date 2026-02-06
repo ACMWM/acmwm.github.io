@@ -1,123 +1,138 @@
-.home-container {
-  display: flex;
-  flex-direction: column;
+:root {
+  /* palette pulled from the ACM W&M logo */
+  --wmn-blue-bg: rgb(128, 152, 192);
+  --wmn-mint: rgb(168, 224, 192);
+  --wmn-green: rgb(112, 200, 152);
+  --wmn-green-dark: rgb(64, 168, 120);
+
+  /* neutrals */
+  --bg-color: #ffffff;
+  --bg-muted: rgba(0, 0, 0, 0.03);
+  --card-bg: #ffffff;
+  --text-main: rgba(0, 0, 0, 0.88);
+  --text-muted: rgba(0, 0, 0, 0.65);
+  --border: rgba(0, 0, 0, 0.10);
+  --border-strong: rgba(0, 0, 0, 0.18);
+
+  /* radii */
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --radius-xl: 30px;
+
+  /* focus */
+  --focus: 0 0 0 3px rgba(128, 152, 192, 0.28);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* links */
+a {
+  color: var(--wmn-blue-bg);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--wmn-green-dark);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: 8px;
+}
+
+/* shared page width */
+.acm-page {
   width: 100%;
 }
 
-/* Hero */
-.hero-section {
-  background-color: var(--wmn-blue-bg);
-  color: white;
-  padding: 5rem 2rem;
-  text-align: center;
-}
-
-.hero-content {
-  max-width: 800px;
+.acm-container {
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 22px 18px 40px;
 }
 
-.hero-title {
-  font-size: 4rem;
-  margin: 0 0 0.5rem 0;
-  font-weight: 400;
-  letter-spacing: 0.05em;
+/* shared header component */
+.acm-page-header {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(
+    180deg,
+    rgba(168, 224, 192, 0.18) 0%,
+    rgba(255, 255, 255, 0.00) 85%
+  );
 }
 
-.hero-subtitle {
-  font-family: system-ui, sans-serif;
-  font-size: 1.25rem;
-  opacity: 0.95;
-  margin-bottom: 3rem;
-  font-weight: 300;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-/* Specific Home Buttons */
-.btn-blank {
-  background-color: transparent;
-  border: 2px solid rgba(255,255,255, 0.3);
-  color: transparent;
-  cursor: default;
-  pointer-events: none;
-}
-
-/* Featured Events Grid */
-.events-section {
-  padding: 3rem 2rem;
-  max-width: 1200px;
+.acm-page-header__inner {
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 26px 18px;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2.5rem;
+.acm-page-header__title {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-weight: 750;
   color: var(--text-main);
 }
 
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  justify-content: center;
+.acm-page-header__subtitle {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  max-width: 72ch;
 }
 
-.event-card {
-  background: var(--card-bg);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease;
+/* floating nav (opt-in via class on your nav wrapper) */
+.acm-nav-float {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 50;
+
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(128, 152, 192, 0.35);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+  padding: 10px 12px;
 }
 
-.event-card:hover { transform: translateY(-5px); }
-
-.card-header {
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #f0f0f0;
+/* optional: if your nav has links inside, this keeps it clean without needing markup changes */
+.acm-nav-float a {
+  color: rgba(0, 0, 0, 0.82);
+  text-decoration: none;
+  font-weight: 650;
 }
 
-.event-title { margin: 0; font-size: 1.4rem; color: var(--text-main); }
-
-.event-type {
-  display: inline-block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--wmn-blue-bg);
-  font-weight: bold;
-  margin-top: 0.5rem;
+.acm-nav-float a:hover {
+  color: var(--wmn-green-dark);
 }
 
-.card-body { font-family: system-ui, sans-serif; color: var(--text-muted); }
-.event-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; }
-.event-blurb { margin-top: 1rem; font-size: 0.95rem; color: #444; }
+/* small screens: keep it from covering content too aggressively */
+@media (max-width: 720px) {
+  .acm-nav-float {
+    top: 10px;
+    right: 10px;
+    padding: 8px 10px;
+    border-radius: 16px;
+  }
 
-.club-tags { margin-top: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;}
-.club-tag { background-color: #f0f4f8; color: var(--wmn-blue-bg); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; }
-
-.events-footer { display: flex; justify-content: flex-end; margin-top: 2rem; }
-.see-all-link { font-family: system-ui; color: var(--wmn-blue-bg); font-weight: 600; text-decoration: none; }
-
-/* Socials Footer */
-.socials-section {
-  background-color: var(--wmn-blue-bg);
-  color: white;
-  padding: 3rem 2rem;
-  text-align: center;
-  margin-top: 4rem;
+  .acm-page-header__title {
+    font-size: 28px;
+  }
 }
-.social-icons-container { display: flex; justify-content: center; gap: 2rem; }
-.social-icon-link { color: white; transition: transform 0.2s; }
-.social-icon-link:hover { transform: scale(1.2); color: var(--wmn-green); }
-.social-icon { width: 2rem; height: 2rem; font-size: 2rem; }
