@@ -1,41 +1,36 @@
 /* src/styles/about.css */
 
-/* --- Page Layout & Headers --- */
+/* --- Page Layout --- */
 .about-page-container {
-  /* Increased side padding to 15% to pull content away from edges */
-  padding: 6rem 15% 4rem 15%; 
+  padding: 0 15% 4rem 15%;
   max-width: 1400px;
-  margin: 0 auto; /* Ensures the container itself is centered on extra large screens */
+  margin: 0 auto;
+}
+
+/* header is now PageHeader.astro; keep spacing tight under it */
+.about-page-container .intro-text {
+  padding-top: 2rem;
 }
 
 .page-header-left {
-  text-align: left;
-  margin-bottom: 3rem;
-  border-bottom: none;
-  padding-bottom: 0;
+  display: none;
 }
 
-.page-title-small {
-  font-size: 2.2rem; 
-  color: var(--text-main);
-  margin: 0 0 1.5rem 0;
-  line-height: 1.2;
-}
-
+/* Intro text */
 .intro-text p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #444;
-  /* Removed max-width restriction here so it fills the new narrower container naturally */
+  color: rgba(0, 0, 0, 0.74);
   margin: 0;
 }
 
+/* Section headings */
 .section-heading-left {
   font-size: 1.8rem;
   color: var(--wmn-blue-bg);
   margin-bottom: 2rem;
   text-align: left;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
   padding-bottom: 0.5rem;
   display: inline-block;
   padding-right: 2rem;
@@ -48,21 +43,20 @@
 }
 
 .schedule-container {
-  border: 2px solid var(--wmn-blue-bg); 
+  border: 2px solid rgba(128, 152, 192, 0.65);
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
-  background: white;
+  background: #fff;
   transition: all 0.3s ease;
 }
 
-/* Base Row Style */
 .schedule-row {
   display: flex;
-  flex-direction: row; 
-  align-items: stretch; /* Ensures both sides are equal height */
-  min-height: 250px; 
-  border-bottom: 1px solid #eee;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 250px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   position: relative;
 }
 
@@ -70,26 +64,25 @@
   border-bottom: none;
 }
 
-/* --- ALTERNATING LOGIC USING ORDER --- */
-
-/* Default Order (Text Left, Image Right) */
+/* Alternating order logic */
 .schedule-row .row-text {
   order: 1;
 }
+
 .schedule-row .row-image {
   order: 2;
-  border-left: 1px solid #eee;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
   border-right: none;
 }
 
-/* Reverse Order (Image Left, Text Right) */
 .schedule-row.reverse-layout .row-text {
-  order: 2; 
+  order: 2;
 }
+
 .schedule-row.reverse-layout .row-image {
-  order: 1; 
-  border-left: none; 
-  border-right: 1px solid #eee;
+  order: 1;
+  border-left: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Content Styling */
@@ -98,7 +91,7 @@
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically Centers Text */
+  justify-content: center;
 }
 
 .row-text h3 {
@@ -115,15 +108,19 @@
 
 .row-image {
   flex: 1;
-  background-color: #f0f4f8; 
+  background: linear-gradient(
+    180deg,
+    rgba(168, 224, 192, 0.18) 0%,
+    rgba(0, 0, 0, 0.02) 100%
+  );
   display: flex;
-  align-items: center;    /* Vertically Centers Image/Placeholder */
-  justify-content: center; /* Horizontally Centers Image/Placeholder */
+  align-items: center;
+  justify-content: center;
   min-height: 200px;
 }
 
 .placeholder-bg {
-  background-color: #e6eff8;
+  background: rgba(128, 152, 192, 0.12);
 }
 
 /* Expand Button */
@@ -133,7 +130,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: white;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.14);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -144,7 +141,7 @@
   align-items: center;
   justify-content: center;
   color: var(--wmn-blue-bg);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.10);
   transition: all 0.2s;
 }
 
@@ -163,29 +160,27 @@
 /* Responsive Styles */
 @media (max-width: 900px) {
   .about-page-container {
-    padding: 4rem 5% 3rem 5%; /* Restore smaller margins on mobile so content fits */
+    padding: 0 5% 3rem 5%;
   }
 
-  /* Stack Vertically on Mobile */
   .schedule-row {
     flex-direction: column;
   }
-  
-  /* Reset orders: Image Top (1), Text Bottom (2) */
-  .schedule-row .row-image, 
+
+  .schedule-row .row-image,
   .schedule-row.reverse-layout .row-image {
     order: 1;
     min-height: 200px;
     border: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
-  
-  .schedule-row .row-text, 
+
+  .schedule-row .row-text,
   .schedule-row.reverse-layout .row-text {
     order: 2;
     padding: 2rem 1.5rem;
   }
-  
+
   .expand-btn {
     bottom: 0.5rem;
   }
@@ -206,8 +201,8 @@
   background: white;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid #eee;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -218,8 +213,8 @@
 
 .officer-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-  border-color: var(--wmn-green);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+  border-color: rgba(112, 200, 152, 0.75);
 }
 
 .officer-img-container {
@@ -228,8 +223,8 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.5rem;
-  border: 4px solid var(--wmn-blue-bg);
-  background-color: #f0f0f0;
+  border: 4px solid rgba(128, 152, 192, 0.75);
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .officer-img {
@@ -250,17 +245,17 @@
   margin: 0;
   font-size: 1.4rem;
   color: var(--text-main);
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .officer-role {
-  font-family: system-ui, sans-serif;
   font-size: 0.85rem;
-  color: #0d3823;
-  background-color: var(--wmn-green);
+  color: rgba(0, 0, 0, 0.82);
+  background-color: rgba(112, 200, 152, 0.55);
+  border: 1px solid rgba(64, 168, 120, 0.35);
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-pill);
-  font-weight: 600;
+  font-weight: 800;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -271,13 +266,13 @@
   color: var(--text-muted);
   line-height: 1.4;
   margin-top: 0.5rem;
-  font-style: normal;
 }
 
 /* --- Join / GroupMe Section --- */
 .join-container {
   text-align: center;
-  background-color: #f0f8ff;
+  background: rgba(168, 224, 192, 0.20);
+  border: 1px solid rgba(112, 200, 152, 0.30);
   padding: 3rem;
   border-radius: var(--radius-lg);
 }
@@ -286,5 +281,5 @@
   font-size: 1.5rem;
   color: var(--wmn-blue-bg);
   margin-bottom: 1.5rem;
-  font-weight: bold;
+  font-weight: 900;
 }

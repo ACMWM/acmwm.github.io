@@ -3,6 +3,7 @@ import Layout from '@layouts/Default.astro';
 import { getEventsFromSheets } from "../../scripts/googleSheets";
 import '../../styles/global.css';
 import '../../styles/events.css';
+import PageHeader from "../../components/layout/PageHeader.astro";
 
 // 1. Fetch data
 const events = await getEventsFromSheets(false);
@@ -24,11 +25,9 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
   description="Upcoming events calendar"
   pageTitle="Events"
 >
+<PageHeader title="Events" subtitle="Workshops, Tech Talks, and Socials" />
   <main class="main-wrapper events-page-container">
-    <header class="page-header events-header">
-      <h1 class="page-title">Events</h1>
-      <p class="page-subtitle">Workshops, Tech Talks, and Socials</p>
-    </header>
+
 
     <div class="events-wrapper">
       

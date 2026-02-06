@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Default.astro";
 import "../../styles/resources.css";
+import PageHeader from "../../components/layout/PageHeader.astro";
 ---
 
 <Layout
@@ -8,11 +9,13 @@ import "../../styles/resources.css";
   pageTitle="Resources"
   description="Tech clubs, how-to guides, and FAQs for ACM at William & Mary."
 >
+<PageHeader title="Resources" subtitle="Quick links for tech clubs, setup guides, and ACM basics." />
   <main class="resources">
-    <header class="hero">
+    <!-- <header class="hero">
       <h1>Resources</h1>
       <p>Quick links for tech clubs, setup guides, and ACM basics.</p>
-    </header>
+    </header> -->
+
 
     <!-- 1) tech clubs -->
     <section class="section" aria-labelledby="clubs">

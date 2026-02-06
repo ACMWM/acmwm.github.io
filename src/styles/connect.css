@@ -2,52 +2,9 @@
   width: 100%;
 }
 
+/* header is now PageHeader.astro */
 .banner {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
-  background: rgba(0, 0, 0, 0.03); /* solid color (no gradient) */
-}
-
-.banner-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 26px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.banner-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 260px;
-}
-
-.banner-mark {
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  color: rgba(0, 0, 0, 0.85);
-}
-
-.mark-svg {
-  width: 56px;
-  height: 56px;
-}
-
-.banner-title {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.banner-subtitle {
-  margin: 8px 0 0;
-  color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
-  max-width: 72ch;
+  display: none;
 }
 
 .content {
@@ -75,7 +32,7 @@
 
 .card:hover {
   transform: translateY(-1px);
-  border-color: rgba(0, 0, 0, 0.18);
+  border-color: rgba(128, 152, 192, 0.45);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 

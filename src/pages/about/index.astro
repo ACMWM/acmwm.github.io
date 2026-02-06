@@ -3,6 +3,7 @@ import Layout from '@layouts/Default.astro';
 import { getActiveOfficerProfilesFromSheets } from "../../scripts/googleSheets";
 import '../../styles/global.css';
 import '../../styles/about.css';
+import PageHeader from "../../components/layout/PageHeader.astro";
 
 // 1. Fetch Officers Data
 const rawOfficers = await getActiveOfficerProfilesFromSheets();
@@ -19,9 +20,13 @@ const officers = rawOfficers.map((x) => ({
   description="Mission and Officers of W&M ACM"
   pageTitle="About"
 >
+<PageHeader title="About Us" subtitle="Workshops, Tech Talks, and Socials" />
   <main class="main-wrapper about-page-container">
-    <header class="page-header-left">
+    <!-- <header class="page-header-left">
       <h1 class="page-title-small">About Us</h1>
+      </header>
+      -->
+      
       <div class="intro-text">
         <p>
           Founded in 1972, the William & Mary Student Chapter of the Association for Computing Machinery (ACM) 
@@ -30,32 +35,24 @@ const officers = rawOfficers.map((x) => ({
           build exciting projects, and prepare for their future careers through our monthly rotation of events.
         </p>
       </div>
-    </header>
 
     <section class="schedule-section">
-      <div class="schedule-container" id="schedule-container">
-        
-        <div class="schedule-row">
-          <div class="row-text">
-            <h3>Workshops</h3>
-            <p>
-              Once a month, we host a student-led workshop covering a wide range of topics, from 
-              introductory Web Development and Python scripting to advanced Artificial Intelligence 
-              and System Design. These sessions are designed to give you hands-on experience 
-              outside the classroom.
-            </p>
+        <div class="schedule-container" id="schedule-container">
+          <div class="schedule-row">
+            <div class="row-text">
+              <h3>Workshops</h3>
+              <p>
+                Once a month, we host a student-led workshop covering a wide range of topics, from 
+                introductory Web Development and Python scripting to advanced Artificial Intelligence 
+                and System Design. These sessions are designed to give you hands-on experience 
+                outside the classroom.
+              </p>
+            </div>
+            <div class="row-image placeholder-bg">
+              <span class="sr-only">Workshops Image</span>
+            </div>
           </div>
-          <div class="row-image placeholder-bg">
-            <span class="sr-only">Workshops Image</span>
-          </div>
-          
-          <button id="expand-btn" class="expand-btn" aria-label="Expand to see more events">
-            <span class="arrow-down">▼</span>
-          </button>
-        </div>
 
-        <div class="hidden-rows" id="hidden-rows">
-          
           <div class="schedule-row reverse-layout">
             <div class="row-image placeholder-bg">
                <span class="sr-only">Speaker Event Image</span>
@@ -98,7 +95,7 @@ const officers = rawOfficers.map((x) => ({
             </div>
           </div>
 
-        </div> </div>
+        </div>
     </section>
     
     <section class="officers-section">
@@ -119,12 +116,6 @@ const officers = rawOfficers.map((x) => ({
         ))}
       </div>
     </section>
-
-    <div class="join-container">
-        <p class="join-text">Join our GroupMe for updates!</p>
-        <a href="https://groupme.com/join_group/103293306/psGCCdFG" target="_blank" class="btn btn-primary">Join GroupMe</a>
-    </div>
-
   </main>
 </Layout>
 
