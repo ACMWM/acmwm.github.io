@@ -4,6 +4,7 @@ import BaseFooter from '@components/layout/BaseFooter.astro';
 import BaseHead from '../components/layout/BaseHead.astro';
 import '../styles/global.css';
 import '../styles/default.css';
+import '../styles/navbar.css';
 
 interface Props {
   title: string;
@@ -52,7 +53,7 @@ const { title, description, classList, pageTitle, ogImage } = Astro.props;
         <div class="label">Loading…</div>
       </div>
     )}
-
+    <div class="top-strip" aria-hidden="true"></div>
     <BaseNavigation {pageTitle} />
     <slot />
     <BaseFooter />

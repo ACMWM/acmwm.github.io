@@ -1,12 +1,24 @@
 .resources {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 22px 18px 40px;
+  padding: 0 18px 40px;
 }
 
-/* header is now PageHeader.astro */
 .hero {
-  display: none;
+  padding: 22px 0 6px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.hero p {
+  margin: 10px 0 0;
+  color: rgba(0, 0, 0, 0.65);
+  max-width: 70ch;
 }
 
 .section {
@@ -39,19 +51,15 @@
   text-decoration: none;
   color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.10);
-  border-radius: 16px;
-  background: linear-gradient(
-    180deg,
-    rgba(168, 224, 192, 0.10) 0%,
-    rgba(255, 255, 255, 1) 70%
-  );
+  border-radius: 0;
+  background: #fff;
   padding: 14px;
   transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
 }
 
 .card:hover {
   transform: translateY(-1px);
-  border-color: rgba(128, 152, 192, 0.45);
+  border-color: rgba(0, 0, 0, 0.18);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
@@ -79,9 +87,9 @@
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(112, 200, 152, 0.35);
-  color: rgba(0, 0, 0, 0.75);
-  background: rgba(168, 224, 192, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.70);
+  background: rgba(0, 0, 0, 0.02);
   white-space: nowrap;
 }
 
@@ -99,7 +107,7 @@
   text-decoration: none;
   color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.10);
-  border-radius: 16px;
+  border-radius: 0;
   background: #fff;
   padding: 14px;
   transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
@@ -107,7 +115,7 @@
 
 .row:hover {
   transform: translateY(-1px);
-  border-color: rgba(128, 152, 192, 0.45);
+  border-color: rgba(0, 0, 0, 0.18);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
@@ -138,7 +146,7 @@
 
 .qa {
   border: 1px solid rgba(0, 0, 0, 0.10);
-  border-radius: 16px;
+  border-radius: 0;
   background: #fff;
   padding: 10px 12px;
 }
