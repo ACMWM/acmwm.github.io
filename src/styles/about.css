@@ -1,36 +1,41 @@
 /* src/styles/about.css */
 
-/* --- Page Layout --- */
+/* --- Page Layout & Headers --- */
 .about-page-container {
-  padding: 0 15% 4rem 15%;
+  /* Increased side padding to 15% to pull content away from edges */
+  padding: 6rem 15% 4rem 15%; 
   max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* header is now PageHeader.astro; keep spacing tight under it */
-.about-page-container .intro-text {
-  padding-top: 2rem;
+  margin: 0 auto; /* Ensures the container itself is centered on extra large screens */
 }
 
 .page-header-left {
-  display: none;
+  text-align: left;
+  margin-bottom: 3rem;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-/* Intro text */
+.page-title-small {
+  font-size: 2.2rem; 
+  color: var(--text-main);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
 .intro-text p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.74);
+  color: #444;
+  /* Removed max-width restriction here so it fills the new narrower container naturally */
   margin: 0;
 }
 
-/* Section headings */
 .section-heading-left {
   font-size: 1.8rem;
   color: var(--wmn-blue-bg);
   margin-bottom: 2rem;
   text-align: left;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 2px solid #f0f0f0;
   padding-bottom: 0.5rem;
   display: inline-block;
   padding-right: 2rem;
@@ -43,20 +48,21 @@
 }
 
 .schedule-container {
-  border: 2px solid rgba(128, 152, 192, 0.65);
+  border: 1px solid #eee;
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background: white;
   transition: all 0.3s ease;
 }
 
+/* Base Row Style */
 .schedule-row {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  min-height: 250px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  flex-direction: row; 
+  align-items: stretch; /* Ensures both sides are equal height */
+  min-height: 250px; 
+  border-bottom: 1px solid #eee;
   position: relative;
 }
 
@@ -64,25 +70,26 @@
   border-bottom: none;
 }
 
-/* Alternating order logic */
+/* --- ALTERNATING LOGIC USING ORDER --- */
+
+/* Default Order (Text Left, Image Right) */
 .schedule-row .row-text {
   order: 1;
 }
-
 .schedule-row .row-image {
   order: 2;
-  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 1px solid #eee;
   border-right: none;
 }
 
+/* Reverse Order (Image Left, Text Right) */
 .schedule-row.reverse-layout .row-text {
-  order: 2;
+  order: 2; 
 }
-
 .schedule-row.reverse-layout .row-image {
-  order: 1;
-  border-left: none;
-  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  order: 1; 
+  border-left: none; 
+  border-right: 1px solid #eee;
 }
 
 /* Content Styling */
@@ -91,7 +98,7 @@
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Vertically Centers Text */
 }
 
 .row-text h3 {
@@ -108,19 +115,15 @@
 
 .row-image {
   flex: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(168, 224, 192, 0.18) 0%,
-    rgba(0, 0, 0, 0.02) 100%
-  );
+  background-color: #f0f4f8; 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;    /* Vertically Centers Image/Placeholder */
+  justify-content: center; /* Horizontally Centers Image/Placeholder */
   min-height: 200px;
 }
 
 .placeholder-bg {
-  background: rgba(128, 152, 192, 0.12);
+  background-color: #e6eff8;
 }
 
 /* Expand Button */
@@ -130,7 +133,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: white;
-  border: 1px solid rgba(0, 0, 0, 0.14);
+  border: 1px solid #ddd;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -141,7 +144,7 @@
   align-items: center;
   justify-content: center;
   color: var(--wmn-blue-bg);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: all 0.2s;
 }
 
@@ -160,27 +163,29 @@
 /* Responsive Styles */
 @media (max-width: 900px) {
   .about-page-container {
-    padding: 0 5% 3rem 5%;
+    padding: 4rem 5% 3rem 5%; /* Restore smaller margins on mobile so content fits */
   }
 
+  /* Stack Vertically on Mobile */
   .schedule-row {
     flex-direction: column;
   }
-
-  .schedule-row .row-image,
+  
+  /* Reset orders: Image Top (1), Text Bottom (2) */
+  .schedule-row .row-image, 
   .schedule-row.reverse-layout .row-image {
     order: 1;
     min-height: 200px;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #eee;
   }
-
-  .schedule-row .row-text,
+  
+  .schedule-row .row-text, 
   .schedule-row.reverse-layout .row-text {
     order: 2;
     padding: 2rem 1.5rem;
   }
-
+  
   .expand-btn {
     bottom: 0.5rem;
   }
@@ -201,8 +206,8 @@
   background: white;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eee;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -213,8 +218,8 @@
 
 .officer-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
-  border-color: rgba(112, 200, 152, 0.75);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  border-color: var(--wmn-green);
 }
 
 .officer-img-container {
@@ -223,8 +228,8 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.5rem;
-  border: 4px solid rgba(128, 152, 192, 0.75);
-  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid #eee;
+  background-color: #f0f0f0;
 }
 
 .officer-img {
@@ -245,17 +250,17 @@
   margin: 0;
   font-size: 1.4rem;
   color: var(--text-main);
-  font-weight: 800;
+  font-weight: bold;
 }
 
 .officer-role {
+  font-family: system-ui, sans-serif;
   font-size: 0.85rem;
-  color: rgba(0, 0, 0, 0.82);
-  background-color: rgba(112, 200, 152, 0.55);
-  border: 1px solid rgba(64, 168, 120, 0.35);
+  color: #0d3823;
+  background-color: var(--wmn-green);
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-pill);
-  font-weight: 800;
+  font-weight: 600;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -266,13 +271,13 @@
   color: var(--text-muted);
   line-height: 1.4;
   margin-top: 0.5rem;
+  font-style: normal;
 }
 
 /* --- Join / GroupMe Section --- */
 .join-container {
   text-align: center;
-  background: rgba(168, 224, 192, 0.20);
-  border: 1px solid rgba(112, 200, 152, 0.30);
+  background-color: #f0f8ff;
   padding: 3rem;
   border-radius: var(--radius-lg);
 }
@@ -281,5 +286,5 @@
   font-size: 1.5rem;
   color: var(--wmn-blue-bg);
   margin-bottom: 1.5rem;
-  font-weight: 900;
+  font-weight: bold;
 }

@@ -1,0 +1,121 @@
+:root {
+  --top-strip-h: 0px;
+}
+
+/* remove default browser margin that creates the tiny top sliver */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* normal-flow strip above the navbar (scrolls away) */
+.top-strip {
+  height: var(--top-strip-h);
+  background: #fff;
+}
+
+.simple-header {
+  /* sticky keeps it in normal flow (prevents overlap), but sticks on scroll */
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  /* translucent navbar */
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+
+  border-radius: 0;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.10);
+
+  /* box-shadow: 0 14px 40px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.60); */
+
+  /* keep top + bottom padding the same */
+  padding-block: 0;
+  min-height: 0;
+  display: block; /* so it doesn't re-center with extra height */
+  /* padding-block: 14px;
+  min-height: 64px;
+  box-sizing: border-box; */
+
+  display: flex;
+  align-items: center;
+}
+
+
+.header-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.25rem;
+
+  padding-block: 14px;
+  min-height: 64px;
+}
+
+.brand-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.82);
+  font-weight: 750;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.brand-link {
+  text-decoration: none;
+}
+
+.desktop-nav .nav-list {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.78);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-weight: 650;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: #40A878; /* logo green dark */
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .simple-header {
+    padding: 18px 26px;
+    min-height: 64px;
+  }
+
+  .header-content {
+    max-width: 1200px;
+    gap: 2.25rem;
+  }
+
+  .desktop-nav .nav-list {
+    gap: 1.75rem;
+    flex-wrap: nowrap;
+  }
+}

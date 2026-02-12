@@ -21,6 +21,10 @@
 
   /* focus */
   --focus: 0 0 0 3px rgba(128, 152, 192, 0.28);
+
+  /* fonts */
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 html,
@@ -32,7 +36,7 @@ body {
 body {
   background: var(--bg-color);
   color: var(--text-main);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* links */
@@ -55,6 +59,7 @@ a:hover {
 /* shared page width */
 .acm-page {
   width: 100%;
+  padding-top: 110px; /* adjust once you like it */
 }
 
 .acm-container {
@@ -67,11 +72,7 @@ a:hover {
 .acm-page-header {
   width: 100%;
   border-bottom: 1px solid var(--border);
-  background: linear-gradient(
-    180deg,
-    rgba(168, 224, 192, 0.18) 0%,
-    rgba(255, 255, 255, 0.00) 85%
-  );
+  background: var(--bg-color);
 }
 
 .acm-page-header__inner {
@@ -104,12 +105,13 @@ a:hover {
   z-index: 50;
 
   background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(128, 152, 192, 0.35);
+  border: 1px solid var(--border);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.10);
   backdrop-filter: blur(10px);
 
-  border-radius: 18px;
+  border-radius: 0;
   padding: 10px 12px;
+  font-family: var(--font-mono);
 }
 
 /* optional: if your nav has links inside, this keeps it clean without needing markup changes */
@@ -117,6 +119,7 @@ a:hover {
   color: rgba(0, 0, 0, 0.82);
   text-decoration: none;
   font-weight: 650;
+  font-family: inherit;
 }
 
 .acm-nav-float a:hover {
@@ -129,10 +132,15 @@ a:hover {
     top: 10px;
     right: 10px;
     padding: 8px 10px;
-    border-radius: 16px;
+    border-radius: 0;
   }
 
   .acm-page-header__title {
     font-size: 28px;
   }
+}
+
+.top-strip {
+  height: var(--top-strip-h);
+  background: #fff;
 }

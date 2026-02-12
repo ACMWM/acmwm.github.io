@@ -1,4 +1,5 @@
 /* only affects pages that opt in via data-loader="1" */
+
 body[data-loader="1"] > :not(#page-loader) {
   visibility: hidden;
 }
