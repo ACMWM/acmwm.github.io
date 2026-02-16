@@ -6,23 +6,40 @@ interface Props {
 }
 
 const navigationItems = [
-  { name: 'Home', url: '/' },
-  { name: 'About', url: '/about/'},
-  { name: 'Events', url: '/events/' },
-  { name: 'Connect', url: '/connect/' },
-  { name: 'Resources', url: '/resources/' },
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about/" },
+  { name: "Events", url: "/events/" },
+  { name: "Connect", url: "/connect/" },
+];
+const resourcesItems = [
+  { name: "Tech clubs", url: "/resources/clubs/" },
+  { name: "How-to", url: "/resources/how-to/" },
+  { name: "ACM faq", url: "/resources/faq/" },
 ];
 
 const { pageTitle } = Astro.props;
+const menuId = "acm-nav-menu";
 ---
 
-<header class="simple-header">
+<header class="simple-header" data-nav>
   <div class="header-content">
-    <a href='/' title='Back to Home' class="brand-link">
-      <span class="brand-text">W&M ACM</span>
+    <a href="/" title="Back to Home" class="brand-link" aria-label="W&M ACM home">
+      <span class="brand-text">W&amp;M ACM</span>
     </a>
-    
-    <nav class="desktop-nav">
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls={menuId}
+      aria-expanded="false"
+      data-nav-toggle
+    >
+      <span class="sr-only">Menu</span>
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
       <ul class="nav-list">
         {navigationItems.map((item) => (
           <li>
@@ -31,7 +48,99 @@ const { pageTitle } = Astro.props;
             </a>
           </li>
         ))}
+
+        <li class="nav-dropdown">
+          <a href="/resources/" class="nav-item nav-dropdown-trigger">
+            Resources
+          </a>
+
+          <div class="nav-dropdown-menu" aria-label="Resources">
+            {resourcesItems.map((item) => (
+              <a href={item.url} class="nav-dropdown-item">
+                {item.name}
+              </a>
+            ))}
+          </div>
+        </li>
       </ul>
+
     </nav>
   </div>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation" id={menuId} data-nav-menu>
+    <ul class="mobile-list">
+      {navigationItems.map((item) => (
+        <li>
+          <a href={item.url} class="mobile-item">
+            {item.name}
+          </a>
+        </li>
+      ))}
+
+      <li>
+        <a href="/resources/" class="mobile-item">Resources</a>
+      </li>
+
+      {resourcesItems.map((item) => (
+        <li>
+          <a href={item.url} class="mobile-item">
+            {item.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+  </nav>
+
+  <script is:inline>
+  {`
+    function initAcmNav() {
+      const header = document.querySelector('[data-nav]');
+      const btn = document.querySelector('[data-nav-toggle]');
+      const menu = document.querySelector('[data-nav-menu]');
+      if (!header || !btn || !menu) return;
+
+      const setOpen = (open) => {
+        if (open) header.setAttribute('data-open', '');
+        else header.removeAttribute('data-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
+      // avoid double-binding if astro fires multiple times
+      if (btn.dataset.bound === '1') return;
+      btn.dataset.bound = '1';
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = header.hasAttribute('data-open');
+        setOpen(!open);
+      });
+
+      menu.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a) setOpen(false);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!header.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    }
+
+    // initial load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAcmNav);
+    } else {
+      initAcmNav();
+    }
+
+    // astro client-side navigation (if enabled)
+    document.addEventListener('astro:page-load', initAcmNav);
+  `}
+</script>
+
 </header>

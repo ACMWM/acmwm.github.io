@@ -3,12 +3,57 @@ import Layout from '@layouts/Default.astro';
 import { getEventsFromSheets } from "../scripts/googleSheets";
 import '../styles/home.css';
 
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+// 0. Load homepage hero images from /public/photos/home_photos (no hardcoded names)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.resolve(__dirname, "../..");
+
+const homePhotosDir = path.join(projectRoot, "public", "photos", "home_photos");
+const allowedExt = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
+
+function listImagesRecursive(dir, relBase = "") {
+  const out = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const e of entries) {
+    if (e.name.startsWith(".")) continue;
+
+    const abs = path.join(dir, e.name);
+    const rel = relBase ? path.join(relBase, e.name) : e.name;
+
+    if (e.isDirectory()) {
+      out.push(...listImagesRecursive(abs, rel));
+      continue;
+    }
+
+    const ext = path.extname(e.name).toLowerCase();
+    if (!allowedExt.has(ext)) continue;
+
+    // use relative path so same filenames in different subfolders stay unique
+    const urlPath = rel.split(path.sep).join("/");
+    out.push(`/photos/home_photos/${urlPath}`);
+  }
+
+  return out;
+}
+
+let heroImages = [];
+try {
+  heroImages = listImagesRecursive(homePhotosDir).sort((a, b) => a.localeCompare(b));
+} catch {
+  heroImages = [];
+}
+
 // 1. Fetch all events
 const events = await getEventsFromSheets(false);
 
 // 2. Current Date for filtering
 const now = new Date();
-now.setHours(0, 0, 0, 0); 
+now.setHours(0, 0, 0, 0);
 
 // 3. Logic for "Next Workshop" (Card 2)
 const allWorkshops = events.filter((e) => e.type && e.type.toLowerCase().includes('workshop'));
@@ -46,10 +91,28 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
 >
   <main class="home-container">
     <section class="hero-section">
+      <div class="hero-carousel" aria-hidden="true">
+        {heroImages.length > 0 ? (
+          heroImages.map((src, i) => (
+            <img
+              class={`hero-slide${i === 0 ? " is-active" : ""}`}
+              src={src}
+              alt=""
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          ))
+        ) : (
+          <div class="hero-fallback" aria-hidden="true"></div>
+        )}
+      </div>
+
+      <div class="hero-overlay" aria-hidden="true"></div>
+
       <div class="hero-content">
-        <h1 class="hero-title">W&M ACM</h1>
+        <h1 class="hero-title">W&amp;M ACM</h1>
         <p class="hero-subtitle">Association for Computing Machinery Student Chapter</p>
-        
+
         <div class="hero-buttons">
           <a href="/connect" class="btn btn-outline">Join us</a>
           <a href="/about" class="btn btn-outline">Learn more</a>
@@ -60,26 +123,24 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
 
     <section class="events-section">
       <h2 class="section-title">Featured Events</h2>
-      
+
       <div class="events-grid featured-grid">
-        
         <div class="featured-card">
           <div class="featured-content">
-            <h3 class="featured-title">&hacks</h3>
+            <h3 class="featured-title">&amp;hacks</h3>
             <p class="featured-desc">
-              Join us for William & Mary's annual hackathon! Build amazing projects, 
+              Join us for William &amp; Mary's annual hackathon! Build amazing projects,
               meet industry sponsors, and compete for prizes in a 24-hour coding marathon.
             </p>
           </div>
-          <a href="https://andhacks.cs.wm.edu/" target="_blank" class="featured-link">Visit &hacks &rarr;</a>
+          <a href="https://andhacks.cs.wm.edu/" target="_blank" class="featured-link">Visit &amp;hacks &rarr;</a>
         </div>
 
         <div class="featured-card flip-container" id="workshop-card">
           <div class="flip-inner">
-            
             <div class="flip-front">
               <div class="featured-content">
-                <h3 class="featured-title">Next Workshop</h3>
+                <h3 class="featured-title">Next Meeting</h3>
                 {nextWorkshop ? (
                   <>
                     <p class="featured-highlight">{nextWorkshop.name}</p>
@@ -87,15 +148,15 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
                     <p class="featured-desc">{nextWorkshop.blurb || 'Join us for our next hands-on technical workshop.'}</p>
                   </>
                 ) : (
-                  <p class="featured-desc">No upcoming workshops scheduled yet. Check back soon!</p>
+                  <p class="featured-desc">No upcoming meetings scheduled yet. Check back soon!</p>
                 )}
               </div>
-              <button class="featured-link flip-trigger">Previous Workshops &rarr;</button>
+              <button class="featured-link flip-trigger" type="button">Previous Meetings &rarr;</button>
             </div>
 
             <div class="flip-back">
               <div class="featured-content">
-                <h3 class="featured-title">Previous Workshops</h3>
+                <h3 class="featured-title">Previous Meetings</h3>
                 {prevWorkshops.length > 0 ? (
                   <ul class="event-list">
                     {prevWorkshops.map(e => (
@@ -109,9 +170,8 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
                   <p class="featured-desc">No past workshops found.</p>
                 )}
               </div>
-              <button class="featured-link flip-trigger">Show next workshop &rarr;</button>
+              <button class="featured-link flip-trigger" type="button">Show next workshop &rarr;</button>
             </div>
-            
           </div>
         </div>
 
@@ -133,21 +193,34 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
           </div>
           <a href="/events" class="featured-link">See Calendar &rarr;</a>
         </div>
-
       </div>
     </section>
-
   </main>
 </Layout>
 
 <script>
-  // Runs on initial load AND after every navigation
+  // runs on initial load and after every navigation
   document.addEventListener('astro:page-load', () => {
-    
+    // hero carousel
+    const slides = Array.from(document.querySelectorAll('.hero-slide'));
+    if (slides.length > 1) {
+      if (window.__acmHeroInterval) clearInterval(window.__acmHeroInterval);
+
+      let idx = slides.findIndex((s) => s.classList.contains('is-active'));
+      if (idx < 0) idx = 0;
+
+      window.__acmHeroInterval = setInterval(() => {
+        slides[idx].classList.remove('is-active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('is-active');
+      }, 6500);
+    }
+
+    // flip-card logic
     const flipTriggers = document.querySelectorAll('.flip-trigger');
-    
+
     flipTriggers.forEach(btn => {
-      // Remove old listeners to be safe (optional, but good practice)
+      // remove old listeners to be safe
       const newBtn = btn.cloneNode(true);
       btn.parentNode.replaceChild(newBtn, btn);
 
@@ -159,6 +232,5 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
         }
       });
     });
-
   });
 </script>

@@ -1,0 +1,161 @@
+---
+import Layout from '@layouts/Default.astro';
+import { getActiveOfficerProfilesFromSheets } from "../../scripts/googleSheets";
+import '../../styles/global.css';
+import '../../styles/about.css';
+import PageHeader from "../../components/layout/PageHeader.astro";
+
+// 1. Fetch Officers Data
+const rawOfficers = await getActiveOfficerProfilesFromSheets();
+const officers = rawOfficers.map((x) => ({
+  name: x.name,
+  position: x.role,
+  bio: x.bio,
+  imgSrc: x.photoUrl || "/assets/astro.jpg",
+}));
+
+// about photos (public/photos/about_photos)
+const aboutPhotos = {
+  workshops: "/photos/about_photos/workshops.jpg",
+  speakers: "/photos/about_photos/speaker.jpg",
+  collab: "/photos/about_photos/collab.jpg",
+  socials: "/photos/about_photos/social_cropped_2.jpg",
+  specialEvents: "/photos/about_photos/special_events.jpg",
+};
+---
+
+<Layout
+  title="About Us"
+  description="Mission and Officers of W&M ACM"
+  pageTitle="About"
+>
+  <PageHeader title="About Us" subtitle="Workshops, Tech Talks, and Socials" />
+
+  <main class="main-wrapper about-page-container">
+    <div class="intro-text">
+      <p>
+        Founded in 1972, the William & Mary Student Chapter of the Association for Computing Machinery (ACM)
+        has served as the primary academic and social hub for computer science students for over 50 years.
+        Our goal is to foster a community of passion and innovation, helping students learn new technologies,
+        build exciting projects, and prepare for their future careers through our monthly rotation of events.
+      </p>
+    </div>
+
+    <section class="schedule-section">
+      <div class="schedule-container" id="schedule-container">
+        <div class="schedule-row">
+          <div class="row-text">
+            <h3>Workshops</h3>
+            <p>
+              Once a month, we host a student-led workshop covering a wide range of topics, from
+              introductory app development and python scripting to neural networks and software optimization. 
+              These sessions are designed to give you hands-on experience outside the classroom.
+            </p>
+          </div>
+          <div class="row-image">
+            <img src={aboutPhotos.workshops} alt="ACM workshop" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="schedule-row reverse-layout">
+          <div class="row-image">
+            <img src={aboutPhotos.speakers} alt="ACM speaker event" loading="lazy" />
+          </div>
+          <div class="row-text">
+            <h3>Speakers</h3>
+            <p>
+              We invite industry professionals, alumni, and professors to give tech talks.
+              These events provide insight into the software industry, research opportunities,
+              and career advice, connecting you directly with experts in the field.
+            </p>
+          </div>
+        </div>
+
+        <div class="schedule-row">
+          <div class="row-text">
+            <h3>Collaborations</h3>
+            <p>
+              We partner with other student organizations, such as Robotics, TribeCyber, and the Game Design Club,
+              to host joint technical sessions and collaborative projects. This gives members
+              the chance to explore different areas of computing and learn from peers in related disciplines.
+            </p>
+          </div>
+          <div class="row-image">
+            <img src={aboutPhotos.collab} alt="ACM collaboration event" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="schedule-row reverse-layout">
+          <div class="row-image">
+            <img src={aboutPhotos.socials} alt="ACM social event" loading="lazy" />
+          </div>
+          <div class="row-text">
+            <h3>Socials</h3>
+            <p>
+              It's not all code! Come hang out with us for trivia, picnics, and bonfire nights. 
+              It's the perfect time to relax, make friends, and connect with the community on campus.
+            </p>
+          </div>
+        </div>
+
+        <div class="schedule-row">
+          <div class="row-text">
+            <h3>Special Events</h3>
+            <p>
+              Throughout the semester, we run bigger, one-off events like the CS brunch,
+              banquet, formal, and World of Tech fair. These are designed to be high-energy, 
+              beginner-friendly, and a great way to make connections with professors and other students.
+            </p>
+          </div>
+          <div class="row-image">
+            <img src={aboutPhotos.specialEvents} alt="ACM special event" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="officers-section">
+      <h2 class="section-heading-left">Meet Our Exec:</h2>
+
+      <div class="officer-grid">
+        {officers.map((officer) => (
+          <div class="officer-card">
+            <div class="officer-img-container">
+              <img src={officer.imgSrc} alt={officer.name} class="officer-img" />
+            </div>
+            <div class="officer-info">
+              <h3 class="officer-name">{officer.name}</h3>
+              <span class="officer-role">{officer.position}</span>
+              {officer.bio && <p class="officer-bio">{officer.bio}</p>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('expand-btn');
+    const hiddenRows = document.getElementById('hidden-rows');
+    const container = document.getElementById('schedule-container');
+
+    // Only run if elements exist on the current page
+    if (btn && hiddenRows && container) {
+      btn.addEventListener('click', () => {
+        const isExpanded = hiddenRows.style.maxHeight && hiddenRows.style.maxHeight !== '0px';
+
+        if (isExpanded) {
+          hiddenRows.style.maxHeight = '0px';
+          container.classList.remove('expanded');
+          btn.innerHTML = '<span class="arrow-down">▼</span>';
+        } else {
+          hiddenRows.style.maxHeight = hiddenRows.scrollHeight + 'px';
+          container.classList.add('expanded');
+          btn.innerHTML = '<span class="arrow-up">▲</span>';
+        }
+      });
+    }
+  });
+</script>

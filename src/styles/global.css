@@ -1,9 +1,11 @@
 :root {
   /* palette pulled from the ACM W&M logo */
-  --wmn-blue-bg: rgb(128, 152, 192);
+  /* --wmn-blue-bg: rgb(128, 152, 192); */
+  --wmn-blue-bg: rgb(131, 156, 199);
   --wmn-mint: rgb(168, 224, 192);
   --wmn-green: rgb(112, 200, 152);
   --wmn-green-dark: rgb(64, 168, 120);
+
 
   /* neutrals */
   --bg-color: #ffffff;
@@ -71,14 +73,15 @@ a:hover {
 /* shared header component */
 .acm-page-header {
   width: 100%;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-color);
+  border-bottom: none;
+  background: var(--wmn-blue-bg);
+  color: #fff;
 }
 
 .acm-page-header__inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 26px 18px;
+  padding: 34px 18px 28px;
 }
 
 .acm-page-header__title {
@@ -87,15 +90,16 @@ a:hover {
   letter-spacing: -0.02em;
   line-height: 1.15;
   font-weight: 750;
-  color: var(--text-main);
+  color: #fff;
 }
 
 .acm-page-header__subtitle {
   margin: 10px 0 0;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.88);
   font-size: 14px;
   max-width: 72ch;
 }
+
 
 /* floating nav (opt-in via class on your nav wrapper) */
 .acm-nav-float {

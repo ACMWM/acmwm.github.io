@@ -1,0 +1,241 @@
+---
+import Layout from '@layouts/Default.astro';
+import { getEventsFromSheets } from "../../scripts/googleSheets";
+import '../../styles/global.css';
+import '../../styles/events.css';
+import PageHeader from "../../components/layout/PageHeader.astro";
+
+// 1. Fetch data
+const events = await getEventsFromSheets(false);
+
+// 2. Prepare data for client
+const eventsJson = JSON.stringify(events);
+
+// 3. Helper for "Upcoming" list
+const upcomingEvents = events
+  .filter(e => e.date && new Date(e.date) >= new Date())
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  .slice(0, 5);
+
+const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
+---
+
+<Layout
+  title="Events"
+  description="Upcoming events calendar"
+  pageTitle="Events"
+>
+<PageHeader title="Events" subtitle="Workshops, Tech Talks, and Socials" />
+  <main class="main-wrapper events-page-container">
+
+
+    <div class="events-wrapper">
+      
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button id="prev-month" class="cal-btn" aria-label="Previous Month">&lt;</button>
+          <h2 id="current-month-label" class="month-label">Month Year</h2>
+          <button id="next-month" class="cal-btn" aria-label="Next Month">&gt;</button>
+        </div>
+        
+        <div id="calendar-grid" class="calendar-grid">
+          <div class="cal-day-name">Sun</div>
+          <div class="cal-day-name">Mon</div>
+          <div class="cal-day-name">Tue</div>
+          <div class="cal-day-name">Wed</div>
+          <div class="cal-day-name">Thu</div>
+          <div class="cal-day-name">Fri</div>
+          <div class="cal-day-name">Sat</div>
+          
+          </div>
+      </div>
+
+      <aside class="sidebar-container">
+        
+        <div id="default-view">
+          <h3 class="sidebar-title">Upcoming Events</h3>
+          {upcomingEvents.length === 0 ? (
+            <p style="color: #666; font-style: italic;">No upcoming events right now.</p>
+          ) : (
+            upcomingEvents.map(e => (
+              <div class="mini-event-item" data-event-name={e.name}>
+                <div class="mini-date">{fmtDate.format(e.date)}</div>
+                <h4 class="mini-title">{e.name}</h4>
+              </div>
+            ))
+          )}
+        </div>
+
+        <div id="detail-view" class="hidden detail-view">
+          <button id="back-to-list" class="btn btn-secondary back-btn">&larr; Back to list</button>
+          <div id="detail-content">
+            </div>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+</Layout>
+
+<div id="event-data" data-events={eventsJson} style="display:none;"></div>
+
+<script data-astro-rerun>
+  // IIFE: Immediately Invoked Function Expression
+  // Executes as soon as the script tag is parsed, fixing the "blank on navigation" bug.
+  (() => {
+    // 1. Retrieve Data safely
+    const dataEl = document.getElementById('event-data');
+    if (!dataEl) return;
+    const allEvents = JSON.parse(dataEl.dataset.events);
+
+    // 2. DOM Elements
+    const calendarGrid = document.getElementById('calendar-grid');
+    const monthLabel = document.getElementById('current-month-label');
+    const prevBtn = document.getElementById('prev-month');
+    const nextBtn = document.getElementById('next-month');
+    
+    // Safety check - if we navigated away fast, elements might be gone
+    if (!calendarGrid || !monthLabel) return;
+
+    const defaultView = document.getElementById('default-view');
+    const detailView = document.getElementById('detail-view');
+    const detailContent = document.getElementById('detail-content');
+    const backBtn = document.getElementById('back-to-list');
+
+    let currentDate = new Date(); 
+
+    // 3. Render Function
+    function renderCalendar(date) {
+      // Clear ONLY the day cells (keep the 7 headers)
+      while (calendarGrid.children.length > 7) {
+        calendarGrid.removeChild(calendarGrid.lastChild);
+      }
+      
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const today = new Date();
+      
+      // Update Title
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      monthLabel.textContent = `${monthNames[month]} ${year}`;
+
+      const firstDayOfMonth = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Empty slots for previous month
+      for (let i = 0; i < firstDayOfMonth; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        calendarGrid.appendChild(empty);
+      }
+
+      // Day slots
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'cal-day';
+
+        // Check if this day is "Today"
+        if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
+            dayEl.classList.add('is-today');
+        }
+
+        // 1. Add Day Number Wrapper
+        const dayNumberEl = document.createElement('div');
+        dayNumberEl.className = 'cal-day-number';
+        dayNumberEl.textContent = d;
+        dayEl.appendChild(dayNumberEl);
+
+        // 2. Find Events for this day
+        const currentDayStart = new Date(year, month, d);
+        const currentDayEnd = new Date(year, month, d + 1);
+        
+        const daysEvents = allEvents.filter(e => {
+          if(!e.date) return false;
+          const eDate = new Date(e.date);
+          return eDate >= currentDayStart && eDate < currentDayEnd;
+        });
+
+        // 3. Render Event Blocks
+        if (daysEvents.length > 0) {
+          daysEvents.forEach(evt => {
+            const eventBlock = document.createElement('div');
+            eventBlock.className = 'cal-event-block';
+            eventBlock.textContent = evt.name; 
+            eventBlock.title = evt.name; // Tooltip on hover
+            
+            // Stop bubbling so clicking the event doesn't trigger the day click
+            eventBlock.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Highlight the day cell parent
+                document.querySelectorAll('.cal-day').forEach(el => el.classList.remove('selected'));
+                dayEl.classList.add('selected');
+                showDetails(evt);
+            });
+
+            dayEl.appendChild(eventBlock);
+          });
+        }
+
+        // Click on empty part of day cell also selects it
+        dayEl.addEventListener('click', () => {
+            document.querySelectorAll('.cal-day').forEach(el => el.classList.remove('selected'));
+            dayEl.classList.add('selected');
+            if(daysEvents.length > 0) {
+                showDetails(daysEvents[0]);
+            }
+        });
+
+        calendarGrid.appendChild(dayEl);
+      }
+    }
+
+    function showDetails(event) {
+      defaultView.classList.add('hidden');
+      detailView.classList.remove('hidden');
+
+      const dateObj = new Date(event.date);
+      const dateStr = dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      const timeStr = dateObj.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+      detailContent.innerHTML = `
+        <span class="detail-date-badge">${event.type || 'Event'}</span>
+        <h2 class="detail-title">${event.name}</h2>
+        <div class="detail-meta">📅 ${dateStr} @ ${timeStr}</div>
+        <div class="detail-meta">📍 ${event.location || 'Location TBD'}</div>
+        <div class="detail-desc">${event.blurb || 'No description provided.'}</div>
+        ${event.website ? `<br><a href="${event.website}" target="_blank" class="btn btn-primary" style="font-size:0.8rem; margin-top:1rem;">Event Link</a>` : ''}
+      `;
+    }
+
+    function showDefault() {
+      detailView.classList.add('hidden');
+      defaultView.classList.remove('hidden');
+      document.querySelectorAll('.cal-day').forEach(el => el.classList.remove('selected'));
+    }
+
+    // Listeners
+    prevBtn.addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar(currentDate);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar(currentDate);
+    });
+
+    backBtn.addEventListener('click', showDefault);
+
+    // Sidebar List Click Handlers
+    document.querySelectorAll('.mini-event-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const name = item.dataset.eventName;
+        const evt = allEvents.find(e => e.name === name);
+        if(evt) showDetails(evt);
+      });
+    });
+
+    // Initial Render
+    renderCalendar(currentDate);
+  })();
+</script>

@@ -1,121 +1,199 @@
-:root {
-  --top-strip-h: 0px;
+:root{
+  --nav-h: clamp(3.25rem, 6vw, 4.25rem);
+  --nav-pad-x: clamp(1rem, 4vw, 2rem);
+  --nav-gap: clamp(0.5rem, 2vw, 1.25rem);
+  --nav-radius: 999px;
+  --nav-border: rgba(0,0,0,0.08);
+  --nav-bg: rgba(255,255,255,0.90);
 }
 
-/* remove default browser margin that creates the tiny top sliver */
+/* remove default browser margin that creates tiny top slivers */
 html,
-body {
+body{
   margin: 0;
   padding: 0;
 }
 
-/* normal-flow strip above the navbar (scrolls away) */
-.top-strip {
-  height: var(--top-strip-h);
-  background: #fff;
-}
-
-.simple-header {
-  /* sticky keeps it in normal flow (prevents overlap), but sticks on scroll */
+/* header shell */
+.simple-header{
   position: sticky;
   top: 0;
   z-index: 9999;
 
-  /* translucent navbar */
-  background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
 
   border-radius: 0;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.10);
-
-  /* box-shadow: 0 14px 40px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.60); */
-
-  /* keep top + bottom padding the same */
-  padding-block: 0;
-  min-height: 0;
-  display: block; /* so it doesn't re-center with extra height */
-  /* padding-block: 14px;
-  min-height: 64px;
-  box-sizing: border-box; */
-
-  display: flex;
-  align-items: center;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.10);
 }
 
-
-.header-content {
+/* main row */
+.header-content{
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 
+  height: var(--nav-h);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 2.25rem;
+  justify-content: space-between;
+  gap: var(--nav-gap);
 
-  padding-block: 14px;
-  min-height: 64px;
+  padding-inline: var(--nav-pad-x);
 }
 
-.brand-text {
+/* brand */
+.brand-link{
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.brand-text{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  font-size: 1.25rem;
-  color: rgba(0, 0, 0, 0.82);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  color: rgba(0,0,0,0.82);
   font-weight: 750;
-  text-decoration: none;
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
-.brand-link {
-  text-decoration: none;
+/* desktop nav */
+.desktop-nav{
+  display: none;
 }
 
-.desktop-nav .nav-list {
+.desktop-nav .nav-list{
   display: flex;
-  gap: 1.75rem;
+  gap: clamp(0.75rem, 1.8vw, 1.75rem);
   list-style: none;
   margin: 0;
   padding: 0;
   align-items: center;
 }
 
-.nav-item {
+.nav-item{
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.78);
+  color: rgba(0,0,0,0.78);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   font-weight: 650;
   font-size: 1rem;
-  transition: color 0.2s ease;
   white-space: nowrap;
+
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--nav-radius);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.nav-item:hover {
-  color: #40A878; /* logo green dark */
-  text-decoration: underline;
+.nav-item:hover{
+  color: #40A878;
+  background: rgba(0,0,0,0.05);
 }
 
-@media (max-width: 768px) {
-  .simple-header {
-    padding: 18px 26px;
-    min-height: 64px;
-  }
+/* hamburger button (mobile/tablet) */
+.nav-toggle{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  .header-content {
-    max-width: 1200px;
-    gap: 2.25rem;
-  }
+  width: 2.75rem;
+  height: 2.75rem;
 
-  .desktop-nav .nav-list {
-    gap: 1.75rem;
-    flex-wrap: nowrap;
-  }
+  border-radius: 0.9rem;
+  border: 1px solid var(--nav-border);
+  background: rgba(255,255,255,0.75);
+  cursor: pointer;
+}
+
+.nav-toggle:hover{
+  background: rgba(0,0,0,0.04);
+}
+
+.hamburger{
+  width: 1.25rem;
+  height: 2px;
+  background: currentColor;
+  position: relative;
+  display: block;
+  border-radius: 2px;
+}
+
+.hamburger::before,
+.hamburger::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1.25rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+.hamburger::before{ top: -0.38rem; }
+.hamburger::after{ top: 0.38rem; }
+
+/* mobile menu dropdown */
+.mobile-nav{
+  display: none;
+  padding: 0 var(--nav-pad-x) 0.9rem var(--nav-pad-x);
+}
+
+.simple-header[data-open] .mobile-nav{
+  display: block;
+}
+
+.mobile-list{
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem;
+
+  border: 1px solid var(--nav-border);
+  border-radius: 1.1rem;
+  background: rgba(255,255,255,0.95);
+
+  display: grid;
+  gap: 0.25rem;
+}
+
+.mobile-item{
+  display: block;
+  text-decoration: none;
+  color: rgba(0,0,0,0.86);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-weight: 650;
+
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.9rem;
+}
+
+.mobile-item:hover{
+  background: rgba(0,0,0,0.05);
+}
+
+/* accessibility utility */
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* breakpoint: show desktop nav, hide hamburger + mobile menu */
+@media (min-width: 860px){
+  .nav-toggle{ display: none; }
+  .mobile-nav{ display: none !important; }
+  .desktop-nav{ display: block; }
 }

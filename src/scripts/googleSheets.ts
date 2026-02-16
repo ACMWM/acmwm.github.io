@@ -1,8 +1,17 @@
 import { google } from "googleapis";
 
-const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_SPREADSHEET_ID!;
-const SA_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL!;
-const SA_PRIVATE_KEY = (process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || "").replace(/\\n/g, "\n");
+const env = (import.meta as any).env ?? {};
+
+const SPREADSHEET_ID =
+  env.GOOGLE_SHEETS_SPREADSHEET_ID ?? process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+
+const SA_EMAIL =
+  env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+
+const SA_PRIVATE_KEY_RAW =
+  env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY ?? process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY ?? "";
+
+const SA_PRIVATE_KEY = String(SA_PRIVATE_KEY_RAW).replace(/\\n/g, "\n");
 
 function assertEnv() {
   if (!SPREADSHEET_ID) throw new Error("missing GOOGLE_SHEETS_SPREADSHEET_ID");
