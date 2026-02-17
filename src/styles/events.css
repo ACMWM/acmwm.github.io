@@ -106,6 +106,23 @@
   color: white;
 }
 
+/* slightly fade past days/events */
+.cal-day.is-past .cal-event-block {
+  opacity: 0.72;
+}
+
+/* optional: also soften the day number in past days */
+.cal-day.is-past .cal-day-number {
+  opacity: 0.7;
+}
+
+/* non-acm events: different background + border */
+.cal-event-block.is-non-acm {
+  background: rgba(59, 130, 246, 0.14); /* light blue tint */
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+
 /* --- Event Block --- */
 .cal-event-block {
   display: block;

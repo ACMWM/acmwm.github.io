@@ -6,7 +6,7 @@ import '../styles/events.css';
 import PageHeader from "../components/layout/PageHeader.astro";
 
 // 1. Fetch data
-const events = await getEventsFromSheets(false);
+const events = await getEventsFromSheets(true);
 
 // 2. Prepare data for client
 const eventsJson = JSON.stringify(events);
@@ -88,6 +88,32 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
     if (!dataEl) return;
     const allEvents = JSON.parse(dataEl.dataset.events);
 
+console.log("[events] total:", allEvents.length);
+
+const parsed = allEvents
+  .map(e => ({ name: e.name, raw: e.date, dt: parseEventDate(e.date) }))
+  .filter(x => x.dt)
+  .sort((a, b) => a.dt - b.dt);
+
+console.log("[events] parseable:", parsed.length);
+console.log("[events] earliest:", parsed[0]?.dt, parsed[0]?.name, parsed[0]?.raw);
+console.log("[events] latest:", parsed.at(-1)?.dt, parsed.at(-1)?.name, parsed.at(-1)?.raw);
+console.table(parsed.slice(0, 10));
+
+
+    // fix: parse "YYYY-MM-DD" as local date to avoid utc shifting to prior day
+    function parseEventDate(d) {
+      if (!d) return null;
+
+      if (typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
+        const [y, m, day] = d.split("-").map(Number);
+        return new Date(y, m - 1, day);
+      }
+
+      const dt = new Date(d);
+      return Number.isFinite(dt.getTime()) ? dt : null;
+    }
+
     // 2. DOM Elements
     const calendarGrid = document.getElementById('calendar-grid');
     const monthLabel = document.getElementById('current-month-label');
@@ -114,7 +140,9 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
       const year = date.getFullYear();
       const month = date.getMonth();
       const today = new Date();
-      
+      const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+
       // Update Title
       const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       monthLabel.textContent = `${monthNames[month]} ${year}`;
@@ -148,10 +176,12 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
         // 2. Find Events for this day
         const currentDayStart = new Date(year, month, d);
         const currentDayEnd = new Date(year, month, d + 1);
+        const isPastDay = currentDayEnd <= todayStart;
+        if (isPastDay) dayEl.classList.add('is-past');
         
         const daysEvents = allEvents.filter(e => {
-          if(!e.date) return false;
-          const eDate = new Date(e.date);
+          const eDate = parseEventDate(e.date);
+          if (!eDate) return false;
           return eDate >= currentDayStart && eDate < currentDayEnd;
         });
 
@@ -162,6 +192,10 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
             eventBlock.className = 'cal-event-block';
             eventBlock.textContent = evt.name; 
             eventBlock.title = evt.name; // Tooltip on hover
+
+            const clubs = Array.isArray(evt.hostingClubs) ? evt.hostingClubs : [];
+            const isAcm = clubs.some(c => String(c).trim().toLowerCase() === "acm");
+            if (!isAcm) eventBlock.classList.add('is-non-acm');
             
             // Stop bubbling so clicking the event doesn't trigger the day click
             eventBlock.addEventListener('click', (e) => {
@@ -193,9 +227,12 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
       defaultView.classList.add('hidden');
       detailView.classList.remove('hidden');
 
-      const dateObj = new Date(event.date);
+      const dateObj = parseEventDate(event.date);
+      if (!dateObj) return;
+
       const dateStr = dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-      const timeStr = dateObj.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      // const timeStr = dateObj.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      const timeStr = (event.time || "").trim() || "Time TBD";
 
       detailContent.innerHTML = `
         <span class="detail-date-badge">${event.type || 'Event'}</span>
