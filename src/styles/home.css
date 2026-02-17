@@ -59,16 +59,21 @@ body {
 
 /* --- Hero Section --- */
 .hero-section {
-  background-color: var(--wmn-blue-bg);
+  min-height: 560px;
+  padding: 8rem 2rem;
+  position: relative;
   color: white;
-  padding: 5rem 2rem;
   text-align: center;
-  border-radius: 0; 
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent;
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-title {
@@ -93,18 +98,6 @@ body {
   align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
-}
-
-.hero-section {
-  min-height: 560px; /* increase this */
-  padding: 6.5rem 2rem; /* more vertical space around text */
-  /* padding: 5rem 2rem; */
-  position: relative;
-  color: white;
-  text-align: center;
-  border-radius: 0;
-  overflow: hidden;
-  background: transparent;
 }
 
 .hero-carousel {
@@ -137,11 +130,6 @@ body {
     rgba(131, 156, 199, 0.90),
     rgba(131, 156, 199, 0.65)
   );
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
 }
 
 

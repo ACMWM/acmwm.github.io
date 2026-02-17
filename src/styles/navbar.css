@@ -4,7 +4,7 @@
   --nav-gap: clamp(0.5rem, 2vw, 1.25rem);
   --nav-radius: 999px;
   --nav-border: rgba(0,0,0,0.08);
-  --nav-bg: rgba(255,255,255,0.90);
+  --nav-bg: rgba(255,255,255,0.80);
 }
 
 /* remove default browser margin that creates tiny top slivers */

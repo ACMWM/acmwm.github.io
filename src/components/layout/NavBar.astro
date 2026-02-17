@@ -12,6 +12,7 @@ const navigationItems = [
   { name: "Events", url: "/events" },
   { name: "Connect", url: "/connect" },
 ];
+
 const resourcesItems = [
   { name: "Tech clubs", url: "/resources/clubs" },
   { name: "How-to", url: "/resources/how-to" },
@@ -51,21 +52,26 @@ const menuId = "acm-nav-menu";
           </li>
         ))}
 
-        <li class="nav-dropdown">
-          <a href="" class="nav-item nav-dropdown-trigger">
+        <li class="nav-dropdown" data-dd>
+          <button
+            type="button"
+            class="nav-item nav-dropdown-trigger"
+            aria-expanded="false"
+            aria-haspopup="menu"
+            data-dd-trigger
+          >
             Resources
-          </a>
+          </button>
 
-          <div class="nav-dropdown-menu" aria-label="Resources">
+          <div class="nav-dropdown-menu" aria-label="Resources" role="menu" data-dd-menu>
             {resourcesItems.map((item) => (
-              <a href={item.url} class="nav-dropdown-item">
+              <a href={item.url} class="nav-dropdown-item" role="menuitem">
                 {item.name}
               </a>
             ))}
           </div>
         </li>
       </ul>
-
     </nav>
   </div>
 
@@ -79,70 +85,121 @@ const menuId = "acm-nav-menu";
         </li>
       ))}
 
-      <li>
-        <a href="/resources/" class="mobile-item">Resources</a>
+      <li class="mobile-dropdown" data-dd>
+        <button
+          type="button"
+          class="mobile-item mobile-dropdown-trigger"
+          aria-expanded="false"
+          aria-haspopup="menu"
+          data-dd-trigger
+        >
+          Resources
+        </button>
+
+        <ul class="mobile-sublist" aria-label="Resources" data-dd-menu>
+          {resourcesItems.map((item) => (
+            <li>
+              <a href={item.url} class="mobile-item mobile-subitem">
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
       </li>
-
-      {resourcesItems.map((item) => (
-        <li>
-          <a href={item.url} class="mobile-item">
-            {item.name}
-          </a>
-        </li>
-      ))}
     </ul>
-
   </nav>
 
   <script is:inline>
-  {`
-    function initAcmNav() {
-      const header = document.querySelector('[data-nav]');
-      const btn = document.querySelector('[data-nav-toggle]');
-      const menu = document.querySelector('[data-nav-menu]');
-      if (!header || !btn || !menu) return;
+    {`
+      function initAcmNav() {
+        const header = document.querySelector('[data-nav]');
+        const btn = document.querySelector('[data-nav-toggle]');
+        const menu = document.querySelector('[data-nav-menu]');
+        if (!header || !btn || !menu) return;
 
-      const setOpen = (open) => {
-        if (open) header.setAttribute('data-open', '');
-        else header.removeAttribute('data-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      };
+        const setMobileOpen = (open) => {
+          if (open) header.setAttribute('data-open', '');
+          else header.removeAttribute('data-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        };
 
-      // avoid double-binding if astro fires multiple times
-      if (btn.dataset.bound === '1') return;
-      btn.dataset.bound = '1';
+        // avoid double-binding if astro fires multiple times
+        if (header.dataset.bound === '1') return;
+        header.dataset.bound = '1';
 
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const open = header.hasAttribute('data-open');
-        setOpen(!open);
-      });
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const open = header.hasAttribute('data-open');
+          setMobileOpen(!open);
+        });
 
-      menu.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (a) setOpen(false);
-      });
+        menu.addEventListener('click', (e) => {
+          const a = e.target.closest('a');
+          if (a) setMobileOpen(false);
+        });
 
-      document.addEventListener('click', (e) => {
-        if (!header.contains(e.target)) setOpen(false);
-      });
+        // dropdowns: click-to-open, close on click-out / escape
+        const dropdowns = Array.from(header.querySelectorAll('[data-dd]'));
+        const closeAllDropdowns = () => {
+          dropdowns.forEach((dd) => {
+            dd.removeAttribute('data-dd-open');
+            const t = dd.querySelector('[data-dd-trigger]');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          });
+        };
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') setOpen(false);
-      });
-    }
+        dropdowns.forEach((dd) => {
+          const trigger = dd.querySelector('[data-dd-trigger]');
+          const ddMenu = dd.querySelector('[data-dd-menu]');
+          if (!trigger || !ddMenu) return;
 
-    // initial load
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initAcmNav);
-    } else {
-      initAcmNav();
-    }
+          trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-    // astro client-side navigation (if enabled)
-    document.addEventListener('astro:page-load', initAcmNav);
-  `}
-</script>
+            const isOpen = dd.hasAttribute('data-dd-open');
+            closeAllDropdowns();
 
+            if (!isOpen) {
+              dd.setAttribute('data-dd-open', '');
+              trigger.setAttribute('aria-expanded', 'true');
+            }
+          });
+
+          ddMenu.addEventListener('click', (e) => {
+            const a = e.target.closest('a');
+            if (a) {
+              closeAllDropdowns();
+              setMobileOpen(false);
+            }
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!header.contains(e.target)) {
+            closeAllDropdowns();
+            setMobileOpen(false);
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeAllDropdowns();
+            setMobileOpen(false);
+          }
+        });
+      }
+
+      // initial load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAcmNav);
+      } else {
+        initAcmNav();
+      }
+
+      // astro client-side navigation (if enabled)
+      document.addEventListener('astro:page-load', initAcmNav);
+    `}
+  </script>
 </header>
