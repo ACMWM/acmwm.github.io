@@ -291,6 +291,27 @@ body {
   max-width: 180px;
 }
 
+/* stacked variant: date on its own line + allow full event title */
+.event-list--stacked li {
+  display: block;
+}
+
+.event-list--stacked .list-date {
+  display: block;
+  margin: 0 0 6px 0;
+  min-width: 0;
+}
+
+.event-list--stacked .list-name {
+  display: block;
+  text-align: left;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  max-width: none;
+}
+
+
 /* Bottom Right Link */
 .featured-link {
   position: absolute;

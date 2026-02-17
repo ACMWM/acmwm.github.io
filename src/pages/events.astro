@@ -200,8 +200,8 @@ const fmtDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric
       detailContent.innerHTML = `
         <span class="detail-date-badge">${event.type || 'Event'}</span>
         <h2 class="detail-title">${event.name}</h2>
-        <div class="detail-meta">📅 ${dateStr} @ ${timeStr}</div>
-        <div class="detail-meta">📍 ${event.location || 'Location TBD'}</div>
+        <div class="detail-meta">${dateStr} @ ${timeStr}</div>
+        <div class="detail-meta">${event.location || 'Location TBD'}</div>
         <div class="detail-desc">${event.blurb || 'No description provided.'}</div>
         ${event.website ? `<br><a href="${event.website}" target="_blank" class="btn btn-primary" style="font-size:0.8rem; margin-top:1rem;">Event Link</a>` : ''}
       `;

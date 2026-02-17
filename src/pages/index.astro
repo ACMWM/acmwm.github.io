@@ -66,7 +66,7 @@ const prevWorkshops = sortedWorkshops
 
 // 4. Logic for "Upcoming" (Card 3)
 const upcomingMisc = events
-  .filter((e) => (!e.type || !e.type.toLowerCase().includes('workshop')) && new Date(e.date) >= now)
+  .filter((e) => new Date(e.date) >= now)
   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
   .slice(0, 5);
 
@@ -116,7 +116,7 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
         <div class="hero-buttons">
           <a href="/connect" class="btn btn-outline">Join us</a>
           <a href="/about" class="btn btn-outline">Learn more</a>
-          <a href="/resources" class="btn btn-outline">Info guide</a>
+          <a href="/resources/how-to" class="btn btn-outline">Info guide</a>
         </div>
       </div>
     </section>
@@ -167,10 +167,10 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
                     ))}
                   </ul>
                 ) : (
-                  <p class="featured-desc">No past workshops found.</p>
+                  <p class="featured-desc">No past meetings found.</p>
                 )}
               </div>
-              <button class="featured-link flip-trigger" type="button">Show next workshop &rarr;</button>
+              <button class="featured-link flip-trigger" type="button">Show next meeting &rarr;</button>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ const fmtFull = new Intl.DateTimeFormat("en-US", {
           <div class="featured-content">
             <h3 class="featured-title">Upcoming</h3>
             {upcomingMisc.length > 0 ? (
-              <ul class="event-list">
+              <ul class="event-list event-list--stacked">
                 {upcomingMisc.map(e => (
                   <li>
                     <span class="list-date">{fmt.format(e.date)}</span>
