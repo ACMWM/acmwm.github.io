@@ -1,9 +1,9 @@
 ---
 import Layout from '@layouts/Default.astro';
-import { getEventsFromSheets } from "../../scripts/googleSheets";
-import '../../styles/global.css';
-import '../../styles/events.css';
-import PageHeader from "../../components/layout/PageHeader.astro";
+import { getEventsFromSheets } from "../scripts/googleSheets";
+import '../styles/global.css';
+import '../styles/events.css';
+import PageHeader from "../components/layout/PageHeader.astro";
 
 // 1. Fetch data
 const events = await getEventsFromSheets(false);

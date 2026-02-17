@@ -1,0 +1,14 @@
+---
+import Layout from "@layouts/Default.astro";
+import "../../styles/resources.css";
+import PageHeader from "../../components/layout/PageHeader.astro";
+
+import Faq from "../../components/resources/Faq.astro";
+---
+
+<Layout title="ACM FAQ" pageTitle="Resources" description="Frequently asked questions about ACM at William & Mary.">
+  <PageHeader title="ACM FAQ" subtitle="Answers to the most common questions." />
+  <main class="resources">
+    <Faq />
+  </main>
+</Layout>

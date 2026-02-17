@@ -1,5 +1,6 @@
 ---
 import "../../styles/navbar.css";
+import logo from '../../../public/acm-logo.png';
 
 interface Props {
   pageTitle?: string;
@@ -7,14 +8,14 @@ interface Props {
 
 const navigationItems = [
   { name: "Home", url: "/" },
-  { name: "About", url: "/about/" },
-  { name: "Events", url: "/events/" },
-  { name: "Connect", url: "/connect/" },
+  { name: "About", url: "/about" },
+  { name: "Events", url: "/events" },
+  { name: "Connect", url: "/connect" },
 ];
 const resourcesItems = [
-  { name: "Tech clubs", url: "/resources/clubs/" },
-  { name: "How-to", url: "/resources/how-to/" },
-  { name: "ACM faq", url: "/resources/faq/" },
+  { name: "Tech clubs", url: "/resources/clubs" },
+  { name: "How-to", url: "/resources/how-to" },
+  { name: "ACM FAQ", url: "/resources/faq" },
 ];
 
 const { pageTitle } = Astro.props;
@@ -24,6 +25,7 @@ const menuId = "acm-nav-menu";
 <header class="simple-header" data-nav>
   <div class="header-content">
     <a href="/" title="Back to Home" class="brand-link" aria-label="W&M ACM home">
+      <img src={logo.src} alt="ACM logo" class="brand-logo" />
       <span class="brand-text">W&amp;M ACM</span>
     </a>
 
@@ -50,7 +52,7 @@ const menuId = "acm-nav-menu";
         ))}
 
         <li class="nav-dropdown">
-          <a href="/resources/" class="nav-item nav-dropdown-trigger">
+          <a href="" class="nav-item nav-dropdown-trigger">
             Resources
           </a>
 

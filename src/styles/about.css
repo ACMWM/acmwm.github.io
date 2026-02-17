@@ -126,39 +126,6 @@
   background-color: #e6eff8;
 }
 
-/* Expand Button */
-.expand-btn {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--wmn-blue-bg);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: all 0.2s;
-}
-
-.expand-btn:hover {
-  background-color: var(--wmn-blue-bg);
-  color: white;
-}
-
-/* Animation */
-.hidden-rows {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
-}
 
 /* Responsive Styles */
 @media (max-width: 900px) {

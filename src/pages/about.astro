@@ -1,9 +1,9 @@
 ---
 import Layout from '@layouts/Default.astro';
-import { getActiveOfficerProfilesFromSheets } from "../../scripts/googleSheets";
-import '../../styles/global.css';
-import '../../styles/about.css';
-import PageHeader from "../../components/layout/PageHeader.astro";
+import { getActiveOfficerProfilesFromSheets } from "../scripts/googleSheets";
+import '../styles/global.css';
+import '../styles/about.css';
+import PageHeader from "../components/layout/PageHeader.astro";
 
 // 1. Fetch Officers Data
 const rawOfficers = await getActiveOfficerProfilesFromSheets();

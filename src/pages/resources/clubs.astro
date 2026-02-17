@@ -1,0 +1,22 @@
+---
+import Layout from "@layouts/Default.astro";
+import "../../styles/resources.css";
+import PageHeader from "../../components/layout/PageHeader.astro";
+
+import TechClubs from "../../components/resources/TechClubs.astro";
+---
+
+<Layout
+  title="Tech Clubs"
+  pageTitle="Resources"
+  description="Tech clubs and computing communities at William & Mary."
+>
+  <PageHeader
+    title="Tech Clubs"
+    subtitle="Explore computing communities (and collaborators) across campus."
+  />
+
+  <main class="resources">
+    <TechClubs />
+  </main>
+</Layout>

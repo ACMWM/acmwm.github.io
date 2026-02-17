@@ -1,0 +1,22 @@
+---
+import Layout from "@layouts/Default.astro";
+import "../../styles/resources.css";
+import PageHeader from "../../components/layout/PageHeader.astro";
+
+import HowTo from "../../components/resources/HowTo.astro";
+---
+
+<Layout
+  title="How-to Guides"
+  pageTitle="Resources"
+  description="Setup guides and access links for CS resources at William & Mary."
+>
+  <PageHeader
+    title="How-to Guides"
+    subtitle="Common setup and access links for CS resources."
+  />
+
+  <main class="resources">
+    <HowTo />
+  </main>
+</Layout>

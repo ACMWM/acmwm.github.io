@@ -1,6 +1,6 @@
 ---
-import BaseNavigation from '@components/layout/BaseNavigation.astro';
-import BaseFooter from '@components/layout/BaseFooter.astro';
+import NavBar from '@components/layout/NavBar.astro';
+import Footer from '@components/layout/Footer.astro';
 import BaseHead from '../components/layout/BaseHead.astro';
 import '../styles/global.css';
 import '../styles/default.css';
@@ -54,8 +54,8 @@ const { title, description, classList, pageTitle, ogImage } = Astro.props;
       </div>
     )}
     <div class="top-strip" aria-hidden="true"></div>
-    <BaseNavigation {pageTitle} />
+    <NavBar {pageTitle} />
     <slot />
-    <BaseFooter />
+    <Footer />
   </body>
 </html>
