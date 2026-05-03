@@ -1,15 +1,17 @@
 ---
-import Layout from '@layouts/Default.astro';
-import ErrorPage from '@components/errors/404.astro';
+const target = "https://acm.cs.wm.edu";
 ---
 
-<Layout
-  title='Page Not Found'
-  description='Page not found'
-  classList='h-full'
-  pageTitle='Page Not Found!'
->
-  <main class='bg-blue px-6 py-24'>
-    <ErrorPage />
-  </main>
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script define:vars={{ target }}>
+      window.location.replace(target + window.location.pathname + window.location.search + window.location.hash);
+    </script>
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href={target}>acm.cs.wm.edu</a>.</p>
+  </body>
+</html>
